@@ -1,0 +1,28 @@
+.banner__grid {
+    display: grid;
+    grid-auto-columns: 160px 1fr 160px;
+    grid-template-areas: 'left mid right';
+    /*display: flex;*/
+    /*justify-content: space-evenly;*/
+}
+.banner_left {
+    grid-area: left;
+    /*flex: 0 1 180px;*/
+    margin: 120px 10px 0 10px;
+}
+.banner_right {
+    grid-area: right;
+    /*flex: 0 1 180px;*/
+}
+.container {
+    grid-area: mid;
+}
+
+@media (max-width: 1200px) {
+    .banner_left {
+        display: none;
+    }
+    .banner_right {
+        fdisplay: none;
+    }
+}

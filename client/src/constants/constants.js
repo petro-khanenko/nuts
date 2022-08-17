@@ -1,0 +1,11 @@
+export const adminPages = {
+    ADD_NEW_ITEM: 'ADD_NEW_ITEM',
+    ITEMS_LIST: 'ITEMS_LIST',
+    ORDERS_LIST: 'ORDERS_LIST',
+}
+export const orderPages = {
+    ACTIVE_ORDERS: 'ACTIVE_ORDERS',
+    COMPLETED_ORDERS: 'COMPLETED_ORDERS',
+    ADMIN_BASKET: 'ADMIN_BASKET',
+}
+

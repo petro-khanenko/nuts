@@ -1,0 +1,12 @@
+.admin-panel {
+    display: grid;
+    justify-content: center;
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+.admin-panel__save-button {
+    margin-top: 5px;
+    padding: 10px;
+}
+
+

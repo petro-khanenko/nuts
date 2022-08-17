@@ -1,0 +1,31 @@
+.button_basket__icon {
+    width: 75px;
+    float: right;
+    position: relative;
+}
+.button_basket__icon_fixed {
+    position: fixed;
+    top: 5px;
+    z-index: 25;
+}
+.button_basket__inbasket {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: center;
+    background-color: #d7cfcf;
+    font-weight: bold;
+    color: black;
+    z-index: 26;
+}
+
+@media (max-width: 767px) {
+    .button_basket__icon {
+        margin-right: 30px;
+    }
+}

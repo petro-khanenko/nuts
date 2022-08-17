@@ -1,0 +1,18 @@
+.admin_store {
+    margin-top: 20px;
+}
+.admin_store__header {
+    display: grid;
+    grid-template-areas: 'N name price button';
+    grid-template-columns: 0.5fr 6.5fr 3fr 2fr;
+    grid-template-rows: 60px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #211e1e;
+    justify-items: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}

@@ -1,0 +1,84 @@
+.basket {
+    margin-bottom: 80px;
+    position: relative;
+}
+.basket_go-back-button {
+    position: fixed;
+    top: 40px;
+    z-index: 100;
+}
+.basket_title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.basket_content {
+    display: flex;
+    flex-direction: column;
+}
+.basket_header {
+    display: grid;
+    grid-template-areas: 'item price count total delete';
+    grid-template-columns: 5fr repeat(3, 2fr) 1fr;
+    grid-template-rows: 60px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #211e1e;
+    justify-items: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.basket_total {
+    display: grid;
+    grid-template-columns: 5fr repeat(3, 2fr) 1fr;
+    grid-template-rows: 60px;
+    justify-items: center;
+    align-items: center;
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: #171616;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.basket_buttons {
+    align-self: flex-end;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+.basket_buttons button {
+    padding: 10px 45px;
+    margin-left: 20px;
+}
+
+@media (max-width: 767px) {
+    .basket_go-back-button {
+        top: 25px;
+    }
+    .basket_title{
+        margin-top: 75px;
+        font-size: 1.5rem;
+    }
+    .basket_header {
+        display: none;
+        /*grid-template-columns: 3.5fr repeat(3, 2.5fr) 1fr;*/
+        /*grid-template-rows: 30px;*/
+        /*font-size: 0.85rem;*/
+        /*font-weight: 500;*/
+    }
+    .basket_total {
+        grid-template: 45px/70px 4fr 3fr 5fr;
+        justify-items: start;
+        font-size: 1.25rem;
+    }
+    .basket_buttons {
+        align-self: center;
+    }
+    .basket_buttons button {
+        padding: 10px;
+        margin-left: 5px;
+        font-size: 0.75rem;
+    }
+}

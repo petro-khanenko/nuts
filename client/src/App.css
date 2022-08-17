@@ -1,0 +1,66 @@
+@import url('http://fonts.cdnfonts.com/css/coca-cola-ii');
+@import url('./components/Header/header.css');
+@import url('./components/BasketButton/basketButton.css');
+@import url('./pages/admin/AdminPanel/adminPanel.css');
+@import url('./pages/orders/orders.css');
+@import url('./pages/orders/OrderItem/orderItem.css');
+@import url('./pages/admin/CompanyRemastering/remastering.css');
+@import url('./pages/admin/AdminPanel/AdminBasket/adminBasket.css');
+@import url('./pages/admin/AdminPanel/AdminBasket/AdminStoreItem/adminStoreItem.css');
+@import url('components/modals/modal.css');
+@import url('components/modals/deleteModal.css');
+@import url('./pages/main/CompamiesList/companyList.css');
+@import url('./pages/main/CompaniesCard/card.css');
+@import url('./pages/main/Content/content.css');
+@import url('components/DynamicFields/DynamicField/dynamicField.css');
+@import url('./utils/swal/swal.css');
+@import url('./components/FormFields/formFields.css');
+@import url('./pages/basket/Basket/BasketItem/basketItem.css');
+@import url('./pages/basket/Basket/basket.css');
+@import url('./components/OrderFormFields/orderFormFields.css');
+@import url('./pages/about/AboutItem/about.css');
+@import url('./pages/delivery/Delivery/delivery.css');
+
+
+
+body {
+    background-image: url("images/nuts_plate.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    /* cursor: url("images/image666.png"), default; */
+    /*background-position: right center;*/
+    /*background-repeat: repeat;*/
+    /*background-color: #286800;*/
+}
+
+.app {
+    flex: 1 1 auto;
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    padding: 5px 10px;
+    min-width: 179px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: lightgray;
+}
+button:hover {
+    background-color: orangered;
+}
+input {
+    width: 350px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    text-align: center;
+}

@@ -1,0 +1,39 @@
+.companies__sort {
+    margin-bottom: 40px;
+    color: whitesmoke;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-shadow: 1px 1px 2px black;
+}
+.companies__sort_active {
+    color: #ff1500;
+}
+.companies__sort span:hover {
+    color: darkorange;
+}
+.companies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 30px;
+}
+.companies-list-less-then-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+    grid-gap: 60px;
+}
+
+@media (max-width: 767px) {
+    .companies-list {
+        grid-gap: 30px;
+    }
+    .companies__sort {
+        font-size: 1rem;
+    }
+    .companies__sort div {
+        margin-bottom: 10px;
+    }
+}

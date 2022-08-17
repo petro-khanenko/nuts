@@ -1,0 +1,39 @@
+.delivery {
+    margin-top: 100px;
+}
+.delivery_title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.delivery_content {
+    margin: 30px 60px;
+    padding: 5px 20px;
+    min-height: 50vh;
+    color: #2a2929;
+    border: solid 1px gray;
+    border-radius: 8px;
+    background-color: #cee3e3;
+}
+.delivery__section_title {
+    text-align: center;
+    margin: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .delivery {
+        margin-top: 75px;
+    }
+    .delivery_title{
+        font-size: 1.25rem;
+    }
+    .delivery_content {
+        margin: 15px;
+        padding: 5px 10px;
+    }
+    .delivery__section_title {
+        font-size: 1rem;
+    }
+}

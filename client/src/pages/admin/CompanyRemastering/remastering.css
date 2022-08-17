@@ -1,0 +1,29 @@
+.remast {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    border: solid 1px black;
+    padding: 3px;
+    background-color: antiquewhite;
+}
+.remast__tittle {
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.remast button{
+    margin-right: 6px;
+    padding: 3px 6px;
+    min-width: 90px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 767px) {
+    .remast {
+        width: 350px;
+    }
+    .remast button{
+        min-width: 40px;
+    }
+}
