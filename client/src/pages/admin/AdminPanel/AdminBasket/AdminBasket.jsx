@@ -71,10 +71,10 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                 </div>
                 <h2 className="basket_title">КОРЗИНА</h2>
                 <div className='basket_header'>
-                    <div>товар</div>
-                    <div>ціна</div>
-                    <div>кількість</div>
-                    <div>всього</div>
+                    <div>Товар</div>
+                    <div>Ціна</div>
+                    <div>Кількість</div>
+                    <div>Всього</div>
                 </div>
                 <div className="basket_content">
                     {!isPurchases ? <h2>Ваша корзина пока пуста</h2>

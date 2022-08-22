@@ -25,6 +25,7 @@
     "libphonenumber-js": "^1.9.35",
     "mongoose": "^5.10.11",
     "react-hook-form": "^7.17.0",
+    "swagger-ui-express": "^4.5.0",
     "sweetalert2": "^11.1.7",
     "yup": "^0.32.9"
   },

@@ -10,7 +10,7 @@ import DoneAll from "@material-ui/icons/DoneAll";
 const useStyles = makeStyles((theme) => ({
         iconButton: {
             minWidth: 35,
-            float: 'right',
+            justifySelf: 'center'
         },
         iconActive: {
             fontSize: 40,
@@ -63,10 +63,10 @@ export const Orders = () => {
         <div className={'orders'}>
             <h2 className="basket_title">Orders</h2>
             <div className='orders_header'>
-                <div>№</div>
-                <div>замовник</div>
-                <div>адреса доставки</div>
-                <div>всього</div>
+                <div className='orders_header__number'>№</div>
+                <div>Замовник</div>
+                <div>Адреса доставки</div>
+                <div>Всього</div>
                 <IconButton className={iconButton}
                             onClick={() => setPageMode(orderPages.ACTIVE_ORDERS)}
                 >

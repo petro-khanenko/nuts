@@ -6,10 +6,13 @@
     margin: 0 5px;
     padding: 5px 10px;
     background-color: #211e1e;
-    justify-items: center;
+    justify-items: start;
     align-items: center;
     color: whitesmoke;
     font-size: 1.2rem;
     font-weight: bold;
     letter-spacing: 2px;
+}
+.orders_header__number {
+    justify-self: center;
 }

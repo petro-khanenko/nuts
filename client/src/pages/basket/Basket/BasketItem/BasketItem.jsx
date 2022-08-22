@@ -90,8 +90,8 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
                     <img src={item.image} alt="image"/>
                 </NavLink>
             </div>
-            <NavLink to={`/about/${item.anchorr}`}>
-                <div className={'basket_item__name'}>{item.name}</div>
+            <NavLink to={`/about/${item.anchorr}`} className={'basket_item__name'}>
+                <div>{item.name}</div>
             </NavLink>
             <div>{Number(item.price).toFixed(2)} грн / {item.points}</div>
             <div className='basket_item__counter'>

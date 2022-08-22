@@ -30,6 +30,9 @@ async function start() {
             useCreateIndex: true,
             // useFindAndModify: false
         })
+
+
+
         app.listen(PORT, () => console.log(`server has been started on port ${PORT}`))
 
     } catch (e) {

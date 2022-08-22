@@ -10,7 +10,7 @@ import {NavLink} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
         iconButton: {
             minWidth: 35,
-            float: 'right',
+            justifySelf: 'center'
         },
         iconDecrease: {
             fontSize: 40,
@@ -105,7 +105,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
 
     return (
         <div className={'order_item'}>
-            <div>{order.orderNum}</div>
+            <div className='order_item__number'>{order.orderNum}</div>
             <NavLink className='order_item__link' to='/admin/panel/admin_basket'>
                 <div className='order_item__client' onClick={() => getItemsAndGoToBasket(order._id)}>
                     <div>{order.firstName} {order.lastName}</div>
