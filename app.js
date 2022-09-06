@@ -7,7 +7,7 @@ const app = express()
 
 app.use(express.json({ extended: true }))
 
-app.use('/api/companies', require('./routes/companies.routes'))
+app.use('/api/companies', require('./routes/items.routes'))
 app.use('/api/orders', require('./routes/orders.routes'))
 app.use('/api/count', require('./routes/count.routes'))
 app.use('/api/auth', require('./routes/auth.routes'))

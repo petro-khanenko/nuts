@@ -13,9 +13,5 @@ const schema = new Schema({
     addFields: { type: Object, default: null }
 })
 
-// const schema = new Schema({
-//     data: Schema.Types.Mixed
-// })
 
-
-module.exports = model('Company', schema)
+module.exports = model('Item', schema)
