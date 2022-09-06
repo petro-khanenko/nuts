@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button} from "@material-ui/core";
-import {addItemToBasket} from "../../../../../utils/helpers";
+import {addItemToBasket} from "../../../../../helpers/helpers";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 export const AdminStoreItem = ({item, idx, someShit, setSomeShit}) => {

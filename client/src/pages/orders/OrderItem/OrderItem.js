@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {IconButton, makeStyles} from "@material-ui/core";
 import Rowing from "@material-ui/icons/Rowing";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import Cancel from "@material-ui/icons/Cancel";
 import {useHttp} from "../../../hooks/http.hook";
-import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 import {NavLink} from "react-router-dom";
+import {setConfirmModal, setInfoModal} from "../../../utils/swal/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -36,30 +36,18 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
                 fetchOrders();
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'На жаль, під час видалення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, під час видалення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
+                'warning'
+            );
         }
     };
     const deleteOrderHandler = () => {
-        swalWithCustom
-            .fire({
-                text: 'Ви впевнені, що бажаєте видалити дане замовлення?',
-                icon: 'warning',
-                showCancelButton: true
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    deleteOrderRequest();
-                    swalWithCustom.fire({
-                        text: 'Замовлення успішно видалено!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
-            });
+        setConfirmModal(
+            'Ви впевнені, що бажаєте видалити дане замовлення?',
+            'Замовлення успішно видалено!',
+            deleteOrderRequest
+        );
     };
 
     const completedOrderRequest = async () => {
@@ -73,34 +61,26 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
                 fetchOrders();
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'На жаль, під час обробки запиту сталася помилка. Повторіть, будь ласка, спробу!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, під час обробки запиту сталася помилка. Повторіть, будь ласка, спробу!',
+                'warning'
+            );
         }
     };
     const completedOrderHandler = () => {
-        swalWithCustom
-            .fire({
-                text: isActive
-                    ? 'Ви впевнені, що бажаєте помітити дане замовлення, як виконане?'
-                    : 'Ви впевнені, що бажаєте повернути дане замовлення до активних?',
-                icon: 'warning',
-                showCancelButton: true
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    completedOrderRequest();
-                    swalWithCustom.fire({
-                        text: isActive
-                        ? 'Замовлення успішно переведене у виконані!'
-                        : 'Замовлення успішно переведене до активних!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
-            });
+        const confirmText = isActive
+            ? 'Ви впевнені, що бажаєте помітити дане замовлення, як виконане?'
+            : 'Ви впевнені, що бажаєте повернути дане замовлення до активних?';
+
+        const infoText = isActive
+            ? 'Замовлення успішно переведене у виконані!'
+            : 'Замовлення успішно переведене до активних!';
+
+        setConfirmModal(
+            confirmText,
+            infoText,
+            completedOrderRequest
+        );
     };
 
     return (

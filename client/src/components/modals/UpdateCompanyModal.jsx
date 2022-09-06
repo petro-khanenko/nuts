@@ -1,16 +1,12 @@
 import React, {useState} from 'react'
 import {useHttp} from "../../hooks/http.hook"
-import {swalWithCustom} from "../../utils/swal/swalWithCustom";
 import {FormFields} from "../FormFields/FormFields";
-import {
-    fileSelectorHandler,
-    getAddFieldsObject,
-    getInitDynamicKeysForm,
-    getInitDynamicValuesForm
-} from "../../utils/helpers";
+import {getAddFieldsObject, getInitDynamicKeysForm, getInitDynamicValuesForm} from "../../helpers/helpers";
 import {DynamicFields} from "../DynamicFields/DynamicFields";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
+import {fileSelectorHandler} from "../../utils/imgur/helpers";
+import {setInfoModal, setSuccessModal} from "../../utils/swal/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -67,20 +63,14 @@ const UpdateCompanyModal = ({
             });
             onCancel(data);
             if (data.status === 'success') {
-                swalWithCustom.fire({
-                    text: 'Congratulation. You updated the item !!!',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1000,
-                });
+                setSuccessModal('Вітаємо. Замовлення успішно оновлене !!!');
                 fetchCompanies();
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'Товар не змінено, перевірте правильність заповнення полів форми !!!',
-                icon: 'warning',
-                showConfirmButton: true
-            });
+            setInfoModal(
+                'Товар не змінено, перевірте правильність заповнення полів форми !!!',
+                'warning'
+            );
         }
     };
 

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {NavLink, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {addItemToBasket} from "../../../utils/helpers";
+import {addItemToBasket} from "../../../helpers/helpers";
 
 const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) => {
 

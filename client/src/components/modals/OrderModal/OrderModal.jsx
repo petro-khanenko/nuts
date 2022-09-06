@@ -3,7 +3,7 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import {OrderFormFields} from "../../OrderFormFields/OrderFormFields";
 import {useHttp} from "../../../hooks/http.hook";
-import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
+import {setInfoModal} from "../../../utils/swal/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -55,25 +55,22 @@ export const OrderModal = ({
             onCancel();
             clearBasket();
             if (data.status === 'success') {
-                await swalWithCustom.fire({
-                    text: 'Вітаємо, Ваше замовлення прийнято. Ми з Вами зв\'яжемось найближчим часом!!!',
-                    icon: 'success'
-                });
+                setInfoModal('Вітаємо, Ваше замовлення прийнято. Ми з Вами зв\'яжемось найближчим часом!!!');
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'На жаль, під час обробки замовлення сталася помилка. Повторіть, будь ласка, відправку форми!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, під час обробки замовлення сталася помилка. Повторіть, будь ласка, відправку форми!',
+                'warning'
+            );
         }
     };
 
     const onSubmit = (formData) => {
         if (!items.length) {
-            swalWithCustom.fire({
-                text: 'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
+                'warning'
+            );
             return;
         }
         saveOrderHandler(formData);

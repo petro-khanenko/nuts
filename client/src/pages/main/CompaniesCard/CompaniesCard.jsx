@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import {addItemToBasket} from "../../../utils/helpers";
+import {addItemToBasket} from "../../../helpers/helpers";
 
 const CompaniesCard = ({ company, handleGoToBasket, someShit, setSomeShit }) => {
 

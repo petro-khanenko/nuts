@@ -3,8 +3,8 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import AddBox from "@material-ui/icons/AddBox";
 import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
-import {swalWithCustom} from "../../../../utils/swal/swalWithCustom";
 import {NavLink} from "react-router-dom";
+import {setConfirmModal} from "../../../../utils/swal/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -55,25 +55,11 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
     }
 
     const removeItemHandler = () => {
-        swalWithCustom
-            .fire({
-                text: 'Ви впевнені, що бажаєте видалити даний товар із корзини?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Так',
-                cancelButtonText: 'Ні'
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    removeItemFromBasket();
-                    swalWithCustom.fire({
-                        text: 'Товар успішно видалений!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
-            });
+        setConfirmModal(
+            'Ви впевнені, що бажаєте видалити даний товар із корзини?',
+            'Товар успішно видалений!',
+            removeItemFromBasket
+        );
     };
 
     const countHandler = (value) => {

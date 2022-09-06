@@ -3,7 +3,7 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import {OrderFormFields} from "../../OrderFormFields/OrderFormFields";
 import {useHttp} from "../../../hooks/http.hook";
-import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
+import {setInfoModal} from "../../../utils/swal/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -40,25 +40,22 @@ export const OrderUpdateModal = ({
             });
             onCancel();
             if (data.status === 'success') {
-                await swalWithCustom.fire({
-                    text: 'Замовлення оновлено!',
-                    icon: 'success'
-                });
+                setInfoModal('Замовлення оновлено!');
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'На жаль, під час оновлення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, під час оновлення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
+                'warning'
+            );
         }
     };
 
     const onSubmit = (formData) => {
         if (!items.length) {
-            swalWithCustom.fire({
-                text: 'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
-                icon: 'warning'
-            });
+            setInfoModal(
+                'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
+                'warning'
+            );
             return;
         }
         updateOrderHandler(formData);

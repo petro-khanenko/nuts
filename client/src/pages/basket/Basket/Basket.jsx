@@ -4,7 +4,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {OrderModal} from "../../../components/modals/OrderModal/OrderModal";
-import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
+import {setConfirmModal} from "../../../utils/swal/helpers";
 
 
 const Basket = ({someShit, setSomeShit}) => {
@@ -28,26 +28,12 @@ const Basket = ({someShit, setSomeShit}) => {
         setSomeShit(!someShit)
     };
 
-    const clearBasketrHandler = () => {
-        swalWithCustom
-            .fire({
-                text: 'Ви впевнені, що бажаєте очистити корзину?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Так',
-                cancelButtonText: 'Ні'
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    clearBasket();
-                    swalWithCustom.fire({
-                        text: 'Корзина успішно очищена!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
-            });
+    const clearBasketHandler = () => {
+        setConfirmModal(
+            'Ви впевнені, що бажаєте очистити корзину?',
+            'Корзина успішно очищена!',
+            clearBasket
+        );
     };
 
     const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
@@ -95,7 +81,7 @@ const Basket = ({someShit, setSomeShit}) => {
                         <Button variant='contained' color='primary' onClick={() => setOrderModalOpen(true)}>
                             Оформити замовлення
                         </Button>
-                        <Button variant='contained' color='secondary' onClick={clearBasketrHandler}>Очистити корзину</Button>
+                        <Button variant='contained' color='secondary' onClick={clearBasketHandler}>Очистити корзину</Button>
                     </div>
                 </div>
             </div>

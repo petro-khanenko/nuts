@@ -5,13 +5,14 @@ import {NavLink, Redirect} from "react-router-dom";
 import CompanyRemastering from "../CompanyRemastering/CompanyRemastering"
 import UpdateCompanyModal from "../../../components/modals/UpdateCompanyModal";
 import DeleteModal from "../../../components/modals/DeleteModal";
-import {fileSelectorHandler, getAddFieldsObject, resetFormsStateHelper} from "../../../utils/helpers";
-import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
+import {getAddFieldsObject, resetFormsStateHelper} from "../../../helpers/helpers";
 import {DynamicFields} from "../../../components/DynamicFields/DynamicFields";
 import {FormFields} from "../../../components/FormFields/FormFields";
 import {adminPages} from "../../../constants/constants";
 import {AdminPagesSwitcher} from "./AdminPagesSwitcher";
 import {Orders} from "../../orders/Orders";
+import {fileSelectorHandler} from "../../../utils/imgur/helpers";
+import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
 
 
 const AdminPanel = ({companies, fetchCompanies}) => {
@@ -60,20 +61,14 @@ const AdminPanel = ({companies, fetchCompanies}) => {
             setDynamicKeysForm(resetFormsStateHelper);
             setDynamicValuesForm(resetFormsStateHelper);
             if (data.status === 'success') {
-                swalWithCustom.fire({
-                    text: 'Congratulation. You added new item !!!',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1000,
-                });
+                setSuccessModal('Вітаємо. Ви додали новий товар !!!');
                 fetchCompanies()
             }
         } catch (e) {
-            swalWithCustom.fire({
-                text: 'Товар не збережено, перевірте правильність заповнення полів форми !!!',
-                icon: 'warning',
-                showConfirmButton: true
-            });
+            setInfoModal(
+                'Товар не збережено, перевірте правильність заповнення полів форми !!!',
+                'warning'
+            );
         }
     }
 
