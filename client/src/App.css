@@ -27,10 +27,6 @@ body {
     background-image: url("images/nuts_plate.jpg");
     background-size: cover;
     background-attachment: fixed;
-    /* cursor: url("images/image666.png"), default; */
-    /*background-position: right center;*/
-    /*background-repeat: repeat;*/
-    /*background-color: #286800;*/
 }
 
 .app {

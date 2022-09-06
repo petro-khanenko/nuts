@@ -34,17 +34,6 @@ const Header = ({searchText}) => {
 
     const location = useLocation();
 
-    // useEffect(() => {
-    //     if (location.hash) {
-    //         setTimeout(() => {
-    //             searchText({
-    //                 currentTarget: {
-    //                     value: location.hash.substr(1)
-    //                 }
-    //             });
-    //         }, 300)
-    //     }
-    // }, []);
 
     const clearSearchInput = () => {
         searchText({
