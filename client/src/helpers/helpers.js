@@ -26,23 +26,11 @@ export const getInitDynamicValuesForm = (item) => {
     return {};
 };
 
-export const addItemToBasket = (item, someShit, setSomeShit) => {
-    const basket = localStorage.getItem(localStorageKeys.BASKET);
-    const parsedBasket = basket ? JSON.parse(basket) : {};
-    const items = {
-        ...parsedBasket, [item.name]: {
-            image: item.image,
-            name: item.name,
-            price: item.price,
-            points: item.points,
-            count: 1,
-            total: item.price,
-            anchorr: item.anchorr
-        }
-    };
-    localStorage.setItem(localStorageKeys.BASKET, JSON.stringify(items));
-    localStorage.setItem(localStorageKeys.ITEMS, Object.keys(items).length);
-    setSomeShit(!someShit);
-    setSuccessModal('Товар успішно доданий в корзину!');
+export const getItemsFromStorage = () => {
+    return JSON.parse(localStorage.getItem(localStorageKeys.BASKET)) || {};
 };
 
+export const setItemsToStorage = (items) => {
+    localStorage.setItem(localStorageKeys.BASKET, JSON.stringify(items));
+    localStorage.setItem(localStorageKeys.ITEMS, JSON.stringify(Object.keys(items).length));
+};

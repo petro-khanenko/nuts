@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useHttp} from "../../hooks/http.hook";
 import {OrderItem} from "./OrderItem";
-import {orderPages} from "../../constants/constants";
-import {useAdminBasketData} from "../../context/AdminBasketContext";
+import {apiRoutes, orderPages} from "../../constants/constants";
+import {useBasketData} from "../../context/BasketContext";
 import {IconButton, makeStyles} from "@material-ui/core";
 import FiberNew from "@material-ui/icons/FiberNew";
 import DoneAll from "@material-ui/icons/DoneAll";
@@ -30,12 +30,12 @@ export const Orders = () => {
     const [orders, setOrders] = useState(fetchedOrders);
     const [pageMode, setPageMode] = useState(orderPages.ACTIVE_ORDERS);
 
-    const {orderHandler} = useAdminBasketData();
+    const {handleOrder, handleBasketItems} = useBasketData();
     const {request} = useHttp();
     const {iconButton, iconActive, iconCompleted} = useStyles();
 
     const fetchOrders = useCallback(async () => {
-        const data = await request('/api/orders');
+        const data = await request(`/${apiRoutes.ORDERS}`);
         fetchedOrders = data;
         setOrders(data);
     }, [request]);
@@ -46,7 +46,7 @@ export const Orders = () => {
 
     const getItemsAndGoToBasket = (id) => {
         const order = orders.find(order => order._id === id);
-        orderHandler(order);
+        handleOrder(order);
     };
     // render orders
     const getRenderOrders = () => {

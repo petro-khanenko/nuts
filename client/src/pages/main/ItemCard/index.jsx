@@ -1,8 +1,9 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import {addItemToBasket} from "../../../helpers/helpers";
+import {useBasketData} from "../../../context/BasketContext";
 
-const ItemCard = ({ item, handleGoToBasket, someShit, setSomeShit }) => {
+const ItemCard = ({ item, handleGoToBasket}) => {
+    const {addItemToBasket} = useBasketData();
 
     return (
         <div id={item.anchorr} className={"companies-card"}>
@@ -18,7 +19,7 @@ const ItemCard = ({ item, handleGoToBasket, someShit, setSomeShit }) => {
                     <div className="companies-card__label-price">{Number(item.price).toFixed(2)} грн/{item.points}</div>
                 </div>
             </NavLink>
-            <button onClick={() => addItemToBasket(item, someShit, setSomeShit)}>Купити</button>
+            <button onClick={() => addItemToBasket(item)}>Купити</button>
         </div>
     )
 }

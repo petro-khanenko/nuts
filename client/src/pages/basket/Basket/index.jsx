@@ -5,38 +5,27 @@ import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {OrderModal} from "../../../components/modals/OrderModal";
 import {setConfirmModal} from "../../../utils/swal/helpers";
-import {localStorageKeys} from "../../../constants/constants";
+import {useBasketData} from "../../../context/BasketContext";
 
 
-const Basket = ({someShit, setSomeShit}) => {
+const Basket = () => {
 
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
+    const {basketItems, clearBasket} = useBasketData();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const getItems = () => {
-        const items = localStorage.getItem(localStorageKeys.BASKET)
-        const parsedItems = items ? JSON.parse(items) : {}
-        return Object.values(parsedItems)
-    };
-    const items = getItems();
-
-    const handleClearBasket = () => {
-        localStorage.removeItem(localStorageKeys.BASKET)
-        localStorage.removeItem(localStorageKeys.ITEMS)
-        setSomeShit(!someShit)
-    };
-
     const clearBasketHandler = () => {
         setConfirmModal(
             'Ви впевнені, що бажаєте очистити корзину?',
             'Корзина успішно очищена!',
-            handleClearBasket
+            clearBasket
         );
     };
 
+    const items = Object.values(basketItems);
     const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
 
     const isPurchases = items.length;
@@ -44,7 +33,6 @@ const Basket = ({someShit, setSomeShit}) => {
         <div>
             {isOrderModalOpen && <OrderModal onCancel={() => setOrderModalOpen(false)}
                                              items={items}
-                                             clearBasket={handleClearBasket}
                                              total={total}
             />}
             <div className="basket">
@@ -69,7 +57,7 @@ const Basket = ({someShit, setSomeShit}) => {
                 <div className="basket_content">
                     {!isPurchases ? <h2>Ваша корзина поки пуста</h2>
                         : items.map(item => <div>
-                            <BasketItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>
+                            <BasketItem item={item}/>
                         </div>)
                     }
                     <div className='basket_total'>
@@ -90,4 +78,4 @@ const Basket = ({someShit, setSomeShit}) => {
     );
 }
 
-export default Basket
+export default Basket;

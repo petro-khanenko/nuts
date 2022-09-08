@@ -1,9 +1,10 @@
 import React from 'react'
 import {Button} from "@material-ui/core";
-import {addItemToBasket} from "../../../../../helpers/helpers";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
+import {useBasketData} from "../../../../../context/BasketContext";
 
-export const AdminStoreItem = ({item, idx, someShit, setSomeShit}) => {
+export const AdminStoreItem = ({item, idx}) => {
+    const {addItemToBasket} = useBasketData();
 
     return (
         <div className={'store_item'}>
@@ -16,7 +17,7 @@ export const AdminStoreItem = ({item, idx, someShit, setSomeShit}) => {
             <Button variant='contained'
                     color='primary'
                     startIcon={<AddShoppingCart />}
-                    onClick={() => addItemToBasket(item, someShit, setSomeShit)}
+                    onClick={() => addItemToBasket(item)}
             >
                 Add to Basket
             </Button>

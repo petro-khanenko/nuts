@@ -1,65 +1,36 @@
+import React, {useState} from "react";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import React, {useEffect, useState} from "react";
 import {BasketItem} from "../../../basket/Basket/BasketItem";
-import {useAdminBasketData} from "../../../../context/AdminBasketContext";
+import {useBasketData} from "../../../../context/BasketContext";
 import {NavLink} from "react-router-dom";
 import {OrderUpdateModal} from "../../../../components/modals/OrderUpdateModal";
 import {AdminStoreItem} from "./AdminStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
+import {mainRoutes, subRoutes} from "../../../../constants/constants";
 
 
-export const AdminBasket = ({someShit, setSomeShit, companies}) => {
+export const AdminBasket = ({allItems}) => {
 
+    const {order, basketItems, clearBasket} = useBasketData();
+    const [openStore, setOpenStore] = useState(false);
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
 
-    const {order: adminBasketOrder, orderHandler} = useAdminBasketData();
-    const [order, setOrder] = useState(adminBasketOrder || {});
-    const [openStore, setOpenStore] = useState(false);
-
-    const setItemsToAdminBasket = (items = []) => {
-        const itemsObj = items.reduce((result, item) => ({...result, [item.name]: item}), {});
-        localStorage.setItem('basket', JSON.stringify(itemsObj));
-        localStorage.setItem('items', Object.keys(itemsObj).length);
-        setSomeShit(!someShit);
-    };
-    useEffect(() => {
-        setItemsToAdminBasket(order?.items);
-    }, [order])
-
-    const getItems = () => {
-        const items = localStorage.getItem('basket')
-        const parsedItems = items ? JSON.parse(items) : {}
-        return Object.values(parsedItems)
-    };
-    const clearBasket = () => {
-        localStorage.removeItem('basket')
-        localStorage.removeItem('items')
-        setSomeShit(!someShit)
-    };
-    const items = getItems();
-
-    // --- without local storage ---
-    // const clearBasket = () => {
-    //     orderHandler({...order, items: []});
-    // };
-    // const items = order?.items || [];
-
+    const items = Object.values(basketItems) || [];
     const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
     const isPurchases = items.length;
 
     return (
         <div>
-            {isOrderModalOpen && <OrderUpdateModal  onCancel={() => setOrderModalOpen(false)}
-                                                    items={items}
-                                                    clearBasket={clearBasket}
-                                                    total={total}
-                                                    order={order}
+            {isOrderModalOpen && <OrderUpdateModal onCancel={() => setOrderModalOpen(false)}
+                                                   items={items}
+                                                   total={total}
+                                                   order={order}
             />}
             <div className="basket">
                 <div className='basket_go-back-button'>
-                    <NavLink to='/admin/panel'>
+                    <NavLink to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`}>
                         <Button startIcon={<ArrowBackIos/>}
                                 variant='contained'
                                 size='large'
@@ -79,7 +50,7 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                 <div className="basket_content">
                     {!isPurchases ? <h2>Ваша корзина пока пуста</h2>
                         : items.map(item => <div>
-                            <AdminStoreItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>
+                            <BasketItem item={item} /*someShit={someShit} setSomeShit={setSomeShit}*//>
                         </div>)
                     }
                     <div className='basket_total'>
@@ -91,7 +62,7 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                     <div className="basket_buttons">
                         <Button variant='contained'
                                 color='primary'
-                                startIcon={openStore ? <ExpandLess/> : <ExpandMore />}
+                                startIcon={openStore ? <ExpandLess/> : <ExpandMore/>}
                                 onClick={() => setOpenStore(!openStore)}>
                             {openStore ? 'Close' : 'Open'} Store
                         </Button>
@@ -109,10 +80,8 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                             <div>ціна</div>
                         </div>
                         {
-                            companies.map((company, idx) => <AdminStoreItem item={company}
-                                                                            idx={idx}
-                                                                            someShit={someShit}
-                                                                            setSomeShit={setSomeShit}
+                            allItems.map((item, idx) => <AdminStoreItem item={item}
+                                                                        idx={idx}
                             />)
                         }
                     </div>

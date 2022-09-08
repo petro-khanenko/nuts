@@ -5,6 +5,7 @@ import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
 import {NavLink} from "react-router-dom";
 import {setConfirmModal} from "../../../../utils/swal/helpers";
+import {useBasketData} from "../../../../context/BasketContext";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -22,43 +23,18 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-export const BasketItem = ({item, someShit, setSomeShit}) => {
+export const BasketItem = ({item}) => {
 
     const [counter, setCounter] = useState(item.count);
     const {iconDecrease, iconIncrease, iconButton} = useStyles();
 
-    const setCountAndTotalOfItem = (actualCounter) => {
-        const basket = localStorage.getItem('basket');
-        const parsedBasket = basket ? JSON.parse(basket) : {}
-        const items = {
-            ...parsedBasket, [item.name]: {
-                image: item.image,
-                name: item.name,
-                price: item.price,
-                points: item.points,
-                count: actualCounter,
-                total: item.price * actualCounter,
-                anchorr: item.anchorr
-            }
-        };
-        localStorage.setItem('basket', JSON.stringify(items));
-        setSomeShit(!someShit);
-    };
-
-    const removeItemFromBasket = () => {
-        const basket = localStorage.getItem('basket');
-        const parsedBasket = basket ? JSON.parse(basket) : {};
-        delete parsedBasket[item.name];
-        localStorage.setItem('basket', JSON.stringify(parsedBasket));
-        localStorage.setItem('items', Object.keys(parsedBasket).length)
-        setSomeShit(!someShit);
-    }
+    const {setCountAndTotalOfItem, removeItemFromBasket} = useBasketData();
 
     const removeItemHandler = () => {
         setConfirmModal(
             'Ви впевнені, що бажаєте видалити даний товар із корзини?',
             'Товар успішно видалений!',
-            removeItemFromBasket
+            () => removeItemFromBasket(item)
         );
     };
 
@@ -66,7 +42,7 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
         const nextCounter = counter + value;
         const actualCounter = nextCounter === 0 ? 1 : nextCounter;
         setCounter(actualCounter);
-        setCountAndTotalOfItem(actualCounter);
+        setCountAndTotalOfItem(actualCounter, item);
     }
 
     return (

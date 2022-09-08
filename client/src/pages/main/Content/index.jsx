@@ -2,7 +2,7 @@ import React from 'react'
 import Header from "../../../components/Header";
 import ItemsList from "../ItemsList";
 
-const Content = ({searchText, items, pageY, handleGoToBasket, someShit, setSomeShit}) => {
+const Content = ({searchText, items, pageY, handleGoToBasket}) => {
 
     return (
         <div>
@@ -11,8 +11,6 @@ const Content = ({searchText, items, pageY, handleGoToBasket, someShit, setSomeS
                 <ItemsList items={items}
                            pageY={pageY}
                            handleGoToBasket={handleGoToBasket}
-                           someShit={someShit}
-                           setSomeShit={setSomeShit}
                 />
             </div>
         </div>

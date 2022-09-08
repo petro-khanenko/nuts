@@ -2,11 +2,12 @@ import React, {useEffect} from "react";
 import {NavLink, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {addItemToBasket} from "../../../helpers/helpers";
+import {useBasketData} from "../../../context/BasketContext";
 
-const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) => {
+const AboutItem = ({ item = {}, getItemForAboutPage}) => {
 
     const { anchor } = useParams();
+    const {addItemToBasket} = useBasketData();
 
     useEffect(() => {
         getItemForAboutPage(anchor);
@@ -47,7 +48,7 @@ const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) =>
             <div className="about_item__buttons">
                 <NavLink to='/basket'>
                     <Button variant='contained' color='secondary'
-                            onClick={() => addItemToBasket(item, someShit, setSomeShit)}>
+                            onClick={() => addItemToBasket(item)}>
                         Купити
                     </Button>
                 </NavLink>

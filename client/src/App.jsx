@@ -8,7 +8,7 @@ import AdminPanel from "./pages/admin/AdminPanel"
 import AboutItem from "./pages/about/AboutItem";
 import Basket from "./pages/basket/Basket";
 import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket";
-import {AdminBasketContextProvider} from "./context/AdminBasketContext";
+import {BasketContextProvider} from "./context/BasketContext";
 import Delivery from "./pages/delivery/Delivery";
 import BasketButton from "./components/BasketButton";
 import {apiRoutes, mainRoutes, params, subRoutes} from "./constants/constants";
@@ -20,7 +20,6 @@ function App() {
 
     const [items, setItems] = useState(fetchedItems);
     const [item, setItem] = useState(null);
-    const [someShit, setSomeShit] = useState(false);
     const [pageY, setPageY] = useState(0);
 
     const {request} = useHttp();
@@ -66,7 +65,7 @@ function App() {
 
     return (
         <div>
-            <AdminBasketContextProvider>
+            <BasketContextProvider>
                 <div className={'app'}>
                     {
                         showBasket && <BasketButton handleGoToBasket={handleGoToBasket}/>
@@ -77,23 +76,19 @@ function App() {
                                                       searchText={searchText}
                                                       pageY={pageY}
                                                       handleGoToBasket={handleGoToBasket}
-                                                      setSomeShit={setSomeShit}
-                                                      someShit={someShit}
                                />}
                         />
                         <Route exact path={`/${mainRoutes.ABOUT}/:${params.ANCHOR}?`}
                                render={() => <AboutItem
                                    item={item}
                                    getItemForAboutPage={getItemForAboutPage}
-                                   someShit={someShit}
-                                   setSomeShit={setSomeShit}
                                />}
                         />
                         <Route exact path={`/${mainRoutes.DELIVERY}`}
                                render={() => <Delivery/>}
                         />
                         <Route exact path={`/${mainRoutes.BASKET}`}
-                               render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}
+                               render={() => <Basket/>}
                         />
                         <Route exact path={`/${mainRoutes.ADMIN}`}
                                render={() => <Auth/>}
@@ -102,14 +97,11 @@ function App() {
                                render={() => <AdminPanel items={items} fetchItems={fetchItems}/>}
                         />
                         <Route exact path={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}
-                               render={() => <AdminBasket someShit={someShit}
-                                                          setSomeShit={setSomeShit}
-                                                          companies={items}
-                               />}
+                               render={() => <AdminBasket allItems={items}/>}
                         />
                     </Switch>
                 </div>
-            </AdminBasketContextProvider>
+            </BasketContextProvider>
         </div>
     );
 }

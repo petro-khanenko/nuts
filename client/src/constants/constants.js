@@ -42,8 +42,9 @@ export const params = Object.freeze({
 });
 
 export const localStorageKeys = Object.freeze({
-    ITEMS: 'items',
-    BASKET: 'basket'
+    ITEMS: 'ITEMS',
+    BASKET: 'BASKET',
+    ORDER_PAGE: 'ORDER_PAGE'
 });
 
 export const priceModes = Object.freeze({

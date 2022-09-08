@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ItemCard from "../ItemCard";
 import {priceModes} from "../../../constants/constants";
 
-const ItemsList = ({ items, pageY, handleGoToBasket, someShit, setSomeShit }) => {
+const ItemsList = ({ items, pageY, handleGoToBasket }) => {
     const [sortItems, setSortItems] = useState(items)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
@@ -64,8 +64,6 @@ const ItemsList = ({ items, pageY, handleGoToBasket, someShit, setSomeShit }) =>
                 {sortItems.map(item => <ItemCard key={item.id}
                                                  item={item}
                                                  handleGoToBasket={handleGoToBasket}
-                                                 someShit={someShit}
-                                                 setSomeShit={setSomeShit}
                 />)}
             </div>
         </>
