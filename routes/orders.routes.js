@@ -51,7 +51,7 @@ router.delete('/delete',
         }
     })
 
-router.post('/update',
+router.put('/update',
     async (req, res) => {
         try {
             const { id, firstName, lastName, email, phone, address, total, orderNum, active, items } = req.body

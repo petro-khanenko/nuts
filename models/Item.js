@@ -1,6 +1,5 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
-const items = [...Array(10)].reduce((result, _, idx) => ({ ...result, [`item${idx}`]: { type: String, default: null }}), {})
 
 const schema = new Schema({
     image: { type: String, required: true },
@@ -11,7 +10,7 @@ const schema = new Schema({
     article: { type: String, default: '666-something_else' },
     description: { type: String, default: null },
     addFields: { type: Object, default: null }
-})
+});
 
 
-module.exports = model('Item', schema)
+module.exports = model('Item', schema);

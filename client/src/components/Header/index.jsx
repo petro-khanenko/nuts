@@ -29,13 +29,10 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({searchText}) => {
 
     const [inputValue, setInputValue] = useState('');
-
     const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles()
-
     const location = useLocation();
 
-
-    const clearSearchInput = () => {
+    const handleClearSearchInput = () => {
         searchText({
             currentTarget: {
                 value: ''
@@ -46,7 +43,7 @@ const Header = ({searchText}) => {
 
     useEffect(() => {
         return () => {
-            clearSearchInput();
+            handleClearSearchInput();
         }
     }, []);
 
@@ -83,7 +80,7 @@ const Header = ({searchText}) => {
                         onChange={(e) => setInputValue(e.currentTarget.value)}
                     />
                     {
-                       inputValue && <IconButton className={iconCloseButton} onClick={clearSearchInput}>
+                       inputValue && <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
                             <Cancel className={closeIcon}/>
                         </IconButton>
                     }
@@ -106,4 +103,4 @@ const Header = ({searchText}) => {
     );
 }
 
-export default Header
+export default Header;

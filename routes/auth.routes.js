@@ -18,7 +18,8 @@ router.post('/register',
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Incorrect registration datas'
+                    status: 'failed',
+                    message: 'Некоректно введені дані. Спробуйте ще раз.'
                 })
             }
 
@@ -27,7 +28,8 @@ router.post('/register',
             const emailExist = await Admin.findOne({email})
             if (emailExist) {
                 return res.status(400).json({
-                    message: 'Such user already exists'
+                    status: 'failed',
+                    message: 'Користувач з таким логіном уже існує.'
                 })
             }
 
@@ -36,11 +38,13 @@ router.post('/register',
 
             await admin.save()
             res.status(201).json({
-                message: 'Admin is successfully added'
+                status: 'success',
+                message: 'Вітаємо. Реєстрація пройшла успішно !!!'
             })
         } catch (e) {
             res.status(500).json({
-                message: 'Server error'
+                status: 'failed',
+                message: 'На сервері сталася помилка під час обробки запиту. Спробуйте ще раз.'
             })
         }
     })
@@ -56,7 +60,8 @@ router.post('/login',
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Incorrect login datas'
+                    status: 'failed',
+                    message: 'Некоректно введені дані. Спробуйте ще раз.'
                 })
             }
 
@@ -65,16 +70,17 @@ router.post('/login',
 
             if (!admin) {
                 return res.status(400).json({
-                    message: 'Such user not exist'
+                    status: 'failed',
+                    message: 'Користувача з таким логіном не існує.'
                 })
             }
 
             const isMatch = await bcrypt.compare(password, admin.password)
             if (!isMatch) {
                 res.status(400).json({
-                    message: 'Wrong password'
+                    status: 'failed',
+                    message: 'Невірний логін або парль.'
                 })
-                console.log('Wrong password')
             }
             const token = jwt.sign(
                 {adminId: admin.id},
@@ -87,7 +93,8 @@ router.post('/login',
             })
         } catch (e) {
             res.status(500).json({
-                message: 'Server error'
+                status: 'failed',
+                message: 'На сервері сталася помилка під час обробки запиту. Спробуйте ще раз.'
             })
         }
     })

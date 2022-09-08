@@ -1,9 +1,10 @@
 import React from 'react'
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
-import {OrderFormFields} from "../../OrderFormFields/OrderFormFields";
+import {OrderFormFields} from "../../OrderFormFields";
 import {useHttp} from "../../../hooks/http.hook";
 import {setInfoModal} from "../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -30,7 +31,7 @@ export const OrderUpdateModal = ({
 
     const updateOrderHandler = async (formData) => {
         try {
-            const data = await request('/api/orders/update', 'POST', {
+            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.UPDATE}`, 'PUT', {
                 ...formData,
                 id: order._id,
                 active: order.active,

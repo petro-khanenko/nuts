@@ -1,9 +1,10 @@
 import React from 'react'
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
-import {OrderFormFields} from "../../OrderFormFields/OrderFormFields";
+import {OrderFormFields} from "../../OrderFormFields";
 import {useHttp} from "../../../hooks/http.hook";
 import {setInfoModal} from "../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -32,20 +33,20 @@ export const OrderModal = ({
 
     const saveOrderHandler = async (formData) => {
         try {
-            let counts = await request('/api/count');
+            let counts = await request(`/${apiRoutes.COUNT}`);
             if (!counts.length) {
-                await request('/api/count/save', 'POST', {
+                await request(`/${apiRoutes.COUNT}/${apiSubRoutes.SAVE}`, 'POST', {
                     orderNum: INIT_ORDER_NUMBER
                 });
-                counts = await request('/api/count');
+                counts = await request(`/${apiRoutes.COUNT}`);
             }
             const count = counts[0];
             const nextOrderNum = String(Number(count.orderNum) + 1);
-            await request('/api/count/update', 'POST', {
+            await request(`/${apiRoutes.COUNT}/${apiSubRoutes.UPDATE}`, 'PUT', {
                 orderNum: nextOrderNum.length === 3 ? '0' + nextOrderNum : nextOrderNum,
                 id: count._id
             });
-            const data = await request('/api/orders/save', 'POST', {
+            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.SAVE}`, 'POST', {
                 ...formData,
                 active: true,
                 orderNum: count.orderNum,

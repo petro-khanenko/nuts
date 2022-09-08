@@ -1,11 +1,11 @@
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import React, {useEffect, useState} from "react";
-import {BasketItem} from "../../../basket/Basket/BasketItem/BasketItem";
+import {BasketItem} from "../../../basket/Basket/BasketItem";
 import {useAdminBasketData} from "../../../../context/AdminBasketContext";
 import {NavLink} from "react-router-dom";
-import {OrderUpdateModal} from "../../../../components/modals/OrderUpdateModal/OrderUpdateModal";
-import {AdminStoreItem} from "./AdminStoreItem/AdminStoreItem";
+import {OrderUpdateModal} from "../../../../components/modals/OrderUpdateModal";
+import {AdminStoreItem} from "./AdminStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 
@@ -79,7 +79,7 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                 <div className="basket_content">
                     {!isPurchases ? <h2>Ваша корзина пока пуста</h2>
                         : items.map(item => <div>
-                            <BasketItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>
+                            <AdminStoreItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>
                         </div>)
                     }
                     <div className='basket_total'>

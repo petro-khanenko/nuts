@@ -35,7 +35,7 @@ router.post('/save',
         }
     })
 
-router.post('/update',
+router.put('/update',
     async (req, res) => {
         try {
             const { id, orderNum } = req.body

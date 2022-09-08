@@ -1,41 +1,46 @@
 import React, {useState} from 'react'
+import {Redirect} from "react-router-dom"
 import {useHttp} from "../../../hooks/http.hook"
 import {useAuth} from "../../../hooks/auth.hook"
-import {Redirect} from "react-router-dom"
+import {setInfoModal} from "../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../constants/constants";
+
 
 const Auth = () => {
-
     const [form, setForm] = useState({
         email: '',
         password: ''
-    })
+    });
 
-    const {request} = useHttp()
-    const {login, token} = useAuth()
+    const {request} = useHttp();
+    const {login, token} = useAuth();
 
     const formHandler = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({...form, [e.target.name]: e.target.value});
     }
 
     const registerHandler = async () => {
         try {
-            const data = await request('/api/auth/register', 'POST', {...form})
-            console.log(data)
+            await request(`/${apiRoutes.AUTH}/${apiSubRoutes.REGISTER}`, 'POST', {...form});
+            setInfoModal('Вітаємо. Реєстрація пройшла успішно !!!')
         } catch (e) {
+            const text = e.message && e.status === 'failed' ? e.message : 'На жаль сталася помилка. Спробуйте ще раз.';
+            setInfoModal(text, 'warning');
         }
     }
 
     const loginHandler = async () => {
         try {
-            const data = await request('/api/auth/login', 'POST', {...form})
-            console.log(data)
-            login(data.token, data.adminId)
+            const data = await request(`/${apiRoutes.AUTH}/${apiSubRoutes.LOGIN}`, 'POST', {...form});
+            login(data.token, data.adminId);
         } catch (e) {
+            const text = e.message && e.status === 'failed' ? e.message : 'На жаль сталася помилка. Спробуйте ще раз.';
+            setInfoModal(text, 'warning');
         }
     }
 
     if (token) {
-        return <Redirect to={'/admin/panel'}/>
+        return <Redirect to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`}/>
     }
 
     return (
@@ -62,8 +67,7 @@ const Auth = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-
-export default Auth
+export default Auth;

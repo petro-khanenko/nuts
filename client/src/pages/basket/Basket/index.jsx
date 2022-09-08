@@ -1,10 +1,11 @@
-import {BasketItem} from "./BasketItem/BasketItem";
+import {BasketItem} from "./BasketItem";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {OrderModal} from "../../../components/modals/OrderModal/OrderModal";
+import {OrderModal} from "../../../components/modals/OrderModal";
 import {setConfirmModal} from "../../../utils/swal/helpers";
+import {localStorageKeys} from "../../../constants/constants";
 
 
 const Basket = ({someShit, setSomeShit}) => {
@@ -16,15 +17,15 @@ const Basket = ({someShit, setSomeShit}) => {
     }, []);
 
     const getItems = () => {
-        const items = localStorage.getItem('basket')
+        const items = localStorage.getItem(localStorageKeys.BASKET)
         const parsedItems = items ? JSON.parse(items) : {}
         return Object.values(parsedItems)
     };
     const items = getItems();
 
-    const clearBasket = () => {
-        localStorage.removeItem('basket')
-        localStorage.removeItem('items')
+    const handleClearBasket = () => {
+        localStorage.removeItem(localStorageKeys.BASKET)
+        localStorage.removeItem(localStorageKeys.ITEMS)
         setSomeShit(!someShit)
     };
 
@@ -32,7 +33,7 @@ const Basket = ({someShit, setSomeShit}) => {
         setConfirmModal(
             'Ви впевнені, що бажаєте очистити корзину?',
             'Корзина успішно очищена!',
-            clearBasket
+            handleClearBasket
         );
     };
 
@@ -43,7 +44,7 @@ const Basket = ({someShit, setSomeShit}) => {
         <div>
             {isOrderModalOpen && <OrderModal onCancel={() => setOrderModalOpen(false)}
                                              items={items}
-                                             clearBasket={clearBasket}
+                                             clearBasket={handleClearBasket}
                                              total={total}
             />}
             <div className="basket">

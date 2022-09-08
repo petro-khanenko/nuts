@@ -20,10 +20,8 @@ router.post('/save',
     async (req, res) => {
         try {
             const { image, name, price, points, anchorr, article, description, addFields } = req.body
-            const company = new Item({ image, name, price, points, anchorr, article, description, addFields })
-            // const company = new Item;
-            // company.data = JSON.stringify(req.body);
-            await company.save()
+            const item = new Item({ image, name, price, points, anchorr, article, description, addFields })
+            await item.save()
             res.status(201).json({
                 message: 'Item is successfully added',
                 status: 'success'
@@ -53,7 +51,7 @@ router.delete('/delete',
         }
     })
 
-router.post('/update',
+router.put('/update',
     async (req, res) => {
         try {
             const { id, image, name, price, points, anchorr, article, description, addFields } = req.body

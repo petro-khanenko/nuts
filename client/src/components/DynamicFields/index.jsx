@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {DynamicField} from "./DynamicField/DynamicField";
+import {DynamicField} from "./DynamicField";
 
 let counter = 0;
 

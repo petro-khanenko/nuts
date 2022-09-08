@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {IconButton, makeStyles} from "@material-ui/core";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import {localStorageKeys} from "../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         headerIcon: {
@@ -21,7 +22,7 @@ const BasketButton = ({ handleGoToBasket }) => {
 
     const { headerIcon, basketIcon } = useStyles();
 
-    const itemsCount = localStorage.getItem('items');
+    const itemsCount = localStorage.getItem(localStorageKeys.ITEMS);
     useEffect(() => {
     }, [itemsCount]);
 
@@ -38,7 +39,7 @@ const BasketButton = ({ handleGoToBasket }) => {
                 </NavLink>
             </div>
         </div>
-    )
+    );
 }
 
 export default BasketButton;

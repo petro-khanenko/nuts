@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {useHttp} from "../../hooks/http.hook"
-import {FormFields} from "../FormFields/FormFields";
+import {FormFields} from "../FormFields";
 import {getAddFieldsObject, getInitDynamicKeysForm, getInitDynamicValuesForm} from "../../helpers/helpers";
-import {DynamicFields} from "../DynamicFields/DynamicFields";
+import {DynamicFields} from "../DynamicFields";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import {fileSelectorHandler} from "../../utils/imgur/helpers";
 import {setInfoModal, setSuccessModal} from "../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes} from "../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -21,27 +22,27 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-const UpdateCompanyModal = ({
+const UpdateItemModal = ({
                                 onCancel,
-                                company,
-                                fetchCompanies,
+                                item,
+                                fetchItems,
                             }) => {
 
     const {request} = useHttp();
     const {icon, iconButton} = useStyles();
 
     const [form, setForm] = useState({
-        image: company.image,
-        name: company.name,
-        price: company.price,
-        points: company.points,
-        anchorr: company.anchorr,
-        article: company.article,
-        description: company.description,
+        image: item.image,
+        name: item.name,
+        price: item.price,
+        points: item.points,
+        anchorr: item.anchorr,
+        article: item.article,
+        description: item.description,
     });
 
-    const [dynamicKeysForm, setDynamicKeysForm] = useState(getInitDynamicKeysForm(company));
-    const [dynamicValuesForm, setDynamicValuesForm] = useState(getInitDynamicValuesForm(company));
+    const [dynamicKeysForm, setDynamicKeysForm] = useState(getInitDynamicKeysForm(item));
+    const [dynamicValuesForm, setDynamicValuesForm] = useState(getInitDynamicValuesForm(item));
 
 
     const formHandler = (e) => {
@@ -56,15 +57,15 @@ const UpdateCompanyModal = ({
     const updateCompanyHandler = async () => {
         const addFields = getAddFieldsObject(dynamicKeysForm, dynamicValuesForm);
         try {
-            const data = await request('/api/companies/update', 'POST', {
+            const data = await request(`/${apiRoutes.ITEMS}/${apiSubRoutes.UPDATE}`, 'PUT', {
                 ...form,
                 addFields,
-                id: company._id
+                id: item._id
             });
             onCancel(data);
             if (data.status === 'success') {
                 setSuccessModal('Вітаємо. Замовлення успішно оновлене !!!');
-                fetchCompanies();
+                fetchItems();
             }
         } catch (e) {
             setInfoModal(
@@ -74,7 +75,7 @@ const UpdateCompanyModal = ({
         }
     };
 
-    const initFieldsCount = company.addFields ? Object.keys(company.addFields) : [];
+    const initFieldsCount = item.addFields ? Object.keys(item.addFields) : [];
 
     return (
         <div className={'modal__overlay'}>
@@ -108,4 +109,4 @@ const UpdateCompanyModal = ({
     );
 }
 
-export default UpdateCompanyModal
+export default UpdateItemModal

@@ -6,16 +6,18 @@ import {addItemToBasket} from "../../../helpers/helpers";
 
 const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) => {
 
-    const { anchorr } = useParams();
+    const { anchor } = useParams();
 
     useEffect(() => {
-        getItemForAboutPage(anchorr)
-    }, [anchorr, item]);
+        getItemForAboutPage(anchor);
+    }, [anchor, item]);
+
+    if (!item) return <h2>Loading...</h2>
 
     return (
         <div className='about_item'>
             <div className='basket_go-back-button'>
-                <NavLink to={`/#${anchorr}`}>
+                <NavLink to={`/#${anchor}`}>
                     <Button startIcon={<ArrowBackIos/>}
                             variant='contained'
                             size='large'
@@ -28,7 +30,7 @@ const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) =>
             <h2 className='about_item_title'>Опис товару</h2>
             <div className='about_item_content'>
                 <div className="about_item__image">
-                    <img src={item.image} alt="image"/>
+                    <img src={item.image} alt="Image not found"/>
                 </div>
                 <div className='about_item__description'>
                     <div><b>Найменування: </b> {item.name}</div>
@@ -50,7 +52,8 @@ const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) =>
                     </Button>
                 </NavLink>
             </div>
-        </div>)
+        </div>
+    );
 }
 
 export default AboutItem

@@ -1,7 +1,8 @@
-import React from 'react'
-import {useHttp} from "../../hooks/http.hook"
+import React from 'react';
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
+import {useHttp} from "../../hooks/http.hook";
+import {apiRoutes, apiSubRoutes} from "../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -16,17 +17,17 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-const DeleteModal = ({onCancel, company, fetchCompanies}) => {
+const DeleteModal = ({onCancel, item, fetchItems}) => {
 
     const { request } = useHttp();
     const {icon, iconButton} = useStyles();
 
     const deleteCompanyHandler = async () => {
         try {
-            const data = await request('/api/companies/delete', 'DELETE', { id: company._id})
+            const data = await request(`/${apiRoutes.ITEMS}/${apiSubRoutes.DELETE}`, 'DELETE', { id: item._id})
             onCancel()
             if (data.status === 'success') {
-                fetchCompanies()
+                fetchItems()
             }
         } catch (e) {
         }

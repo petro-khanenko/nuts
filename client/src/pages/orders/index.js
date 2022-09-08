@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useHttp} from "../../hooks/http.hook";
-import {OrderItem} from "./OrderItem/OrderItem";
+import {OrderItem} from "./OrderItem";
 import {orderPages} from "../../constants/constants";
 import {useAdminBasketData} from "../../context/AdminBasketContext";
 import {IconButton, makeStyles} from "@material-ui/core";
