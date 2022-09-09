@@ -19,18 +19,18 @@ const ItemsList = ({ items }) => {
     }, [pageY]);
 
     const sortByPrice = (mode) => setSortItems(prev => {
-        setPriceMode(mode)
+        setPriceMode(mode);
         return [...prev].sort((a, b) => mode === priceModes.LOW ? +a.price - +b.price : +b.price - +a.price)
-    })
+    });
     const sortByName = (mode) => setSortItems(prev => {
-        setNameMode(mode)
+        setNameMode(mode);
         return [...prev].sort((a, b) => {
             if (mode === priceModes.ASC) {
                 return a.name > b.name ? 1 : a.name < b.name ? -1 : 0
             }
             return a.name < b.name ? 1 : a.name > b.name ? -1 : 0
-        })
-    })
+        });
+    });
 
     return (
         <>

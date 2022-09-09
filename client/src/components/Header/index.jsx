@@ -26,19 +26,20 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
-const Header = ({searchText}) => {
+const Header = ({onSetSearchText}) => {
 
     const [inputValue, setInputValue] = useState('');
-    const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles()
+    const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles();
     const location = useLocation();
 
+    // Handlers
+    const handleChange = (value) => {
+        setInputValue(value);
+        onSetSearchText(value);
+    }
     const handleClearSearchInput = () => {
-        searchText({
-            currentTarget: {
-                value: ''
-            }
-        });
         setInputValue('');
+        onSetSearchText('');
     }
 
     useEffect(() => {
@@ -75,9 +76,8 @@ const Header = ({searchText}) => {
                     <input
                         placeholder={'Пошук товарів'}
                         type={'text'}
-                        onKeyUp={searchText}
                         value={inputValue}
-                        onChange={(e) => setInputValue(e.currentTarget.value)}
+                        onChange={(e) => handleChange(e.currentTarget.value)}
                     />
                     {
                        inputValue && <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
