@@ -1,32 +1,20 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import Header from "../../../components/Header";
 import ItemsList from "../ItemsList";
-import {useItemsData} from "../../../context/ItemsContext";
+import {useScrollData} from "../../../context/ScrollContext";
 
 const Content = () => {
-    const { items } = useItemsData();
-    const [searchValue, setSearchValue] = useState('');
+    const {pageY} = useScrollData();
 
-    const handleSearchText = (value) => {
-        if (value.trim().length === 0) {
-            return items;
-        }
-        const searchText = value.toUpperCase();
-        const filteredByName = items.filter(s => s.name.toUpperCase().includes(searchText));
-        const filteredByDescription = items.filter(s => {
-            if (s.description) {
-                return s.description.toUpperCase().includes(searchText);
-            }
-        });
-        return filteredByName.concat(filteredByDescription);
-    };
+    useEffect(() => {
+        window.scrollTo(0, pageY);
+    }, [pageY]);
 
-    const renderItems = handleSearchText(searchValue);
     return (
         <div>
-            <Header onSetSearchText={setSearchValue}/>
+            <Header/>
             <div className={'content'}>
-                <ItemsList items={renderItems}/>
+                <ItemsList/>
             </div>
         </div>
     );

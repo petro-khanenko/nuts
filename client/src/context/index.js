@@ -2,13 +2,13 @@ import CombineComponents from "../components/CombineComponents";
 import {ItemsContextProvider} from "./ItemsContext";
 import {BasketContextProvider} from "./BasketContext";
 import {ScrollContextProvider} from "./ScrollContext";
-import {SearchContextProvider} from "./SearchContext";
+import {FiltersContextProvider} from "./FiltersContext";
 
 const providers = [
     ItemsContextProvider,
     BasketContextProvider,
     ScrollContextProvider,
-    SearchContextProvider
+    FiltersContextProvider
 ];
 const ContextProvider = CombineComponents(...providers);
 

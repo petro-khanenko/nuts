@@ -3,6 +3,7 @@ import {NavLink, useLocation} from "react-router-dom";
 import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Cancel from "@material-ui/icons/Cancel";
+import {useFiltersData} from "../../context/FiltersContext";
 
 const useStyles = makeStyles((theme) => ({
         phoneIconButton: {
@@ -26,20 +27,15 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
-const Header = ({onSetSearchText}) => {
+const Header = () => {
 
-    const [inputValue, setInputValue] = useState('');
+    const { searchValue, onSetSearchValue } = useFiltersData();
     const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles();
     const location = useLocation();
 
     // Handlers
-    const handleChange = (value) => {
-        setInputValue(value);
-        onSetSearchText(value);
-    }
     const handleClearSearchInput = () => {
-        setInputValue('');
-        onSetSearchText('');
+        onSetSearchValue('');
     }
 
     useEffect(() => {
@@ -76,11 +72,11 @@ const Header = ({onSetSearchText}) => {
                     <input
                         placeholder={'Пошук товарів'}
                         type={'text'}
-                        value={inputValue}
-                        onChange={(e) => handleChange(e.currentTarget.value)}
+                        value={searchValue}
+                        onChange={(e) => onSetSearchValue(e.currentTarget.value)}
                     />
                     {
-                       inputValue && <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
+                        searchValue && <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
                             <Cancel className={closeIcon}/>
                         </IconButton>
                     }

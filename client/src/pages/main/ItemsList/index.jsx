@@ -1,22 +1,35 @@
 import React, {useEffect, useState} from 'react'
 import ItemCard from "../ItemCard";
 import {priceModes} from "../../../constants/constants";
-import {useScrollData} from "../../../context/ScrollContext";
+import {useFiltersData} from "../../../context/FiltersContext";
+import {useItemsData} from "../../../context/ItemsContext";
 
-const ItemsList = ({ items }) => {
-    const {pageY} = useScrollData();
+const ItemsList = () => {
+    const { searchValue } = useFiltersData();
+    const {items} = useItemsData();
 
-    const [sortItems, setSortItems] = useState(items)
+    const handleSearchText = (value) => {
+        if (value.trim().length === 0) {
+            return items;
+        }
+        const searchText = value.toUpperCase();
+        const filteredByName = items.filter(s => s.name.toUpperCase().includes(searchText));
+        const filteredByDescription = items.filter(s => {
+            if (s.description) {
+                return s.description.toUpperCase().includes(searchText);
+            }
+        });
+        return filteredByName.concat(filteredByDescription);
+    };
+
+    const renderItems = handleSearchText(searchValue);
+    const [sortItems, setSortItems] = useState(renderItems)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
 
     useEffect(() => {
         setSortItems(items);
     }, [items.length, items[0]?.name]);
-
-    useEffect(() => {
-        window.scrollTo(0, pageY);
-    }, [pageY]);
 
     const sortByPrice = (mode) => setSortItems(prev => {
         setPriceMode(mode);
