@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
 import Header from "../../../components/Header";
 import ItemsList from "../ItemsList";
+import {useItemsData} from "../../../context/ItemsContext";
 
-const Content = ({ items }) => {
+const Content = () => {
+    const { items } = useItemsData();
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearchText = (value) => {
         if (value.trim().length === 0) {
             return items;
         }
-
         const searchText = value.toUpperCase();
         const filteredByName = items.filter(s => s.name.toUpperCase().includes(searchText));
         const filteredByDescription = items.filter(s => {

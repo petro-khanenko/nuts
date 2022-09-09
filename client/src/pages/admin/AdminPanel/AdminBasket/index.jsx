@@ -9,10 +9,12 @@ import {AdminStoreItem} from "./AdminStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import {mainRoutes, subRoutes} from "../../../../constants/constants";
+import {useItemsData} from "../../../../context/ItemsContext";
 
 
-export const AdminBasket = ({allItems}) => {
+export const AdminBasket = () => {
 
+    const { items: allItems } = useItemsData();
     const {order, basketItems, clearBasket} = useBasketData();
     const [openStore, setOpenStore] = useState(false);
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);

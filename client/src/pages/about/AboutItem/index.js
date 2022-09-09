@@ -3,15 +3,20 @@ import {NavLink, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {useBasketData} from "../../../context/BasketContext";
+import {mainRoutes} from "../../../constants/constants";
+import {useItemsData} from "../../../context/ItemsContext";
 
-const AboutItem = ({ item = {}, getItemForAboutPage}) => {
+const AboutItem = () => {
 
     const { anchor } = useParams();
+    const { onGetItem } = useItemsData();
     const {addItemToBasket} = useBasketData();
 
     useEffect(() => {
-        getItemForAboutPage(anchor);
-    }, [anchor, item]);
+        onGetItem(anchor);
+    }, [anchor]);
+
+    const item = onGetItem(anchor);
 
     if (!item) return <h2>Loading...</h2>
 
@@ -46,7 +51,7 @@ const AboutItem = ({ item = {}, getItemForAboutPage}) => {
                 </div>
             </div>
             <div className="about_item__buttons">
-                <NavLink to='/basket'>
+                <NavLink to={`/${mainRoutes.BASKET}`}>
                     <Button variant='contained' color='secondary'
                             onClick={() => addItemToBasket(item)}>
                         Купити
@@ -57,4 +62,4 @@ const AboutItem = ({ item = {}, getItemForAboutPage}) => {
     );
 }
 
-export default AboutItem
+export default AboutItem;

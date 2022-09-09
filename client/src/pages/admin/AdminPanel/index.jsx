@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 import {fileSelectorHandler} from "../../../utils/imgur/helpers";
 import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
@@ -13,9 +13,11 @@ import {DynamicFields} from "../../../components/DynamicFields";
 import {FormFields} from "../../../components/FormFields";
 import {AdminPagesSwitcher} from "./AdminPagesSwitcher";
 import {Orders} from "../../orders";
+import {useItemsData} from "../../../context/ItemsContext";
 
 
-const AdminPanel = ({items, fetchItems}) => {
+const AdminPanel = () => {
+    const { items, onSetItems } = useItemsData();
 
     const [switchMode, setSwitchMode] = useState(adminPages.ORDERS_LIST)
     const [isModalUpdate, setModalUpdate] = useState(false)
@@ -27,6 +29,12 @@ const AdminPanel = ({items, fetchItems}) => {
 
     const {request} = useHttp()
     const {token, logout} = useAuth()
+
+    const fetchItems = useCallback(async () => {
+        const data = await request(`/${apiRoutes.ITEMS}`);
+        const sortItems = data.sort((a, b) => a.article > b.article ? 1 : a.article < b.article ? -1 : 0);
+        onSetItems(sortItems);
+    }, [request]);
 
     const handleUpdateItem = (item) => {
         setItemForModal(item)
