@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import ItemCard from "../ItemCard";
-import {priceModes} from "../../../constants/constants";
+import {sortModes} from "../../../constants/constants";
 import {useFiltersData} from "../../../context/FiltersContext";
 import {useItemsData} from "../../../context/ItemsContext";
+import {useHttp} from "../../../hooks/http.hook";
 
 const ItemsList = () => {
-    const { searchValue } = useFiltersData();
     const {items} = useItemsData();
+    const {searchValue} = useFiltersData();
+    const {sortMode} = useFiltersData();
+    const {loading} = useHttp();
 
-    const handleSearchText = (value) => {
-        if (value.trim().length === 0) {
+    const [filteredItems, setFilteredItems] = useState(items);
+
+    const setItemsBySearchText = (value) => {
+        if (!value.trim()) {
             return items;
         }
         const searchText = value.toUpperCase();
@@ -22,66 +27,33 @@ const ItemsList = () => {
         return filteredByName.concat(filteredByDescription);
     };
 
-    const renderItems = handleSearchText(searchValue);
-    const [sortItems, setSortItems] = useState(renderItems)
-    const [priceMode, setPriceMode] = useState('')
-    const [nameMode, setNameMode] = useState('')
+    const setItemsBySortMode = (items) => {
+        switch (sortMode) {
+            case sortModes.LOW:
+                return items.sort((a, b) => Number(a.price) - Number(b.price));
+            case sortModes.HIGH:
+                return items.sort((a, b) => Number(b.price) - Number(a.price))
+            case sortModes.ASC:
+                return items.sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
+            case sortModes.DESC:
+                return items.sort((a, b) => a.name < b.name ? 1 : a.name > b.name ? -1 : 0);
+            default:
+                return items;
+        }
+    }
 
     useEffect(() => {
-        setSortItems(items);
-    }, [items.length, items[0]?.name]);
+        setFilteredItems(setItemsBySortMode(setItemsBySearchText(searchValue)));
+    }, [searchValue, sortMode, items]);
 
-    const sortByPrice = (mode) => setSortItems(prev => {
-        setPriceMode(mode);
-        return [...prev].sort((a, b) => mode === priceModes.LOW ? +a.price - +b.price : +b.price - +a.price)
-    });
-    const sortByName = (mode) => setSortItems(prev => {
-        setNameMode(mode);
-        return [...prev].sort((a, b) => {
-            if (mode === priceModes.ASC) {
-                return a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-            }
-            return a.name < b.name ? 1 : a.name > b.name ? -1 : 0
-        });
-    });
+    if (loading) return <h2>Loading...</h2>
 
     return (
-        <>
-            <div className="companies__sort">
-                <div className={priceMode === priceModes.LOW && 'companies__sort_active'}
-                      onClick={() => sortByPrice(priceModes.LOW)}
-                >
-                    Спочатку дешевші
-                </div>
-                <div className={priceMode === priceModes.HIGH && 'companies__sort_active'}
-                    onClick={() => sortByPrice(priceModes.HIGH)}
-                >
-                    Спочатку дорожчі
-                </div>
-                <div className={nameMode === priceModes.ASC && 'companies__sort_active'}
-                    onClick={() => sortByName(priceModes.ASC)}
-                >
-                    Сортувати від А...
-                </div>
-                <div className={nameMode === priceModes.DESC && 'companies__sort_active'}
-                    onClick={() => sortByName(priceModes.DESC)}
-                >
-                    Сортувати від Я...
-                </div>
-                <div onClick={() => {
-                    setSortItems(items)
-                    setNameMode('')
-                    setPriceMode('')
-                }}>
-                    Скинути фільтри
-                </div>
-            </div>
-            <div className={sortItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>
-                {sortItems.map(item => <ItemCard key={item.id}
+        <div className={filteredItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>
+            {filteredItems.map(item => <ItemCard key={item.id}
                                                  item={item}
-                />)}
-            </div>
-        </>
+            />)}
+        </div>
     );
 }
 

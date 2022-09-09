@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import Header from "../../../components/Header";
 import ItemsList from "../ItemsList";
 import {useScrollData} from "../../../context/ScrollContext";
+import Filters from "../Filters";
 
 const Content = () => {
     const {pageY} = useScrollData();
@@ -14,6 +15,7 @@ const Content = () => {
         <div>
             <Header/>
             <div className={'content'}>
+                <Filters />
                 <ItemsList/>
             </div>
         </div>

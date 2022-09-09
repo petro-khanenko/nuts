@@ -47,7 +47,7 @@ export const localStorageKeys = Object.freeze({
     ORDER_PAGE: 'ORDER_PAGE'
 });
 
-export const priceModes = Object.freeze({
+export const sortModes = Object.freeze({
     LOW: 'low',
     HIGH: 'high',
     ASC: 'abc',

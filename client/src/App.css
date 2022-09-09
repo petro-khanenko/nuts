@@ -1,4 +1,3 @@
-@import url('http://fonts.cdnfonts.com/css/coca-cola-ii');
 @import url('./components/Header/header.css');
 @import url('./components/BasketButton/basketButton.css');
 @import url('./pages/admin/AdminPanel/adminPanel.css');
@@ -20,6 +19,7 @@
 @import url('./components/OrderFormFields/orderFormFields.css');
 @import url('./pages/about/AboutItem/about.css');
 @import url('./pages/delivery/Delivery/delivery.css');
+@import url('./pages/main/Filters/filters.css');
 
 
 

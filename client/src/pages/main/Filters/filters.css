@@ -1,0 +1,17 @@
+.items__sort {
+    margin-bottom: 40px;
+    color: whitesmoke;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-shadow: 1px 1px 2px black;
+}
+.items__sort_active {
+    color: #ff1500;
+}
+.items__sort span:hover {
+    color: darkorange;
+}

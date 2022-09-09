@@ -4,11 +4,14 @@ const FiltersContext = createContext();
 
 export const FiltersContextProvider = ({children}) => {
     const [searchValue, setSearchValue] = useState('');
+    const [sortMode, setSortMode] = useState('');
 
     return (
         <FiltersContext.Provider value={{
             searchValue,
-            onSetSearchValue: setSearchValue
+            sortMode,
+            onSetSearchValue: setSearchValue,
+            onSetSortMode: setSortMode
         }}>
             {children}
         </FiltersContext.Provider>
