@@ -7,7 +7,6 @@ import {mainRoutes} from "../../../constants/constants";
 import {useItemsData} from "../../../context/ItemsContext";
 
 const AboutItem = () => {
-
     const { anchor } = useParams();
     const { onGetItem } = useItemsData();
     const {addItemToBasket} = useBasketData();

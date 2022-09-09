@@ -48,8 +48,9 @@ export const localStorageKeys = Object.freeze({
 });
 
 export const sortModes = Object.freeze({
-    LOW: 'low',
-    HIGH: 'high',
-    ASC: 'abc',
-    DESC: 'zyx'
+    LOW: {type: 'low', title: 'Спочатку дешевші'},
+    HIGH: {type: 'high', title: 'Спочатку дорожчі'},
+    ASC: {type: 'abc', title: 'Сортувати від А...'},
+    DESC: {type: 'zyx', title: 'Сортувати від Я...'},
+    DEFAULT: {type: '', title: 'Скинути фільтри'}
 });

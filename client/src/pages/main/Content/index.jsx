@@ -6,7 +6,6 @@ import Filters from "../Filters";
 
 const Content = () => {
     const {pageY} = useScrollData();
-
     useEffect(() => {
         window.scrollTo(0, pageY);
     }, [pageY]);

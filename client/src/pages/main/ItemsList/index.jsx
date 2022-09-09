@@ -29,13 +29,13 @@ const ItemsList = () => {
 
     const setItemsBySortMode = (items) => {
         switch (sortMode) {
-            case sortModes.LOW:
+            case sortModes.LOW.type:
                 return items.sort((a, b) => Number(a.price) - Number(b.price));
-            case sortModes.HIGH:
+            case sortModes.HIGH.type:
                 return items.sort((a, b) => Number(b.price) - Number(a.price))
-            case sortModes.ASC:
+            case sortModes.ASC.type:
                 return items.sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
-            case sortModes.DESC:
+            case sortModes.DESC.type:
                 return items.sort((a, b) => a.name < b.name ? 1 : a.name > b.name ? -1 : 0);
             default:
                 return items;

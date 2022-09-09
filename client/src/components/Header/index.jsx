@@ -28,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
 );
 
 const Header = () => {
-
-    const { searchValue, onSetSearchValue } = useFiltersData();
+    const {searchValue, onSetSearchValue} = useFiltersData();
     const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles();
     const location = useLocation();
 
@@ -43,7 +42,6 @@ const Header = () => {
             handleClearSearchInput();
         }
     }, []);
-
 
     useEffect(() => {
         const hash = location.hash
@@ -76,9 +74,11 @@ const Header = () => {
                         onChange={(e) => onSetSearchValue(e.currentTarget.value)}
                     />
                     {
-                        searchValue && <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
-                            <Cancel className={closeIcon}/>
-                        </IconButton>
+                        searchValue && (
+                            <IconButton className={iconCloseButton} onClick={handleClearSearchInput}>
+                                <Cancel className={closeIcon}/>
+                            </IconButton>
+                        )
                     }
                 </div>
             </div>
