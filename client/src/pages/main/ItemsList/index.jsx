@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import ItemCard from "../ItemCard";
 import {priceModes} from "../../../constants/constants";
+import {useScrollData} from "../../../context/ScrollContext";
 
-const ItemsList = ({ items, pageY, handleGoToBasket }) => {
+const ItemsList = ({ items }) => {
+    const {pageY} = useScrollData();
+
     const [sortItems, setSortItems] = useState(items)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
@@ -63,7 +66,6 @@ const ItemsList = ({ items, pageY, handleGoToBasket }) => {
             <div className={sortItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>
                 {sortItems.map(item => <ItemCard key={item.id}
                                                  item={item}
-                                                 handleGoToBasket={handleGoToBasket}
                 />)}
             </div>
         </>

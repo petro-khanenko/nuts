@@ -8,10 +8,11 @@ import AdminPanel from "./pages/admin/AdminPanel"
 import AboutItem from "./pages/about/AboutItem";
 import Basket from "./pages/basket/Basket";
 import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket";
-import {BasketContextProvider} from "./context/BasketContext";
 import Delivery from "./pages/delivery/Delivery";
 import BasketButton from "./components/BasketButton";
 import {apiRoutes, mainRoutes, params, subRoutes} from "./constants/constants";
+import ContextProvider from "./context";
+import MainLayout from "./components/MainLayout";
 
 
 let fetchedItems = [];
@@ -57,52 +58,37 @@ function App() {
         setItem(item);
     };
 
-    const handleGoToBasket = () => {
-        if (pathname === '/') setPageY(window.pageYOffset);
-    };
-
-    const showBasket = !pathname.includes(mainRoutes.BASKET) && !pathname.includes(mainRoutes.ADMIN);
-
     return (
-        <div>
-            <BasketContextProvider>
-                <div className={'app'}>
-                    {
-                        showBasket && <BasketButton handleGoToBasket={handleGoToBasket}/>
-                    }
-                    <Switch>
-                        <Route exact path={"/"}
-                               render={() => <Content items={items}
-                                                      searchText={searchText}
-                                                      pageY={pageY}
-                                                      handleGoToBasket={handleGoToBasket}
-                               />}
-                        />
-                        <Route exact path={`/${mainRoutes.ABOUT}/:${params.ANCHOR}?`}
-                               render={() => <AboutItem
-                                   item={item}
-                                   getItemForAboutPage={getItemForAboutPage}
-                               />}
-                        />
-                        <Route exact path={`/${mainRoutes.DELIVERY}`}
-                               render={() => <Delivery/>}
-                        />
-                        <Route exact path={`/${mainRoutes.BASKET}`}
-                               render={() => <Basket/>}
-                        />
-                        <Route exact path={`/${mainRoutes.ADMIN}`}
-                               render={() => <Auth/>}
-                        />
-                        <Route exact path={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`}
-                               render={() => <AdminPanel items={items} fetchItems={fetchItems}/>}
-                        />
-                        <Route exact path={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}
-                               render={() => <AdminBasket allItems={items}/>}
-                        />
-                    </Switch>
-                </div>
-            </BasketContextProvider>
-        </div>
+        <MainLayout>
+            <Switch>
+                <Route exact path={"/"}
+                       render={() => <Content items={items}
+                                              searchText={searchText}
+                       />}
+                />
+                <Route exact path={`/${mainRoutes.ABOUT}/:${params.ANCHOR}?`}
+                       render={() => <AboutItem
+                           item={item}
+                           getItemForAboutPage={getItemForAboutPage}
+                       />}
+                />
+                <Route exact path={`/${mainRoutes.DELIVERY}`}
+                       render={() => <Delivery/>}
+                />
+                <Route exact path={`/${mainRoutes.BASKET}`}
+                       render={() => <Basket/>}
+                />
+                <Route exact path={`/${mainRoutes.ADMIN}`}
+                       render={() => <Auth/>}
+                />
+                <Route exact path={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`}
+                       render={() => <AdminPanel items={items} fetchItems={fetchItems}/>}
+                />
+                <Route exact path={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}
+                       render={() => <AdminBasket allItems={items}/>}
+                />
+            </Switch>
+        </MainLayout>
     );
 }
 

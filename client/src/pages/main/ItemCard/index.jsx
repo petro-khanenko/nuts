@@ -1,9 +1,17 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {useBasketData} from "../../../context/BasketContext";
+import {useScrollData} from "../../../context/ScrollContext";
 
-const ItemCard = ({ item, handleGoToBasket}) => {
+const ItemCard = ({ item }) => {
+    const {pathname} = useLocation();
     const {addItemToBasket} = useBasketData();
+    const {setPageY} = useScrollData();
+
+    // Handlers
+    const handleGoToBasket = () => {
+        if (pathname === '/') setPageY(window.pageYOffset);
+    };
 
     return (
         <div id={item.anchorr} className={"companies-card"}>
@@ -21,7 +29,7 @@ const ItemCard = ({ item, handleGoToBasket}) => {
             </NavLink>
             <button onClick={() => addItemToBasket(item)}>Купити</button>
         </div>
-    )
+    );
 }
 
-export default ItemCard
+export default ItemCard;

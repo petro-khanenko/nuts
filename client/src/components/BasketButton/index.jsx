@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     })
 );
 
-const BasketButton = ({ handleGoToBasket }) => {
+const BasketButton = ({ onGoToBasket }) => {
 
     const { headerIcon, basketIcon } = useStyles();
 
@@ -32,7 +32,7 @@ const BasketButton = ({ handleGoToBasket }) => {
                                 <span className={"button_basket__inbasket"}>
                                     {itemsCount ? itemsCount : ''}
                                 </span>
-                <NavLink to={'/basket'} onClick={handleGoToBasket}>
+                <NavLink to={'/basket'} onClick={onGoToBasket}>
                     <IconButton className={headerIcon}>
                         <ShoppingCart className={basketIcon}/>
                     </IconButton>
