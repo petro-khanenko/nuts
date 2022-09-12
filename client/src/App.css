@@ -3,7 +3,7 @@
 @import url('./pages/admin/AdminPanel/adminPanel.css');
 @import url('./pages/orders/orders.css');
 @import url('./pages/orders/OrderItem/orderItem.css');
-@import url('pages/admin/ItemRemastering/remastering.css');
+@import url('pages/admin/AdminPanel/ItemsList/ItemRemastering/remastering.css');
 @import url('./pages/admin/AdminPanel/AdminBasket/adminBasket.css');
 @import url('./pages/admin/AdminPanel/AdminBasket/AdminStoreItem/adminStoreItem.css');
 @import url('components/modals/modal.css');

@@ -1,7 +1,7 @@
 import React from 'react'
 import {adminViews} from "../../../constants/constants";
 
-export const AdminPagesSwitcher = ({switchMode, onSwitchView}) => {
+export const AdminViewsSwitcher = ({switchMode, onSwitchView}) => {
 
     return (
         <div>
