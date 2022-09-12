@@ -1,7 +1,7 @@
 import {createContext, useContext, useState} from 'react';
 import {isEqual} from "lodash";
 import {setSuccessModal} from "../utils/swal/helpers";
-import {getItemsFromStorage, setItemsToStorage} from "../helpers/helpers";
+import {getFromStorage, setItemsToStorage} from "../helpers/helpers";
 import {localStorageKeys} from "../constants/constants";
 
 
@@ -10,13 +10,15 @@ const BasketContext = createContext();
 export const BasketContextProvider = ({children}) => {
 
     const [order, setOrder] = useState({});
-    const [basketItems, setBasketItems] = useState(getItemsFromStorage());
+    const [itemsCount, setItemsCount] = useState(getFromStorage(localStorageKeys.ITEMS_COUNT) || 0);
+    const [basketItems, setBasketItems] = useState(getFromStorage(localStorageKeys.BASKET) || {});
 
     const handleOrder = (order) => {
         setOrder(order);
         const items = (order.items || []).reduce((acc, el) => ({...acc, [el.name]: el}), {});
-        setBasketItems(items);
         setItemsToStorage(items);
+        setBasketItems(items);
+        setItemsCount(Object.keys(items).length);
     };
 
     const addItemToBasket = (item) => {
@@ -25,6 +27,7 @@ export const BasketContextProvider = ({children}) => {
         };
         setItemsToStorage(items);
         setBasketItems(items);
+        setItemsCount(Object.keys(items).length);
         setSuccessModal('Товар успішно доданий в корзину!');
     };
 
@@ -32,6 +35,7 @@ export const BasketContextProvider = ({children}) => {
         const items = Object.values(basketItems).reduce((acc, el) => isEqual(item, el) ? acc : {...acc, [el.name]: el}, {});
         setItemsToStorage(items);
         setBasketItems(items);
+        setItemsCount(Object.keys(items).length);
     };
 
     const setCountAndTotalOfItem = (actualCounter, item) => {
@@ -50,12 +54,14 @@ export const BasketContextProvider = ({children}) => {
         localStorage.removeItem(localStorageKeys.BASKET);
         localStorage.removeItem(localStorageKeys.ITEMS_COUNT);
         setBasketItems({});
+        setItemsCount(0);
     };
 
     return (
         <BasketContext.Provider value={{
             order,
             basketItems,
+            itemsCount,
             handleOrder,
             addItemToBasket,
             removeItemFromBasket,

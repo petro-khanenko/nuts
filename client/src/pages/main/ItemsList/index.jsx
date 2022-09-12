@@ -15,7 +15,7 @@ const ItemsList = () => {
 
     const setItemsBySearchText = (value) => {
         if (!value.trim()) {
-            return items;
+            return [...items];
         }
         const searchText = value.toUpperCase();
         const filteredByName = items.filter(s => s.name.toUpperCase().includes(searchText));

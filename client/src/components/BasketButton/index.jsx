@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {IconButton, makeStyles} from "@material-ui/core";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import {localStorageKeys} from "../../constants/constants";
+import {localStorageKeys, mainRoutes, subRoutes} from "../../constants/constants";
+import {useBasketData} from "../../context/BasketContext";
 
 const useStyles = makeStyles((theme) => ({
         headerIcon: {
@@ -19,12 +20,8 @@ const useStyles = makeStyles((theme) => ({
 );
 
 const BasketButton = ({ onGoToBasket }) => {
-
     const { headerIcon, basketIcon } = useStyles();
-
-    const itemsCount = localStorage.getItem(localStorageKeys.ITEMS_COUNT);
-    useEffect(() => {
-    }, [itemsCount]);
+    const {itemsCount} = useBasketData();
 
     return (
         <div className={"button_basket__icon"}>
@@ -32,7 +29,7 @@ const BasketButton = ({ onGoToBasket }) => {
                                 <span className={"button_basket__inbasket"}>
                                     {itemsCount ? itemsCount : ''}
                                 </span>
-                <NavLink to={'/basket'} onClick={onGoToBasket}>
+                <NavLink to={`/${mainRoutes.BASKET}`} onClick={onGoToBasket}>
                     <IconButton className={headerIcon}>
                         <ShoppingCart className={basketIcon}/>
                     </IconButton>

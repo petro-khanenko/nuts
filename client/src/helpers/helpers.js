@@ -33,10 +33,6 @@ export const getFromStorage = (key) => {
     return JSON.parse(localStorage.getItem(key));
 };
 
-export const getItemsFromStorage = () => {
-    return getFromStorage(localStorageKeys.BASKET) || {};
-};
-
 export const setItemsToStorage = (items) => {
     setToStorage(localStorageKeys.BASKET, items);
     setToStorage(localStorageKeys.ITEMS_COUNT, Object.keys(items).length);
