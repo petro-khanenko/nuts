@@ -48,7 +48,7 @@ export const BasketContextProvider = ({children}) => {
 
     const clearBasket = () => {
         localStorage.removeItem(localStorageKeys.BASKET);
-        localStorage.removeItem(localStorageKeys.ITEMS);
+        localStorage.removeItem(localStorageKeys.ITEMS_COUNT);
         setBasketItems({});
     };
 

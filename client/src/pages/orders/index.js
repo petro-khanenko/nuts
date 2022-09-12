@@ -1,11 +1,12 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useHttp} from "../../hooks/http.hook";
 import {OrderItem} from "./OrderItem";
-import {apiRoutes, orderPages} from "../../constants/constants";
+import {apiRoutes, localStorageKeys, ordersViews} from "../../constants/constants";
 import {useBasketData} from "../../context/BasketContext";
 import {IconButton, makeStyles} from "@material-ui/core";
 import FiberNew from "@material-ui/icons/FiberNew";
 import DoneAll from "@material-ui/icons/DoneAll";
+import {getFromStorage, setToStorage} from "../../helpers/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -23,20 +24,16 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-let fetchedOrders = [];
-
 export const Orders = () => {
+    const [orders, setOrders] = useState([]);
+    const [viewMode, setViewMode] = useState(getFromStorage(localStorageKeys.ORDERS_VIEW) || ordersViews.ACTIVE_ORDERS);
 
-    const [orders, setOrders] = useState(fetchedOrders);
-    const [pageMode, setPageMode] = useState(orderPages.ACTIVE_ORDERS);
-
-    const {handleOrder, handleBasketItems} = useBasketData();
+    const {handleOrder} = useBasketData();
     const {request} = useHttp();
     const {iconButton, iconActive, iconCompleted} = useStyles();
 
     const fetchOrders = useCallback(async () => {
         const data = await request(`/${apiRoutes.ORDERS}`);
-        fetchedOrders = data;
         setOrders(data);
     }, [request]);
 
@@ -47,13 +44,19 @@ export const Orders = () => {
     const getItemsAndGoToBasket = (id) => {
         const order = orders.find(order => order._id === id);
         handleOrder(order);
-    };
+    }
+
+    const handleSwitchView = (view) => {
+        setViewMode(view);
+        setToStorage(localStorageKeys.ORDERS_VIEW, view);
+    }
+
     // render orders
     const getRenderOrders = () => {
-        switch (pageMode) {
-            case orderPages.ACTIVE_ORDERS:
+        switch (viewMode) {
+            case ordersViews.ACTIVE_ORDERS:
                 return orders.filter(order => order.active);
-            case orderPages.COMPLETED_ORDERS:
+            case ordersViews.COMPLETED_ORDERS:
                 return orders.filter(order => !order.active);
         }
     }
@@ -68,12 +71,12 @@ export const Orders = () => {
                 <div>Адреса доставки</div>
                 <div>Всього</div>
                 <IconButton className={iconButton}
-                            onClick={() => setPageMode(orderPages.ACTIVE_ORDERS)}
+                            onClick={() => handleSwitchView(ordersViews.ACTIVE_ORDERS)}
                 >
                     <FiberNew className={iconActive}/>
                 </IconButton>
                 <IconButton className={iconButton}
-                            onClick={() => setPageMode(orderPages.COMPLETED_ORDERS)}
+                            onClick={() => handleSwitchView(ordersViews.COMPLETED_ORDERS)}
                 >
                     <DoneAll className={iconCompleted}/>
                 </IconButton>

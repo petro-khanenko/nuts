@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {NavLink} from "react-router-dom";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Rowing from "@material-ui/icons/Rowing";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import Cancel from "@material-ui/icons/Cancel";
 import {useHttp} from "../../../hooks/http.hook";
-import {NavLink} from "react-router-dom";
 import {setConfirmModal, setInfoModal} from "../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -24,14 +25,13 @@ const useStyles = makeStyles((theme) => ({
 )
 
 export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
-
     const {iconDecrease, iconIncrease, iconButton} = useStyles();
     const {request} = useHttp();
     const isActive = order?.active;
 
     const deleteOrderRequest = async () => {
         try {
-            const data = await request('/api/orders/delete', 'DELETE', {id: order._id});
+            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.DELETE}`, 'DELETE', {id: order._id});
             if (data.status === 'success') {
                 fetchOrders();
             }
@@ -52,7 +52,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
 
     const completedOrderRequest = async () => {
         try {
-            const data = await request('/api/orders/update', 'POST', {
+            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.UPDATE}`, 'POST', {
                 ...order,
                 id: order._id,
                 active: !order.active
@@ -86,7 +86,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
     return (
         <div className={'order_item'}>
             <div className='order_item__number'>{order.orderNum}</div>
-            <NavLink className='order_item__link' to='/admin/panel/admin_basket'>
+            <NavLink className='order_item__link' to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}>
                 <div className='order_item__client' onClick={() => getItemsAndGoToBasket(order._id)}>
                     <div>{order.firstName} {order.lastName}</div>
                     <div>{order.email}</div>

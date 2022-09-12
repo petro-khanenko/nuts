@@ -4,8 +4,8 @@ import {fileSelectorHandler} from "../../../utils/imgur/helpers";
 import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
 import {useHttp} from "../../../hooks/http.hook";
 import {useAuth} from "../../../hooks/auth.hook";
-import {getAddFieldsObject, resetFormsStateHelper} from "../../../helpers/helpers";
-import {adminPages, apiRoutes, apiSubRoutes, mainRoutes} from "../../../constants/constants";
+import {getAddFieldsObject, getFromStorage, resetFormsStateHelper, setToStorage} from "../../../helpers/helpers";
+import {adminViews, apiRoutes, apiSubRoutes, localStorageKeys, mainRoutes} from "../../../constants/constants";
 import ItemRemastering from "../ItemRemastering"
 import UpdateItemModal from "../../../components/modals/UpdateItemModal";
 import DeleteModal from "../../../components/modals/DeleteModal";
@@ -18,23 +18,30 @@ import {useItemsData} from "../../../context/ItemsContext";
 
 const AdminPanel = () => {
     const { items, onSetItems } = useItemsData();
+    const {request} = useHttp();
+    const {token, logout, ready} = useAuth();
 
-    const [switchMode, setSwitchMode] = useState(adminPages.ORDERS_LIST)
-    const [isModalUpdate, setModalUpdate] = useState(false)
-    const [isModalDelete, setModalDelete] = useState(false)
-    const [dynamicKeysForm, setDynamicKeysForm] = useState({})
-    const [dynamicValuesForm, setDynamicValuesForm] = useState({})
-    const [itemForModal, setItemForModal] = useState({})
-    const [form, setForm] = useState({})
-
-    const {request} = useHttp()
-    const {token, logout} = useAuth()
+    const [switchMode, setSwitchMode] = useState(
+        getFromStorage(localStorageKeys.ADMIN_PANEL_VIEW)
+        || adminViews.ORDERS_LIST
+    );
+    const [isModalUpdate, setModalUpdate] = useState(false);
+    const [isModalDelete, setModalDelete] = useState(false);
+    const [dynamicKeysForm, setDynamicKeysForm] = useState({});
+    const [dynamicValuesForm, setDynamicValuesForm] = useState({});
+    const [itemForModal, setItemForModal] = useState({});
+    const [form, setForm] = useState({});
 
     const fetchItems = useCallback(async () => {
         const data = await request(`/${apiRoutes.ITEMS}`);
         const sortItems = data.sort((a, b) => a.article > b.article ? 1 : a.article < b.article ? -1 : 0);
         onSetItems(sortItems);
     }, [request]);
+
+    const handleSwitchView = (view) => {
+        setSwitchMode(view);
+        setToStorage(localStorageKeys.ADMIN_PANEL_VIEW, view);
+    }
 
     const handleUpdateItem = (item) => {
         setItemForModal(item)
@@ -80,7 +87,7 @@ const AdminPanel = () => {
         }
     }
 
-    if (token === null) {
+    if (!token && ready) {
         return <Redirect to={`/${mainRoutes.ADMIN}`}/>
     }
 
@@ -105,8 +112,8 @@ const AdminPanel = () => {
                     </div>
                 </header>
                 <div className={'content'}>
-                    <AdminPagesSwitcher switchMode={switchMode} setSwitchMode={setSwitchMode}/>
-                    {switchMode === adminPages.ADD_NEW_ITEM && <div className={'admin-panel'}>
+                    <AdminPagesSwitcher switchMode={switchMode} onSwitchView={handleSwitchView}/>
+                    {switchMode === adminViews.ADD_NEW_ITEM && <div className={'admin-panel'}>
                         <h2>Add Item</h2>
                         <FormFields form={form}
                                     formHandler={handleForm}
@@ -124,7 +131,7 @@ const AdminPanel = () => {
                             Save
                         </button>
                     </div>}
-                    {switchMode === adminPages.ITEMS_LIST && <div className={'admin-panel'}>
+                    {switchMode === adminViews.ITEMS_LIST && <div className={'admin-panel'}>
                         <h2>Delete or Update Item</h2>
                         <div>
                             {items.map((item, idx) => <ItemRemastering item={item}
@@ -135,7 +142,7 @@ const AdminPanel = () => {
                         </div>
                     </div>}
                     {
-                        switchMode === adminPages.ORDERS_LIST && <Orders/>
+                        switchMode === adminViews.ORDERS_LIST && <Orders/>
                     }
                 </div>
             </div>}

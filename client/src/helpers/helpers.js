@@ -1,4 +1,3 @@
-import {setSuccessModal} from "../utils/swal/helpers";
 import {localStorageKeys} from "../constants/constants";
 
 export const getAddFieldsObject = (keysObj, valuesObj) => {
@@ -26,11 +25,19 @@ export const getInitDynamicValuesForm = (item) => {
     return {};
 };
 
+export const setToStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
+export const getFromStorage = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+};
+
 export const getItemsFromStorage = () => {
-    return JSON.parse(localStorage.getItem(localStorageKeys.BASKET)) || {};
+    return getFromStorage(localStorageKeys.BASKET) || {};
 };
 
 export const setItemsToStorage = (items) => {
-    localStorage.setItem(localStorageKeys.BASKET, JSON.stringify(items));
-    localStorage.setItem(localStorageKeys.ITEMS, JSON.stringify(Object.keys(items).length));
+    setToStorage(localStorageKeys.BASKET, items);
+    setToStorage(localStorageKeys.ITEMS_COUNT, Object.keys(items).length);
 };

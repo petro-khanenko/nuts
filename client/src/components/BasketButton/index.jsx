@@ -22,7 +22,7 @@ const BasketButton = ({ onGoToBasket }) => {
 
     const { headerIcon, basketIcon } = useStyles();
 
-    const itemsCount = localStorage.getItem(localStorageKeys.ITEMS);
+    const itemsCount = localStorage.getItem(localStorageKeys.ITEMS_COUNT);
     useEffect(() => {
     }, [itemsCount]);
 

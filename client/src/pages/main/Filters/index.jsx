@@ -7,7 +7,7 @@ const Filters = () => {
         <div className="items__sort">
             {
                 Object.values(sortModes).map((mode) => (
-                    <FilterItem mode={mode}/>
+                    <FilterItem key={`sort-by-${mode.type}`} mode={mode}/>
                 ))
             }
         </div>
