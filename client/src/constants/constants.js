@@ -1,7 +1,7 @@
 export const adminViews = {
-    ADD_NEW_ITEM: 'ADD_NEW_ITEM',
-    ITEMS_LIST: 'ITEMS_LIST',
-    ORDERS_LIST: 'ORDERS_LIST',
+    ADD_NEW_ITEM: 'Add New Item',
+    ITEMS_LIST: 'Items List',
+    ORDERS_LIST: 'Orders',
 }
 export const ordersViews = {
     ACTIVE_ORDERS: 'ACTIVE_ORDERS',
