@@ -6,6 +6,7 @@ import {useAuth} from "../../hooks/auth.hook";
 import {apiRoutes, mainRoutes} from "../../constants/constants";
 import UpdateItemModal from "../modals/UpdateItemModal";
 import DeleteModal from "../modals/DeleteModal";
+import {Button} from "@material-ui/core";
 
 
 const AdminPanelContainer = ({children}) => {
@@ -54,12 +55,23 @@ const AdminPanelContainer = ({children}) => {
             {
                 token && <div>
                     <header className="header header__between header__admin">
-                        <div className={"header__logo"}>Admin Panel</div>
+                        <div className={"header__logo"}>ADMIN PANEL</div>
                         <div>
                             <NavLink to={'/'}>
-                                <button>Go to Items List</button>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                >
+                                    Go to Items List
+                                </Button>
                             </NavLink>
-                            <button onClick={logout}>Logout</button>
+                            <Button
+                                variant='contained'
+                                color='secondary'
+                                onClick={logout}
+                            >
+                                Logout
+                            </Button>
                         </div>
                     </header>
                     <div className={'content'}>

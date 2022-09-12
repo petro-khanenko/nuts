@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /*position: fixed;*/
     height: 85px;
     width: 1000px;
     background-color: #E4D477;
@@ -13,7 +12,9 @@
     box-shadow: -11px 9px 18px rgb(18, 45, 7);
 }
 .header__admin {
-    height: 60px;
+    height: 70px;
+    background-color: #211e1e;
+    box-shadow: none;
 }
 .header__top {
     margin: 10px 60px 10px 15px;
@@ -62,7 +63,8 @@
     justify-content: space-between;
 }
 .header__logo {
-    color: blue;
+    color: whitesmoke;
+    letter-spacing: 3px;
     margin-left: 30px;
     font-size: 2rem;
 }
