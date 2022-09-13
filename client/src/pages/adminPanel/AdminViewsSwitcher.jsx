@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, makeStyles} from "@material-ui/core";
-import {adminViews} from "../../../constants/constants";
+import {adminViews} from "../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         viewButton: {

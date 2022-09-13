@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {adminViews, localStorageKeys} from "../../../constants/constants";
+import {adminViews, localStorageKeys} from "../../constants/constants";
 import {Orders} from "./Orders";
 import AddItem from "./AddItem";
-import AdminPanelContainer from "../../../components/AdminPanelContainer";
+import AdminPanelContainer from "../../components/AdminPanelContainer";
 import ItemsList from "./ItemsList";
-import {getFromStorage, setToStorage} from "../../../helpers/helpers";
+import {getFromStorage, setToStorage} from "../../helpers/helpers";
 import {AdminViewsSwitcher} from "./AdminViewsSwitcher";
 
 

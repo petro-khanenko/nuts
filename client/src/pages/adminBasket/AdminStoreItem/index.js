@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from "@material-ui/core";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
-import {useBasketData} from "../../../../../context/BasketContext";
+import {useBasketData} from "../../../context/BasketContext";
 
 export const AdminStoreItem = ({item, idx}) => {
     const {addItemToBasket} = useBasketData();

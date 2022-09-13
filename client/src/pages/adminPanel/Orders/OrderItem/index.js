@@ -4,9 +4,9 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import Rowing from "@material-ui/icons/Rowing";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import Cancel from "@material-ui/icons/Cancel";
-import {useHttp} from "../../../../../hooks/http.hook";
-import {setConfirmModal, setInfoModal} from "../../../../../utils/swal/helpers";
-import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../../../constants/constants";
+import {useHttp} from "../../../../hooks/http.hook";
+import {setConfirmModal, setInfoModal} from "../../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {

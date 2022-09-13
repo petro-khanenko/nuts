@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {Redirect} from "react-router-dom"
-import {useHttp} from "../../../hooks/http.hook"
-import {useAuth} from "../../../hooks/auth.hook"
-import {setInfoModal} from "../../../utils/swal/helpers";
-import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../constants/constants";
+import {useHttp} from "../../hooks/http.hook"
+import {useAuth} from "../../hooks/auth.hook"
+import {setInfoModal} from "../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../constants/constants";
 
 
 const Auth = () => {

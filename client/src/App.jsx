@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import Content from "./pages/main/Content";
-import Auth from "./pages/admin/Auth";
+import Auth from "./pages/auth";
 import {Route, Switch} from "react-router-dom";
-import AdminPanel from "./pages/admin/AdminPanel";
+import AdminPanel from "./pages/adminPanel";
 import AboutItem from "./pages/about/AboutItem";
 import Basket from "./pages/basket/Basket";
-import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket";
+import {AdminBasket} from "./pages/adminBasket";
 import Delivery from "./pages/delivery/Delivery";
 import {mainRoutes, params, subRoutes} from "./constants/constants";
 import MainContainer from "./components/MainContainer";

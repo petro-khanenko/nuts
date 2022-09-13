@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {DynamicFields} from "../../../../components/DynamicFields";
-import {FormFields} from "../../../../components/FormFields";
-import {fileSelectorHandler} from "../../../../utils/imgur/helpers";
-import {getAddFieldsObject, resetFormsStateHelper} from "../../../../helpers/helpers";
-import {apiRoutes, apiSubRoutes} from "../../../../constants/constants";
-import {setInfoModal, setSuccessModal} from "../../../../utils/swal/helpers";
-import {useHttp} from "../../../../hooks/http.hook";
+import {DynamicFields} from "../../../components/DynamicFields";
+import {FormFields} from "../../../components/FormFields";
+import {fileSelectorHandler} from "../../../utils/imgur/helpers";
+import {getAddFieldsObject, resetFormsStateHelper} from "../../../helpers/helpers";
+import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
+import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
+import {useHttp} from "../../../hooks/http.hook";
 
 
 const AddItem = ({fetchItems}) => {

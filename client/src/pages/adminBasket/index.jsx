@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {BasketItem} from "../../../basket/Basket/BasketItem";
-import {useBasketData} from "../../../../context/BasketContext";
+import {BasketItem} from "../basket/Basket/BasketItem";
+import {useBasketData} from "../../context/BasketContext";
 import {NavLink} from "react-router-dom";
-import {OrderUpdateModal} from "../../../../components/modals/OrderUpdateModal";
+import {OrderUpdateModal} from "../../components/modals/OrderUpdateModal";
 import {AdminStoreItem} from "./AdminStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
-import {mainRoutes, subRoutes} from "../../../../constants/constants";
-import {useItemsData} from "../../../../context/ItemsContext";
+import {mainRoutes, subRoutes} from "../../constants/constants";
+import {useItemsData} from "../../context/ItemsContext";
 
 
 export const AdminBasket = () => {
