@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useLocation, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {useBasketData} from "../../../context/BasketContext";
-import {mainRoutes} from "../../../constants/constants";
+import {localStorageKeys, mainRoutes, subRoutes} from "../../../constants/constants";
 import {useItemsData} from "../../../context/ItemsContext";
+import {getFromStorage, setToStorage} from "../../../helpers/helpers";
 
 const AboutItem = () => {
     const { anchor } = useParams();
@@ -15,6 +16,18 @@ const AboutItem = () => {
         onGetItem(anchor);
     }, [anchor]);
 
+    const getPrevLocation = () => {
+        const prevPath = getFromStorage(localStorageKeys.PREV_PATH);
+        switch (true) {
+            case prevPath.includes(subRoutes.ADMIN_BASKET):
+                return `/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`;
+            case prevPath.includes(mainRoutes.ADMIN):
+                return `/${mainRoutes.ADMIN}/${subRoutes.PANEL}`;
+            default:
+                return `/#${anchor}`;
+        }
+    };
+
     const item = onGetItem(anchor);
 
     if (!item) return <h2>Loading...</h2>
@@ -22,7 +35,7 @@ const AboutItem = () => {
     return (
         <div className='about_item'>
             <div className='basket_go-back-button'>
-                <NavLink to={`/#${anchor}`}>
+                <NavLink to={getPrevLocation()}>
                     <Button startIcon={<ArrowBackIos/>}
                             variant='contained'
                             size='large'

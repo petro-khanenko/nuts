@@ -3,9 +3,11 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import AddBox from "@material-ui/icons/AddBox";
 import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {setConfirmModal} from "../../../../utils/swal/helpers";
 import {useBasketData} from "../../../../context/BasketContext";
+import {setToStorage} from "../../../../helpers/helpers";
+import {localStorageKeys} from "../../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -27,8 +29,12 @@ export const BasketItem = ({item}) => {
 
     const [counter, setCounter] = useState(item.count);
     const {iconDecrease, iconIncrease, iconButton} = useStyles();
-
     const {setCountAndTotalOfItem, removeItemFromBasket} = useBasketData();
+
+    const {pathname} = useLocation();
+    const handleSetPath = () => {
+        setToStorage(localStorageKeys.PREV_PATH, pathname);
+    };
 
     const removeItemHandler = () => {
         setConfirmModal(
@@ -48,11 +54,18 @@ export const BasketItem = ({item}) => {
     return (
         <div className={'basket_item'}>
             <div className="basket_item__image">
-                <NavLink to={`/about/${item.anchorr}`}>
+                <NavLink
+                    to={`/about/${item.anchorr}`}
+                    onClick={handleSetPath}
+                >
                     <img src={item.image} alt="image"/>
                 </NavLink>
             </div>
-            <NavLink to={`/about/${item.anchorr}`} className={'basket_item__name'}>
+            <NavLink
+                to={`/about/${item.anchorr}`}
+                className={'basket_item__name'}
+                onClick={handleSetPath}
+            >
                 <div>{item.name}</div>
             </NavLink>
             <div>{Number(item.price).toFixed(2)} грн / {item.points}</div>

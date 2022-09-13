@@ -45,7 +45,8 @@ export const localStorageKeys = Object.freeze({
     ITEMS_COUNT: 'ITEMS_COUNT',
     BASKET: 'BASKET',
     ADMIN_PANEL_VIEW: 'ADMIN_PANEL_VIEW',
-    ORDERS_VIEW: 'ORDERS_VIEW'
+    ORDERS_VIEW: 'ORDERS_VIEW',
+    PREV_PATH: 'PREV_PATH'
 });
 
 export const sortModes = Object.freeze({
