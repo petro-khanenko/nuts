@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {adminViews, localStorageKeys} from "../../../constants/constants";
-import {Orders} from "../../orders";
+import {Orders} from "./Orders";
 import AddItem from "./AddItem";
 import AdminPanelContainer from "../../../components/AdminPanelContainer";
 import ItemsList from "./ItemsList";

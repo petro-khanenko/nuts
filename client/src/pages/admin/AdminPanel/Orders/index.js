@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {useHttp} from "../../hooks/http.hook";
+import {useHttp} from "../../../../hooks/http.hook";
 import {OrderItem} from "./OrderItem";
-import {apiRoutes, localStorageKeys, ordersViews} from "../../constants/constants";
-import {useBasketData} from "../../context/BasketContext";
+import {apiRoutes, localStorageKeys, ordersViews} from "../../../../constants/constants";
+import {useBasketData} from "../../../../context/BasketContext";
 import {IconButton, makeStyles} from "@material-ui/core";
 import FiberNew from "@material-ui/icons/FiberNew";
 import DoneAll from "@material-ui/icons/DoneAll";
-import {getFromStorage, setToStorage} from "../../helpers/helpers";
+import {getFromStorage, setToStorage} from "../../../../helpers/helpers";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {

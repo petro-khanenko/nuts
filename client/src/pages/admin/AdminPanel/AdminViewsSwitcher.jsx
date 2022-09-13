@@ -7,10 +7,10 @@ const useStyles = makeStyles((theme) => ({
             minWidth: '160px',
             justifySelf: 'center',
             marginRight: '10px',
-            border: 'solid 3px rgba(33,30,30,0.8)'
+            border: 'solid 2px rgba(33,30,30,0.7)'
         }
     })
-)
+);
 
 export const AdminViewsSwitcher = ({switchMode, onSwitchView}) => {
     const {viewButton} = useStyles();
@@ -26,11 +26,6 @@ export const AdminViewsSwitcher = ({switchMode, onSwitchView}) => {
                     >
                         {view}
                     </Button>
-                    // <button onClick={() => onSwitchView(view)}
-                    //         disabled={switchMode === view}
-                    // >
-                    //     {view}
-                    // </button>
                 ))
             }
         </div>
