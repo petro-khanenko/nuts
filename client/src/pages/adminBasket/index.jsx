@@ -5,7 +5,7 @@ import {BasketItem} from "../basket/Basket/BasketItem";
 import {useBasketData} from "../../context/BasketContext";
 import {NavLink} from "react-router-dom";
 import {OrderUpdateModal} from "../../components/modals/OrderUpdateModal";
-import {AdminStoreItem} from "./AdminStoreItem";
+import {AdminBasketStoreItem} from "./AdminBasketStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import {mainRoutes, subRoutes} from "../../constants/constants";
@@ -82,8 +82,8 @@ export const AdminBasket = () => {
                             <div>ціна</div>
                         </div>
                         {
-                            allItems.map((item, idx) => <AdminStoreItem item={item}
-                                                                        idx={idx}
+                            allItems.map((item, idx) => <AdminBasketStoreItem item={item}
+                                                                              idx={idx}
                             />)
                         }
                     </div>

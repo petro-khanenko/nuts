@@ -3,9 +3,7 @@
 @import url('pages/adminPanel/adminPanel.css');
 @import url('pages/adminPanel/Orders/orders.css');
 @import url('pages/adminPanel/Orders/OrderItem/orderItem.css');
-@import url('pages/adminPanel/ItemsList/ItemRemastering/remastering.css');
 @import url('pages/adminBasket/adminBasket.css');
-@import url('pages/adminBasket/AdminStoreItem/adminStoreItem.css');
 @import url('components/modals/modal.css');
 @import url('components/modals/deleteModal.css');
 @import url('pages/main/ItemsList/itemsList.css');
@@ -20,7 +18,7 @@
 @import url('./pages/about/AboutItem/about.css');
 @import url('./pages/delivery/Delivery/delivery.css');
 @import url('./pages/main/Filters/filters.css');
-
+@import url('./components/StoreItem/storeItem.css');
 
 
 body {

@@ -33,7 +33,7 @@ export const setConfirmModal = (
         .then((result) => {
             if (result.isConfirmed) {
                 handler(...args);
-                setSuccessModal(infoText);
+                infoText && setSuccessModal(infoText);
             }
         });
 };

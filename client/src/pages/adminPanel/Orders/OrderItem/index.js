@@ -5,7 +5,7 @@ import Rowing from "@material-ui/icons/Rowing";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import Cancel from "@material-ui/icons/Cancel";
 import {useHttp} from "../../../../hooks/http.hook";
-import {setConfirmModal, setInfoModal} from "../../../../utils/swal/helpers";
+import {setConfirmModal, setInfoModal, setSuccessModal} from "../../../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +33,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
         try {
             const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.DELETE}`, 'DELETE', {id: order._id});
             if (data.status === 'success') {
+                setSuccessModal('Замовлення успішно видалено!');
                 fetchOrders();
             }
         } catch (e) {
@@ -45,7 +46,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
     const deleteOrderHandler = () => {
         setConfirmModal(
             'Ви впевнені, що бажаєте видалити дане замовлення?',
-            'Замовлення успішно видалено!',
+            null,
             deleteOrderRequest
         );
     };

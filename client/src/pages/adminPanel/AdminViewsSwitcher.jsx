@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
             minWidth: '160px',
             justifySelf: 'center',
             marginRight: '10px',
+            padding: '7px',
             border: 'solid 2px rgba(33,30,30,0.7)'
         }
     })

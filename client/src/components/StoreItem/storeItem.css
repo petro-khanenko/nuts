@@ -1,7 +1,7 @@
 .store_item {
     display: grid;
     grid-template-areas: 'N image name price button';
-    grid-template-columns: 0.5fr 1fr 5.5fr 3fr 2fr;
+    grid-template-columns: 0.5fr 1fr 5fr 3fr 2.5fr;
     grid-template-rows: 70px;
     justify-items: center;
     align-items: center;

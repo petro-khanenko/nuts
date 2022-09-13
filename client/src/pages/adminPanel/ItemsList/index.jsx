@@ -1,18 +1,25 @@
 import React from 'react';
-import ItemRemastering from "./ItemRemastering";
+import ListItem from "./ListItem";
 
-const ItemsList = ({items, onUpdateItem, onDeleteItem}) => {
+const ItemsList = ({items, onUpdateItem, fetchItems}) => {
     return (
-        <div className={'admin-panel'}>
+        <>
             <h2>Delete or Update Item</h2>
-            <div>
-                {items.map((item, idx) => <ItemRemastering item={item}
-                                                           idx={idx}
-                                                           onUpdateItem={onUpdateItem}
-                                                           onDeleteItem={onDeleteItem}
-                />)}
+            <div className='admin_store'>
+                <div className='admin_store__header'>
+                    <div>№</div>
+                    <div>товар</div>
+                    <div>ціна</div>
+                </div>
+                <div>
+                    {items.map((item, idx) => <ListItem item={item}
+                                                        idx={idx}
+                                                        onUpdateItem={onUpdateItem}
+                                                        fetchItems={fetchItems}
+                    />)}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
