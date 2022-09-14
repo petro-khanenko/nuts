@@ -8,25 +8,23 @@ import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            // position: 'absolute',
-            // right: '10px',
             minWidth: 40,
-            marginTop: '10px',
-            marginRight: '-15px',
-            // float: 'right',
+            marginTop: '7px',
+            marginRight: '-15px'
         },
         icon: {
             fontSize: 40,
             color: 'red',
         },
         root: {
-            // position: 'relative',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            minHeight: 'calc(100vh - 140px)',
-            marginTop: '80px',
-            marginBottom: '60px',
+            // minHeight: 'calc(100vh - 140px)',
+            // marginTop: '80px',
+            // marginBottom: '60px',\
+            margin: '4% auto',
+            paddingBottom: '35px',
             backgroundColor: '#e1f1f1'
         }
     })
