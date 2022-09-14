@@ -19,6 +19,8 @@
 @import url('./pages/delivery/Delivery/delivery.css');
 @import url('./pages/main/Filters/filters.css');
 @import url('./components/StoreItem/storeItem.css');
+@import url('pages/checkout/Indicator/indicator.css');
+@import url('pages/checkout/checkout.css');
 
 
 body {

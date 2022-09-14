@@ -18,7 +18,8 @@ export const mainRoutes = Object.freeze({
 export const subRoutes = Object.freeze({
     PANEL: 'panel',
     ADMIN_BASKET: 'admin_basket',
-    LOGIN: 'login'
+    LOGIN: 'login',
+    CHECKOUT: 'checkout'
 });
 
 export const apiRoutes = Object.freeze({
@@ -46,7 +47,8 @@ export const localStorageKeys = Object.freeze({
     BASKET: 'BASKET',
     ADMIN_PANEL_VIEW: 'ADMIN_PANEL_VIEW',
     ORDERS_VIEW: 'ORDERS_VIEW',
-    PREV_PATH: 'PREV_PATH'
+    PREV_PATH: 'PREV_PATH',
+    ORDER_STEP: 'ORDER_STEP'
 });
 
 export const sortModes = Object.freeze({
@@ -55,4 +57,10 @@ export const sortModes = Object.freeze({
     ASC: {type: 'abc', title: 'Сортувати від А...'},
     DESC: {type: 'zyx', title: 'Сортувати від Я...'},
     DEFAULT: {type: '', title: 'Скинути фільтри'}
+});
+
+export const orderSteps = Object.freeze({
+    PERSONAL_INFO: 'ПЕРСОНАЛЬНІ ДАНІ',
+    DELIVERY_INFO: 'ДОСТАВКА',
+    CONFIRMATION: 'ПІДТВЕРДЖЕННЯ'
 });

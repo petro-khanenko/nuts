@@ -21,15 +21,17 @@
     border-radius: 4px;
 }
 .modal__header {
-    height: 50px;
-    border-bottom: solid 1px rgb(200, 200, 193);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*border-bottom: solid 1px rgb(200, 200, 193);*/
 }
 .modal__title {
     font-family: "Open Sans";
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 24px;
     font-weight: 700;
-    margin-top: 7px;
 }
 .modal__title span:hover {
     color: #4d5454;

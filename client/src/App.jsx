@@ -11,6 +11,7 @@ import Delivery from "./pages/delivery/Delivery";
 import {mainRoutes, params, subRoutes} from "./constants/constants";
 import MainContainer from "./components/MainContainer";
 import ContextProvider from "./context";
+import Checkout from "./pages/checkout";
 
 function App() {
     return (
@@ -28,6 +29,9 @@ function App() {
                     />
                     <Route exact path={`/${mainRoutes.BASKET}`}
                            render={() => <Basket/>}
+                    />
+                    <Route exact path={`/${mainRoutes.BASKET}/${subRoutes.CHECKOUT}`}
+                           render={() => <Checkout/>}
                     />
                     <Route exact path={`/${mainRoutes.ADMIN}`}
                            render={() => <Auth/>}

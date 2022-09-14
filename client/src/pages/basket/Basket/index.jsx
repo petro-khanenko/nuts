@@ -1,15 +1,16 @@
 import {BasketItem} from "./BasketItem";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {OrderModal} from "../../../components/modals/OrderModal";
 import {setConfirmModal} from "../../../utils/swal/helpers";
 import {useBasketData} from "../../../context/BasketContext";
+import {mainRoutes, subRoutes} from "../../../constants/constants";
 
 
 const Basket = () => {
-
+    const {push} = useHistory();
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
     const {basketItems, clearBasket} = useBasketData();
 
@@ -67,7 +68,12 @@ const Basket = () => {
                         <div>{total} грн</div>
                     </div>
                     <div className="basket_buttons">
-                        <Button variant='contained' color='primary' onClick={() => setOrderModalOpen(true)}>
+                        <Button
+                            variant='contained'
+                            color='primary'
+                            onClick={() => push(`/${mainRoutes.BASKET}/${subRoutes.CHECKOUT}`)}
+                            // onClick={() => setOrderModalOpen(true)}
+                        >
                             Оформити замовлення
                         </Button>
                         <Button variant='contained' color='secondary' onClick={clearBasketHandler}>Очистити корзину</Button>

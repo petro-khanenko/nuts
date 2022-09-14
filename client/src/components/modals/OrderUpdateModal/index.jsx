@@ -1,21 +1,34 @@
 import React from 'react'
-import {IconButton, makeStyles} from "@material-ui/core";
-import Close from "@material-ui/icons/Close";
-import {OrderFormFields} from "../../OrderFormFields";
+import {Container, IconButton, makeStyles} from "@material-ui/core";
 import {useHttp} from "../../../hooks/http.hook";
 import {setInfoModal} from "../../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
+import Checkout from "../../../pages/checkout";
+import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            minWidth: 30,
-            marginTop: '-13px',
-            float: 'right',
+            // position: 'absolute',
+            // right: '10px',
+            minWidth: 40,
+            marginTop: '10px',
+            marginRight: '-15px',
+            // float: 'right',
         },
         icon: {
-            fontSize: 30,
+            fontSize: 40,
             color: 'red',
         },
+        root: {
+            // position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            minHeight: 'calc(100vh - 140px)',
+            marginTop: '80px',
+            marginBottom: '60px',
+            backgroundColor: '#e1f1f1'
+        }
     })
 )
 
@@ -27,7 +40,7 @@ export const OrderUpdateModal = ({
                                  }) => {
 
     const {request} = useHttp();
-    const {icon, iconButton} = useStyles();
+    const {root, icon, iconButton} = useStyles();
 
     const updateOrderHandler = async (formData) => {
         try {
@@ -64,20 +77,32 @@ export const OrderUpdateModal = ({
 
     return (
         <div className={'modal__overlay'}>
-            <div className={'modal__window'}>
+            <Container className={root} container={'main'} maxWidth={'sm'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>
                         Оформлення замовлення
-                        <IconButton className={iconButton}
-                                    onClick={onCancel}>
-                            <Close className={icon}/>
-                        </IconButton>
                     </div>
+                    <IconButton className={iconButton}
+                                onClick={onCancel}>
+                        <Cancel className={icon}/>
+                    </IconButton>
                 </div>
-                <div className={'modal__body'}>
-                    <OrderFormFields onSubmit={onSubmit} order={order}/>
-                </div>
-            </div>
+                <Checkout/>
+            </Container>
+            {/*<div className={'modal__window'}>*/}
+            {/*    <div className={'modal__header'}>*/}
+            {/*        <div className={'modal__title'}>*/}
+            {/*            Оформлення замовлення*/}
+            {/*            <IconButton className={iconButton}*/}
+            {/*                        onClick={onCancel}>*/}
+            {/*                <Close className={icon}/>*/}
+            {/*            </IconButton>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className={'modal__body'}>*/}
+            {/*        <OrderFormFields onSubmit={onSubmit} order={order}/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 }
