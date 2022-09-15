@@ -1,9 +1,9 @@
 import React from 'react'
 import {Container, IconButton, makeStyles} from "@material-ui/core";
-import {useHttp} from "../../../hooks/http.hook";
-import {setInfoModal} from "../../../utils/swal/helpers";
-import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
-import Checkout from "../../Checkout";
+import {useHttp} from "../../hooks/http.hook";
+import {setInfoModal} from "../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes} from "../../constants/constants";
+import Checkout from "../Checkout";
 import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-export const OrderUpdateModal = ({
+export const UpdateOrderModal = ({
                                      onCancel,
                                      items,
                                      total,

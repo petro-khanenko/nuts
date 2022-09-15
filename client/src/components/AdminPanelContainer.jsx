@@ -1,10 +1,10 @@
 import React, {useCallback, useState} from 'react';
 import {NavLink, Redirect} from "react-router-dom";
-import {useItemsData} from "../../context/ItemsContext";
-import {useHttp} from "../../hooks/http.hook";
-import {useAuth} from "../../hooks/auth.hook";
-import {apiRoutes, mainRoutes} from "../../constants/constants";
-import UpdateItemModal from "../modals/UpdateItemModal";
+import {useItemsData} from "../context/ItemsContext";
+import {useHttp} from "../hooks/http.hook";
+import {useAuth} from "../hooks/auth.hook";
+import {apiRoutes, mainRoutes} from "../constants/constants";
+import UpdateItemModal from "./modals/UpdateItemModal";
 import {Button} from "@material-ui/core";
 
 

@@ -4,7 +4,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {BasketItem} from "../basket/BasketItem";
 import {useBasketData} from "../../context/BasketContext";
 import {NavLink} from "react-router-dom";
-import {OrderUpdateModal} from "../../components/modals/OrderUpdateModal";
+import {UpdateOrderModal} from "../../components/modals/UpdateOrderModal";
 import {AdminBasketStoreItem} from "./AdminBasketStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
@@ -25,7 +25,7 @@ export const AdminBasket = () => {
 
     return (
         <div>
-            {isOrderModalOpen && <OrderUpdateModal onCancel={() => setOrderModalOpen(false)}
+            {isOrderModalOpen && <UpdateOrderModal onCancel={() => setOrderModalOpen(false)}
                                                    items={items}
                                                    total={total}
                                                    order={order}

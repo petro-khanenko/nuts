@@ -1,10 +1,10 @@
-import BasketButton from "../BasketButton";
+import BasketButton from "./BasketButton";
 import {useLocation} from "react-router-dom";
-import {apiRoutes, mainRoutes} from "../../constants/constants";
+import {apiRoutes, mainRoutes} from "../constants/constants";
 import React, {useCallback, useEffect} from "react";
-import {useScrollData} from "../../context/ScrollContext";
-import {useHttp} from "../../hooks/http.hook";
-import {useItemsData} from "../../context/ItemsContext";
+import {useScrollData} from "../context/ScrollContext";
+import {useHttp} from "../hooks/http.hook";
+import {useItemsData} from "../context/ItemsContext";
 
 const MainContainer = ({children}) => {
 

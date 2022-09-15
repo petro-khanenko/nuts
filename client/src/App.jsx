@@ -11,7 +11,7 @@ import Delivery from "./pages/delivery/Delivery";
 import {mainRoutes, params, subRoutes} from "./constants/constants";
 import MainContainer from "./components/MainContainer";
 import ContextProvider from "./context";
-import Checkout from "./components/Checkout";
+
 
 function App() {
     return (
