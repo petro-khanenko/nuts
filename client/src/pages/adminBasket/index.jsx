@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {BasketItem} from "../basket/Basket/BasketItem";
+import {BasketItem} from "../basket/BasketItem";
 import {useBasketData} from "../../context/BasketContext";
 import {NavLink} from "react-router-dom";
 import {OrderUpdateModal} from "../../components/modals/OrderUpdateModal";

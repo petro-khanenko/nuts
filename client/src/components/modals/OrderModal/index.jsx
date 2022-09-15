@@ -53,9 +53,9 @@ export const OrderModal = ({
                 total,
                 items
             });
-            onCancel();
-            clearBasket();
             if (data.status === 'success') {
+                onCancel();
+                clearBasket();
                 setInfoModal('Вітаємо, Ваше замовлення прийнято. Ми з Вами зв\'яжемось найближчим часом!!!');
             }
         } catch (e) {

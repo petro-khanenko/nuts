@@ -18,8 +18,7 @@ export const mainRoutes = Object.freeze({
 export const subRoutes = Object.freeze({
     PANEL: 'panel',
     ADMIN_BASKET: 'admin_basket',
-    LOGIN: 'login',
-    CHECKOUT: 'checkout'
+    LOGIN: 'login'
 });
 
 export const apiRoutes = Object.freeze({

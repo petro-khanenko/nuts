@@ -5,22 +5,21 @@
 @import url('pages/adminPanel/Orders/OrderItem/orderItem.css');
 @import url('pages/adminBasket/adminBasket.css');
 @import url('components/modals/modal.css');
-@import url('components/modals/deleteModal.css');
 @import url('pages/main/ItemsList/itemsList.css');
 @import url('pages/main/ItemCard/card.css');
 @import url('./pages/main/Content/content.css');
 @import url('components/DynamicFields/DynamicField/dynamicField.css');
 @import url('./utils/swal/swal.css');
 @import url('./components/FormFields/formFields.css');
-@import url('./pages/basket/Basket/BasketItem/basketItem.css');
-@import url('./pages/basket/Basket/basket.css');
+@import url('pages/basket/BasketItem/basketItem.css');
+@import url('pages/basket/basket.css');
 @import url('./components/OrderFormFields/orderFormFields.css');
 @import url('./pages/about/AboutItem/about.css');
 @import url('./pages/delivery/Delivery/delivery.css');
 @import url('./pages/main/Filters/filters.css');
 @import url('./components/StoreItem/storeItem.css');
-@import url('pages/checkout/Indicator/indicator.css');
-@import url('pages/checkout/checkout.css');
+@import url('components/Checkout/Indicator/indicator.css');
+@import url('components/Checkout/checkout.css');
 
 
 body {

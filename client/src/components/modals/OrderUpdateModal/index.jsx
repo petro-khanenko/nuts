@@ -3,7 +3,7 @@ import {Container, IconButton, makeStyles} from "@material-ui/core";
 import {useHttp} from "../../../hooks/http.hook";
 import {setInfoModal} from "../../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
-import Checkout from "../../../pages/checkout";
+import Checkout from "../../Checkout";
 import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            // minHeight: 'calc(100vh - 140px)',
-            // marginTop: '80px',
-            // marginBottom: '60px',\
             margin: '4% auto',
             paddingBottom: '35px',
             backgroundColor: '#e1f1f1'
