@@ -63,3 +63,9 @@ export const orderSteps = Object.freeze({
     DELIVERY_INFO: 'ДОСТАВКА',
     CONFIRMATION: 'ПІДТВЕРДЖЕННЯ'
 });
+
+export const deliveryOptions = Object.freeze({
+    SELF: {value: 'self', label: 'Самовивіз'},
+    NP: {value: 'np', label: 'Нова Пошта'},
+    OTHER: {value: 'other', label: 'Інший'},
+})

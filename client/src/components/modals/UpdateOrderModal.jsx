@@ -9,7 +9,6 @@ import Cancel from "@material-ui/icons/Cancel";
 const useStyles = makeStyles((theme) => ({
         iconButton: {
             minWidth: 40,
-            marginTop: '7px',
             marginRight: '-15px'
         },
         icon: {

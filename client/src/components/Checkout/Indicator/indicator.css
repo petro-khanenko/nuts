@@ -20,11 +20,6 @@
     border-top-left-radius: 17px;
 }
 
-.indicator__item_active:last-child {
-    border-bottom-right-radius: 17px;
-    border-top-right-radius: 17px;
-}
-
 .indicator__item_active:hover {
     background-color: #4d8000;
 }
@@ -35,4 +30,9 @@
     justify-content: center;
     border-radius: 17px;
     background-color: #b9b6b6;
+}
+
+.indicator__item_disabled:last-child {
+    border-bottom-right-radius: 17px;
+    border-top-right-radius: 17px;
 }

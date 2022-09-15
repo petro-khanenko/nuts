@@ -3,17 +3,12 @@ import {useOrderData} from "../../context/OrderContext";
 import {orderSteps} from "../../constants/constants";
 import {
     Button,
-    FormControl,
-    FormControlLabel,
-    FormLabel,
-    makeStyles,
-    Radio,
-    RadioGroup,
     TextField
 } from "@material-ui/core";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import styled from "@emotion/styled";
 
 
 const schema = yup.object().shape({
@@ -23,18 +18,15 @@ const schema = yup.object().shape({
 
 });
 
-const useStyles = makeStyles(theme => ({
-    submitButton: {
-        marginTop: '40px',
-        padding: '10px',
-        fontSize: '1.25rem'
-    }
-}));
+const StyledButton = styled(Button)`
+  margin-top: 40px;
+  padding: 10px;
+  font-size: 1rem;
+`;
 
 
 const PersonalInfo = () => {
     const {orderData, onSetOrderData, onSetStep} = useOrderData();
-    const {submitButton} = useStyles();
 
     const defaultValues = orderData ? {
         firstName: orderData.firstName,
@@ -60,7 +52,6 @@ const PersonalInfo = () => {
             <TextField variant={'outlined'}
                        margin={'normal'}
                        fullWidth
-                       style={{padding: 0}}
                        label={`Ім'я`}
                        id={'firstName'}
                        {...register('firstName')}
@@ -96,26 +87,13 @@ const PersonalInfo = () => {
                        label={'Номер телефону'}
                        {...register('phone')}
             />
-            <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                >
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-                </RadioGroup>
-            </FormControl>
-            <Button fullWidth
-                    type='submit'
-                    variant='contained'
-                    color='primary'
-                    className={submitButton}
+            <StyledButton fullWidth
+                          type='submit'
+                          variant='contained'
+                          color='primary'
             >
-                Продовжити
-            </Button>
+                Далі
+            </StyledButton>
         </form>
     );
 }
