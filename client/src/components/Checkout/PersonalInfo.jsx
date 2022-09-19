@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useOrderData} from "../../context/OrderContext";
 import {orderSteps} from "../../constants/constants";
 import {
@@ -29,19 +29,15 @@ const PersonalInfo = ({order}) => {
     const {orderData, onSetOrderData, onSetStep} = useOrderData();
     const defaultValues = order ? order : orderData;
 
-    // const defaultValues = defaultOrder ? {
-    //     firstName: defaultOrder.firstName,
-    //     lastName: defaultOrder.lastName,
-    //     email: defaultOrder.email,
-    //     phone: defaultOrder.phone,
-    //     address: defaultOrder.address
-    // } : {};
-
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues,
         mode: 'onBlur',
         resolver: yupResolver(schema),
     });
+
+    useEffect(() => {
+        onSetOrderData(order);
+    }, [order]);
 
     const onSubmit = (data) => {
         onSetOrderData(data);

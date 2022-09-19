@@ -3,21 +3,26 @@ import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {BasketItem} from "../basket/BasketItem";
 import {useBasketData} from "../../context/BasketContext";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {OrderModal} from "../../components/modals/OrderModal";
 import {AdminBasketStoreItem} from "./AdminBasketStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
-import {mainRoutes, subRoutes} from "../../constants/constants";
+import {adminViews, localStorageKeys, mainRoutes, orderSteps, subRoutes} from "../../constants/constants";
 import {useItemsData} from "../../context/ItemsContext";
 import UpdateOrderDataProvider from "./UpdateOrderDataProvider";
 import Checkout from "../../components/Checkout";
+import {setToStorage} from "../../helpers/helpers";
+import {isEmpty} from "lodash";
+import {useOrderData} from "../../context/OrderContext";
 
 
 export const AdminBasket = () => {
 
+    const {push} = useHistory();
     const {items: allItems} = useItemsData();
     const {order, basketItems, clearBasket} = useBasketData();
+    const {onSetStep} = useOrderData();
     const [openStore, setOpenStore] = useState(false);
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
 
@@ -25,11 +30,21 @@ export const AdminBasket = () => {
     const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
     const isPurchases = items.length;
 
+    const handleCancel = () => {
+        setOrderModalOpen(false);
+        onSetStep(orderSteps.PERSONAL_INFO);
+    }
+
+    if (isEmpty(order)) {
+        setToStorage(localStorageKeys.ADMIN_PANEL_VIEW, adminViews.ORDERS_LIST);
+        push(`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`);
+    }
+
     return (
         <div>
             {
                 isOrderModalOpen && (
-                    <OrderModal onCancel={() => setOrderModalOpen(false)}>
+                    <OrderModal onCancel={handleCancel}>
                         <UpdateOrderDataProvider>
                             <Checkout/>
                         </UpdateOrderDataProvider>
@@ -58,7 +73,7 @@ export const AdminBasket = () => {
                 <div className="basket_content">
                     {!isPurchases ? <h2>Ваша корзина пока пуста</h2>
                         : items.map(item => <div>
-                            <BasketItem item={item} /*someShit={someShit} setSomeShit={setSomeShit}*//>
+                            <BasketItem item={item}/>
                         </div>)
                     }
                     <div className='basket_total'>

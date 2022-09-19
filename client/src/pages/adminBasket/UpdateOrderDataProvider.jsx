@@ -49,7 +49,8 @@ const UpdateOrderDataProvider = ({onCancel, children}) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, {
                         order,
-                        onSubmit
+                        onSubmit,
+                        onCancel
                     });
                 }
                 return null;

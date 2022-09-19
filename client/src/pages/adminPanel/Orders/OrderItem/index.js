@@ -6,7 +6,7 @@ import CheckCircle from "@material-ui/icons/CheckCircle";
 import Cancel from "@material-ui/icons/Cancel";
 import {useHttp} from "../../../../hooks/http.hook";
 import {setConfirmModal, setInfoModal, setSuccessModal} from "../../../../utils/swal/helpers";
-import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../../../constants/constants";
+import {apiRoutes, apiSubRoutes, deliveryOptions, mainRoutes, subRoutes} from "../../../../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -84,6 +84,17 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
         );
     };
 
+    const renderAddress = (method) => {
+        switch (method) {
+            case deliveryOptions.SELF.value:
+                return deliveryOptions.SELF.label;
+            case deliveryOptions.NP.value:
+                return `${order.address.npWarehouse}, ${order.address.npCity}`;
+            case deliveryOptions.OTHER.value:
+                return deliveryOptions.OTHER.label;
+        }
+    }
+
     return (
         <div className={'order_item'}>
             <div className='order_item__number'>{order.orderNum}</div>
@@ -94,7 +105,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
                     <div>{order.phone}</div>
                 </div>
             </NavLink>
-            <div>{order.address}</div>
+            <div className='order_item__address'>{renderAddress(order.address.method)}</div>
             <div>{Number(order.total).toFixed(2)} грн</div>
             <IconButton className={iconButton} onClick={completedOrderHandler}>
                 {isActive ? <CheckCircle className={iconIncrease}/> : <Rowing className={iconIncrease}/>}

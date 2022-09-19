@@ -46,7 +46,7 @@ const OrderDataProvider = ({onCancel, children}) => {
         }
     };
 
-    const onSubmit = (formData) => {
+    const onSubmit = (data) => {
         if (!items.length) {
             setInfoModal(
                 'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
@@ -54,7 +54,7 @@ const OrderDataProvider = ({onCancel, children}) => {
             );
             return;
         }
-        saveOrderHandler(formData);
+        saveOrderHandler(data);
     };
 
     return (
@@ -62,7 +62,8 @@ const OrderDataProvider = ({onCancel, children}) => {
             {React.Children.map(children, (child) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, {
-                        onSubmit
+                        onSubmit,
+                        onCancel
                     });
                 }
                 return null;

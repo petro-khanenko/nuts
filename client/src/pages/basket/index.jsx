@@ -1,18 +1,16 @@
 import {BasketItem} from "./BasketItem";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {setConfirmModal} from "../../utils/swal/helpers";
 import {useBasketData} from "../../context/BasketContext";
-import {mainRoutes, subRoutes} from "../../constants/constants";
 import {OrderModal} from "../../components/modals/OrderModal";
 import OrderDataProvider from "./OrderDataProvider";
 import Checkout from "../../components/Checkout";
 
 
 const Basket = () => {
-    const {push} = useHistory();
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
     const {basketItems, clearBasket} = useBasketData();
 

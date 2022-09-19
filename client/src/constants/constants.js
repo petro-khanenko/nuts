@@ -25,7 +25,7 @@ export const apiRoutes = Object.freeze({
     ITEMS: 'api/items',
     AUTH: 'api/auth',
     ORDERS: 'api/orders',
-    COUNT: '/api/count',
+    COUNT: 'api/count',
 });
 
 export const apiSubRoutes = Object.freeze({
@@ -65,9 +65,9 @@ export const orderSteps = Object.freeze({
 });
 
 export const deliveryOptions = Object.freeze({
-    SELF: {value: 'self', label: 'Самовивіз'},
-    NP: {value: 'np', label: 'Нова Пошта'},
-    OTHER: {value: 'other', label: 'Інший'},
+    SELF: {value: 'SELF', label: 'Самовивіз'},
+    NP: {value: 'NP', label: 'Нова Пошта'},
+    OTHER: {value: 'OTHER', label: 'Інший'},
 });
 
 export const INIT_ORDER_NUMBER = '0833';

@@ -6,7 +6,7 @@ const schema = new Schema({
     email: { type: String, required: true },
     phone: { type: String, required: true },
     total: { type: String, required: true },
-    address: { type: String, default: null },
+    address: { type: Object, default: null },
     orderNum: { type: String, required: true},
     active: { type: Boolean, required: true },
     items: { type: Array, default: null },

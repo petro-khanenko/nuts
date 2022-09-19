@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import {useOrderData} from "../../context/OrderContext";
 import {deliveryOptions, orderSteps} from "../../constants/constants";
 import {
-    Button
+    Button, TextareaAutosize
 } from "@material-ui/core";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -30,13 +30,28 @@ const StyledButton = styled(Button)`
   width: 48%;
 `;
 
+const StyledFormLabel = styled(FormLabel)`
+  & h3 {
+    color: black;
+  }
+`;
+const StyledTextareaAutosize = styled(TextareaAutosize)`
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px;
+`;
+
 const DeliveryInfo = () => {
     const {orderData, onSetOrderData, onSetStep} = useOrderData();
-    const [value, setValue] = useState(orderData.delivery || 'self');
+    const [value, setValue] = useState(orderData.address?.method || deliveryOptions.SELF.value);
+    const [cityValue, setCityValue] = useState(orderData.address?.npCity || '');
+    const [warehouseValue, setWarehouseValue] = useState(orderData.address?.npWarehouse || '');
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: {
-            delivery: orderData.delivery
+            comment: orderData.address?.comment
         },
         mode: 'onBlur',
         // resolver: yupResolver(schema),
@@ -47,14 +62,22 @@ const DeliveryInfo = () => {
     }
 
     const onSubmit = (data) => {
-        onSetOrderData(data);
+        const deliveryData = {
+            address: {
+                ...data,
+                method: value,
+                npCity: cityValue ? `${cityValue}` : null,
+                npWarehouse: warehouseValue ? `${warehouseValue}` : null
+            }
+        }
+        onSetOrderData(deliveryData);
         onSetStep(orderSteps.CONFIRMATION);
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%'}}>
             <FormControl>
-                <FormLabel id="radio-btn-group">Спосіб доставки</FormLabel>
+                <StyledFormLabel id="radio-btn-group"><h3>Спосіб доставки</h3></StyledFormLabel>
                 <RadioGroup
                     aria-labelledby="radio-btn-group"
                     name="delivery"
@@ -72,7 +95,23 @@ const DeliveryInfo = () => {
                     }
                 </RadioGroup>
             </FormControl>
-            <NP/>
+            {
+                value === deliveryOptions.NP.value && (
+                    <NP
+                        cityValue={cityValue}
+                        warehouseValue={warehouseValue}
+                        onSetCityValue={setCityValue}
+                        onSetWarehouseValue={setWarehouseValue}
+                    />
+                )
+            }
+            <h3>Коментарі</h3>
+            <StyledTextareaAutosize
+                id="comment"
+                {...register('comment')}
+                minRows={6}
+                placeholder="Коментарі та побажання"
+            />
             <ButtonsContainer>
                 <StyledButton
                     variant='contained'
@@ -85,6 +124,7 @@ const DeliveryInfo = () => {
                     type='submit'
                     variant='contained'
                     color='primary'
+                    disabled={value === deliveryOptions.NP.value && (!cityValue || !warehouseValue) }
                 >
                     Далі
                 </StyledButton>

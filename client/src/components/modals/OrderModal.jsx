@@ -49,22 +49,7 @@ export const OrderModal = ({
                     }
                     return null;
                 })}
-                {/*<Checkout/>*/}
             </Container>
-            {/*<div className={'modal__window'}>*/}
-            {/*    <div className={'modal__header'}>*/}
-            {/*        <div className={'modal__title'}>*/}
-            {/*            Оформлення замовлення*/}
-            {/*            <IconButton className={iconButton}*/}
-            {/*                        onClick={onCancel}>*/}
-            {/*                <Close className={icon}/>*/}
-            {/*            </IconButton>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className={'modal__body'}>*/}
-            {/*        <OrderFormFields onSubmit={onSubmit} order={order}/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </div>
     );
 }
