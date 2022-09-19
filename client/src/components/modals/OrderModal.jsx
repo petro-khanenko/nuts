@@ -1,98 +1,70 @@
 import React from 'react'
-import {IconButton, makeStyles} from "@material-ui/core";
-import Close from "@material-ui/icons/Close";
-import {OrderFormFields} from "../OrderFormFields";
-import {useHttp} from "../../hooks/http.hook";
-import {setInfoModal} from "../../utils/swal/helpers";
-import {apiRoutes, apiSubRoutes} from "../../constants/constants";
+import {Container, IconButton, makeStyles} from "@material-ui/core";
+import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            minWidth: 30,
-            marginTop: '-13px',
-            float: 'right',
+            minWidth: 40,
+            marginRight: '-15px'
         },
         icon: {
-            fontSize: 30,
+            fontSize: 40,
             color: 'red',
         },
+        root: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: '4% auto',
+            paddingBottom: '35px',
+            backgroundColor: '#e1f1f1'
+        }
     })
-);
-
-const INIT_ORDER_NUMBER = '0833';
+)
 
 export const OrderModal = ({
-                               onCancel,
-                               items,
-                               clearBasket,
-                               total
-                           }) => {
+                                     onCancel,
+                                     children
+                                 }) => {
 
-    const {request} = useHttp();
-    const {icon, iconButton} = useStyles();
-
-    const saveOrderHandler = async (formData) => {
-        try {
-            let counts = await request(`/${apiRoutes.COUNT}`);
-            if (!counts.length) {
-                await request(`/${apiRoutes.COUNT}/${apiSubRoutes.SAVE}`, 'POST', {
-                    orderNum: INIT_ORDER_NUMBER
-                });
-                counts = await request(`/${apiRoutes.COUNT}`);
-            }
-            const count = counts[0];
-            const nextOrderNum = String(Number(count.orderNum) + 1);
-            await request(`/${apiRoutes.COUNT}/${apiSubRoutes.UPDATE}`, 'PUT', {
-                orderNum: nextOrderNum.length === 3 ? '0' + nextOrderNum : nextOrderNum,
-                id: count._id
-            });
-            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.SAVE}`, 'POST', {
-                ...formData,
-                active: true,
-                orderNum: count.orderNum,
-                total,
-                items
-            });
-            if (data.status === 'success') {
-                onCancel();
-                clearBasket();
-                setInfoModal('Вітаємо, Ваше замовлення прийнято. Ми з Вами зв\'яжемось найближчим часом!!!');
-            }
-        } catch (e) {
-            setInfoModal(
-                'На жаль, під час обробки замовлення сталася помилка. Повторіть, будь ласка, відправку форми!',
-                'warning'
-            );
-        }
-    };
-
-    const onSubmit = (formData) => {
-        if (!items.length) {
-            setInfoModal(
-                'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
-                'warning'
-            );
-            return;
-        }
-        saveOrderHandler(formData);
-    };
+    const {root, icon, iconButton} = useStyles();
 
     return (
         <div className={'modal__overlay'}>
-            <div className={'modal__window'}>
+            <Container className={root} container={'main'} maxWidth={'sm'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>
                         Оформлення замовлення
-                        <IconButton className={iconButton}
-                                    onClick={onCancel}>
-                            <Close className={icon}/>
-                        </IconButton>
                     </div>
+                    <IconButton className={iconButton}
+                                onClick={onCancel}>
+                        <Cancel className={icon}/>
+                    </IconButton>
                 </div>
-                <div className={'modal__body'}>
-                    <OrderFormFields onSubmit={onSubmit}/>
-                </div>
-            </div>
+                {React.Children.map(children, (child) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            onCancel
+                        });
+                    }
+                    return null;
+                })}
+                {/*<Checkout/>*/}
+            </Container>
+            {/*<div className={'modal__window'}>*/}
+            {/*    <div className={'modal__header'}>*/}
+            {/*        <div className={'modal__title'}>*/}
+            {/*            Оформлення замовлення*/}
+            {/*            <IconButton className={iconButton}*/}
+            {/*                        onClick={onCancel}>*/}
+            {/*                <Close className={icon}/>*/}
+            {/*            </IconButton>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className={'modal__body'}>*/}
+            {/*        <OrderFormFields onSubmit={onSubmit} order={order}/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 }

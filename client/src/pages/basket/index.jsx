@@ -3,10 +3,12 @@ import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {NavLink, useHistory} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {OrderModal} from "../../components/modals/OrderModal";
 import {setConfirmModal} from "../../utils/swal/helpers";
 import {useBasketData} from "../../context/BasketContext";
 import {mainRoutes, subRoutes} from "../../constants/constants";
+import {OrderModal} from "../../components/modals/OrderModal";
+import OrderDataProvider from "./OrderDataProvider";
+import Checkout from "../../components/Checkout";
 
 
 const Basket = () => {
@@ -32,10 +34,15 @@ const Basket = () => {
     const isPurchases = items.length;
     return (
         <div>
-            {isOrderModalOpen && <OrderModal onCancel={() => setOrderModalOpen(false)}
-                                             items={items}
-                                             total={total}
-            />}
+            {
+                isOrderModalOpen && (
+                    <OrderModal onCancel={() => setOrderModalOpen(false)}>
+                        <OrderDataProvider>
+                            <Checkout/>
+                        </OrderDataProvider>
+                    </OrderModal>
+                )
+            }
             <div className="basket">
                 <div className='basket_go-back-button'>
                     <NavLink to={'/'}>
@@ -71,12 +78,13 @@ const Basket = () => {
                         <Button
                             variant='contained'
                             color='primary'
-                            onClick={() => push(`/${mainRoutes.BASKET}/${subRoutes.CHECKOUT}`)}
-                            // onClick={() => setOrderModalOpen(true)}
+                            onClick={() => setOrderModalOpen(true)}
                         >
                             Оформити замовлення
                         </Button>
-                        <Button variant='contained' color='secondary' onClick={clearBasketHandler}>Очистити корзину</Button>
+                        <Button variant='contained' color='secondary' onClick={clearBasketHandler}>
+                            Очистити корзину
+                        </Button>
                     </div>
                 </div>
             </div>
