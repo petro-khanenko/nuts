@@ -4,7 +4,7 @@
 .admin_store__header {
     display: grid;
     grid-template-areas: 'N name price button';
-    grid-template-columns: 0.5fr 6.5fr 3fr 2fr;
+    grid-template-columns: 0.5fr 5.5fr 4fr 2fr;
     grid-template-rows: 60px;
     margin: 0 5px;
     padding: 5px 10px;
