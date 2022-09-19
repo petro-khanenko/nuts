@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@hookform/resolvers": "^2.9.8",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@mui/material": "^5.10.5",
@@ -13,14 +14,18 @@
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
     "axios": "^0.21.4",
+    "libphonenumber-js": "^1.10.13",
+    "lodash": "^4.17.21",
     "material-ui": "^0.20.2",
     "novaposhta": "^1.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^7.35.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "sweetalert2": "^11.1.6",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

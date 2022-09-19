@@ -35,13 +35,13 @@ const StyledButton = styled(Button)`
 `;
 
 const Confirmation = ({onSubmit, onCancel}) => {
-    const {orderData, onSetOrderData, onSetStep} = useOrderData();
+    const {orderData, clearOrderData, onSetStep} = useOrderData();
 
     const handleSubmit = () => {
         onSubmit(orderData);
         onCancel();
         onSetStep(orderSteps.PERSONAL_INFO);
-        onSetOrderData({});
+        clearOrderData({});
     };
 
     return (

@@ -15,12 +15,17 @@ export const OrderDataProvider = ({children}) => {
             }));
     }
 
+    const clearOrderData = () => {
+        setOrderData({});
+    }
+
     return (
         <OrderContext.Provider value={{
             orderData,
             onSetOrderData: handleOrderData,
             step,
-            onSetStep: setStep
+            onSetStep: setStep,
+            clearOrderData
         }}>
             {children}
         </OrderContext.Provider>
