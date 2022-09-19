@@ -25,16 +25,17 @@ const StyledButton = styled(Button)`
 `;
 
 
-const PersonalInfo = () => {
+const PersonalInfo = ({order}) => {
     const {orderData, onSetOrderData, onSetStep} = useOrderData();
+    const defaultValues = order ? order : orderData;
 
-    const defaultValues = orderData ? {
-        firstName: orderData.firstName,
-        lastName: orderData.lastName,
-        email: orderData.email,
-        phone: orderData.phone,
-        address: orderData.address
-    } : {};
+    // const defaultValues = defaultOrder ? {
+    //     firstName: defaultOrder.firstName,
+    //     lastName: defaultOrder.lastName,
+    //     email: defaultOrder.email,
+    //     phone: defaultOrder.phone,
+    //     address: defaultOrder.address
+    // } : {};
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues,

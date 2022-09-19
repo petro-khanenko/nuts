@@ -10,11 +10,13 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import {mainRoutes, subRoutes} from "../../constants/constants";
 import {useItemsData} from "../../context/ItemsContext";
+import UpdateOrderDataProvider from "./UpdateOrderDataProvider";
+import Checkout from "../../components/Checkout";
 
 
 export const AdminBasket = () => {
 
-    const { items: allItems } = useItemsData();
+    const {items: allItems} = useItemsData();
     const {order, basketItems, clearBasket} = useBasketData();
     const [openStore, setOpenStore] = useState(false);
     const [isOrderModalOpen, setOrderModalOpen] = useState(false);
@@ -25,11 +27,15 @@ export const AdminBasket = () => {
 
     return (
         <div>
-            {isOrderModalOpen && <UpdateOrderModal onCancel={() => setOrderModalOpen(false)}
-                                                   items={items}
-                                                   total={total}
-                                                   order={order}
-            />}
+            {
+                isOrderModalOpen && (
+                    <UpdateOrderModal onCancel={() => setOrderModalOpen(false)}>
+                        <UpdateOrderDataProvider>
+                            <Checkout/>
+                        </UpdateOrderDataProvider>
+                    </UpdateOrderModal>
+                )
+            }
             <div className="basket">
                 <div className='basket_go-back-button'>
                     <NavLink to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}`}>

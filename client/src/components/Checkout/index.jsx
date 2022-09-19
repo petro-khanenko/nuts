@@ -6,22 +6,22 @@ import DeliveryInfo from "./DeliveryInfo";
 import Indicator from "./Indicator";
 
 
-const renderStep = (step) => {
+const renderStep = (step, order, onSubmit) => {
     switch (step) {
         case orderSteps.PERSONAL_INFO:
-            return <PersonalInfo/>;
+            return <PersonalInfo order={order}/>;
         case orderSteps.DELIVERY_INFO:
             return <DeliveryInfo/>;
     }
 }
 
-const Checkout = () => {
+const Checkout = ({order, onSubmit}) => {
     const {step} = useOrderData();
     return (
         <>
             <Indicator/>
             {
-                renderStep(step)
+                renderStep(step, order, onSubmit)
             }
         </>
     );

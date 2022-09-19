@@ -9,6 +9,7 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import NP from "./NP";
 
 const schema = yup.object().shape({
     firstName: yup.string().matches(/^([^\d]*)$/, 'Це поле може містити лише літери!').required(`Поле обов'язкове!`),
@@ -71,6 +72,7 @@ const DeliveryInfo = () => {
                     }
                 </RadioGroup>
             </FormControl>
+            <NP/>
             <ButtonsContainer>
                 <StyledButton
                     variant='contained'

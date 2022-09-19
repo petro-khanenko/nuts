@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Container, IconButton, makeStyles} from "@material-ui/core";
 import {useHttp} from "../../hooks/http.hook";
 import {setInfoModal} from "../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes} from "../../constants/constants";
 import Checkout from "../Checkout";
 import Cancel from "@material-ui/icons/Cancel";
+import {useBasketData} from "../../context/BasketContext";
+import {useOrderData} from "../../context/OrderContext";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -28,46 +30,51 @@ const useStyles = makeStyles((theme) => ({
 
 export const UpdateOrderModal = ({
                                      onCancel,
-                                     items,
-                                     total,
-                                     order
+    children
+                                     // items,
+                                     // total,
+                                     // order
                                  }) => {
 
-    const {request} = useHttp();
+    // const {request} = useHttp();
     const {root, icon, iconButton} = useStyles();
+    // const {order, basketItems} = useBasketData();
 
-    const updateOrderHandler = async (formData) => {
-        try {
-            const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.UPDATE}`, 'PUT', {
-                ...formData,
-                id: order._id,
-                active: order.active,
-                orderNum: order.orderNum,
-                total,
-                items
-            });
-            onCancel();
-            if (data.status === 'success') {
-                setInfoModal('Замовлення оновлено!');
-            }
-        } catch (e) {
-            setInfoModal(
-                'На жаль, під час оновлення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
-                'warning'
-            );
-        }
-    };
+    // const items = Object.values(basketItems) || [];
+    // const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
 
-    const onSubmit = (formData) => {
-        if (!items.length) {
-            setInfoModal(
-                'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
-                'warning'
-            );
-            return;
-        }
-        updateOrderHandler(formData);
-    };
+    // const updateOrderHandler = async (formData) => {
+    //     try {
+    //         const data = await request(`/${apiRoutes.ORDERS}/${apiSubRoutes.UPDATE}`, 'PUT', {
+    //             ...formData,
+    //             id: order._id,
+    //             active: order.active,
+    //             orderNum: order.orderNum,
+    //             total,
+    //             items
+    //         });
+    //         onCancel();
+    //         if (data.status === 'success') {
+    //             setInfoModal('Замовлення оновлено!');
+    //         }
+    //     } catch (e) {
+    //         setInfoModal(
+    //             'На жаль, під час оновлення замовлення сталася помилка. Повторіть, будь ласка, спробу!',
+    //             'warning'
+    //         );
+    //     }
+    // };
+    //
+    // const onSubmit = (formData) => {
+    //     if (!items.length) {
+    //         setInfoModal(
+    //             'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
+    //             'warning'
+    //         );
+    //         return;
+    //     }
+    //     updateOrderHandler(formData);
+    // };
 
     return (
         <div className={'modal__overlay'}>
@@ -81,7 +88,15 @@ export const UpdateOrderModal = ({
                         <Cancel className={icon}/>
                     </IconButton>
                 </div>
-                <Checkout/>
+                {React.Children.map(children, (child) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            onCancel
+                        });
+                    }
+                    return null;
+                })}
+                {/*<Checkout/>*/}
             </Container>
             {/*<div className={'modal__window'}>*/}
             {/*    <div className={'modal__header'}>*/}
