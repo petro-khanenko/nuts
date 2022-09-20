@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import PersonalInfo from "./PersonalInfo";
-import {useOrderData} from "../../context/OrderContext";
-import {orderSteps} from "../../constants/constants";
+import {useOrderData} from "../../../context/OrderContext";
+import {orderSteps} from "../../../constants/constants";
 import DeliveryInfo from "./DeliveryInfo";
 import Indicator from "./Indicator";
 import Confirmation from "./Confirmation";

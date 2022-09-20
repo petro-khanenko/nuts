@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled'
-import {useOrderData} from "../../context/OrderContext";
-import {deliveryOptions, orderSteps} from "../../constants/constants";
+import {useOrderData} from "../../../context/OrderContext";
+import {deliveryOptions, orderSteps} from "../../../constants/constants";
 import {
     Button, TextareaAutosize
 } from "@material-ui/core";
 import {useForm} from "react-hook-form";
-import * as yup from "yup";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import NP from "./NP";
 

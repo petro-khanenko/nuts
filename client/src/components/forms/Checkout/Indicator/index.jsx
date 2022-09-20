@@ -1,6 +1,6 @@
 import React from "react";
-import {orderSteps} from "../../../constants/constants";
-import {useOrderData} from "../../../context/OrderContext";
+import {orderSteps} from "../../../../constants/constants";
+import {useOrderData} from "../../../../context/OrderContext";
 import IndicatorItem from "./IndicatorItem";
 
 

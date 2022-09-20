@@ -1,6 +1,6 @@
 import React from 'react';
-import {FormFields} from "./FormFields";
-import {DynamicFields} from "./DynamicFields";
+import {FormFields} from "./ItemFormFields";
+import {DynamicFields} from "./DymamicFields";
 import {styled} from "@mui/material";
 import {Button} from "@material-ui/core";
 

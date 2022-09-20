@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ListItem from "./ListItem";
 import {Modal} from "../../../components/modals/Modal";
 import UpdateItemProvider from "./UpdateItemProvider";
-import ItemForm from "../../../components/ItemForm";
+import ItemForm from "../../../components/forms/ItemForm";
 
 const ItemsList = ({items, fetchItems}) => {
     const [isModalOpen, setModalOpen] = useState(false);

@@ -5,7 +5,7 @@ import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 import {fileSelectorHandler} from "../../../utils/imgur/helpers";
 import {getAddFieldsObject, resetFormsStateHelper} from "../../../helpers/helpers";
-import ItemForm from "../../../components/ItemForm";
+import ItemForm from "../../../components/forms/ItemForm";
 
 
 // styled components

@@ -11,7 +11,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import {adminViews, localStorageKeys, mainRoutes, orderSteps, subRoutes} from "../../constants/constants";
 import {useItemsData} from "../../context/ItemsContext";
 import UpdateOrderDataProvider from "./UpdateOrderDataProvider";
-import Checkout from "../../components/Checkout";
+import Checkout from "../../components/forms/Checkout";
 import {setToStorage} from "../../helpers/helpers";
 import {isEmpty} from "lodash";
 import {useOrderData} from "../../context/OrderContext";

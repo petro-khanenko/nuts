@@ -7,7 +7,7 @@ import {setConfirmModal} from "../../utils/swal/helpers";
 import {useBasketData} from "../../context/BasketContext";
 import {Modal} from "../../components/modals/Modal";
 import OrderDataProvider from "./OrderDataProvider";
-import Checkout from "../../components/Checkout";
+import Checkout from "../../components/forms/Checkout";
 
 
 const Basket = () => {

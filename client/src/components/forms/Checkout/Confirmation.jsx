@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled'
-import {useOrderData} from "../../context/OrderContext";
-import {deliveryOptions, orderSteps} from "../../constants/constants";
+import {useOrderData} from "../../../context/OrderContext";
+import {deliveryOptions, orderSteps} from "../../../constants/constants";
 import {
     Button, TextareaAutosize
 } from "@material-ui/core";

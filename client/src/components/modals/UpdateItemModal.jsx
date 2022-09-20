@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {useHttp} from "../../hooks/http.hook"
-import {FormFields} from "../FormFields";
+import {FormFields} from "../forms/ItemForm/ItemFormFields";
 import {getAddFieldsObject, getInitDynamicKeysForm, getInitDynamicValuesForm} from "../../helpers/helpers";
-import {DynamicFields} from "../DynamicFields";
+import {DynamicFields} from "../forms/ItemForm/DymamicFields";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import {fileSelectorHandler} from "../../utils/imgur/helpers";
