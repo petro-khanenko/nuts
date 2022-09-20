@@ -75,6 +75,7 @@ const Auth = () => {
                        label='Email'
                        id='email'
                        name='email'
+                       type='email'
                        value={form.email}
                        onChange={formHandler}
             />
@@ -82,8 +83,8 @@ const Auth = () => {
                        margin='normal'
                        fullWidth
                        label='Password'
-                       id='email'
-                       name='email'
+                       id='password'
+                       name='password'
                        type='password'
                        value={form.password}
                        onChange={formHandler}

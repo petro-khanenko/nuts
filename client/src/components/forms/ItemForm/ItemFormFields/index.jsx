@@ -13,7 +13,6 @@ const StyledTextareaAutosize = styled(TextareaAutosize)`
 const StyledTextField = styled(TextField)`
   margin: 5px 0;
 `;
-
 const DynamicTextField = styled(TextField)`
   width: 50%;
   margin: 5px 0;
