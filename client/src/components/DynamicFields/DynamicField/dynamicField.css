@@ -1,14 +1,4 @@
 .dynamic_field {
     display: flex;
-    width: 358px;
-}
-.dynamic_field__item {
-    flex: 0 1 50%;
-}
-.dynamic_field__item input{
-    width: 50%;
-    margin-bottom: -5px;
-}
-.dynamic_field__item button{
-    width: 50%;
+    width: 100%;
 }

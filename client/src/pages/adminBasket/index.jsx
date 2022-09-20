@@ -4,7 +4,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {BasketItem} from "../basket/BasketItem";
 import {useBasketData} from "../../context/BasketContext";
 import {NavLink, useHistory} from "react-router-dom";
-import {OrderModal} from "../../components/modals/OrderModal";
+import {Modal} from "../../components/modals/Modal";
 import {AdminBasketStoreItem} from "./AdminBasketStoreItem";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
@@ -44,11 +44,11 @@ export const AdminBasket = () => {
         <div>
             {
                 isOrderModalOpen && (
-                    <OrderModal onCancel={handleCancel}>
+                    <Modal onCancel={handleCancel}>
                         <UpdateOrderDataProvider>
                             <Checkout/>
                         </UpdateOrderDataProvider>
-                    </OrderModal>
+                    </Modal>
                 )
             }
             <div className="basket">

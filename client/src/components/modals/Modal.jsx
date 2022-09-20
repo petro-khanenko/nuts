@@ -22,10 +22,11 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-export const OrderModal = ({
-                                     onCancel,
-                                     children
-                                 }) => {
+export const Modal = ({
+                          title='Оформлення замовлення',
+                          onCancel,
+                          children
+                      }) => {
 
     const {root, icon, iconButton} = useStyles();
 
@@ -34,7 +35,7 @@ export const OrderModal = ({
             <Container className={root} container={'main'} maxWidth={'sm'}>
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>
-                        Оформлення замовлення
+                        {title}
                     </div>
                     <IconButton className={iconButton}
                                 onClick={onCancel}>

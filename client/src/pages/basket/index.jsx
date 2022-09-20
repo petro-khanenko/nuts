@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {setConfirmModal} from "../../utils/swal/helpers";
 import {useBasketData} from "../../context/BasketContext";
-import {OrderModal} from "../../components/modals/OrderModal";
+import {Modal} from "../../components/modals/Modal";
 import OrderDataProvider from "./OrderDataProvider";
 import Checkout from "../../components/Checkout";
 
@@ -34,11 +34,11 @@ const Basket = () => {
         <div>
             {
                 isOrderModalOpen && (
-                    <OrderModal onCancel={() => setOrderModalOpen(false)}>
+                    <Modal onCancel={() => setOrderModalOpen(false)}>
                         <OrderDataProvider>
                             <Checkout/>
                         </OrderDataProvider>
-                    </OrderModal>
+                    </Modal>
                 )
             }
             <div className="basket">

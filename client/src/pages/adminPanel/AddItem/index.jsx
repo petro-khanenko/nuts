@@ -1,11 +1,22 @@
 import React, {useState} from 'react';
-import {DynamicFields} from "../../../components/DynamicFields";
-import {FormFields} from "../../../components/FormFields";
+import {Container, styled} from "@mui/material";
+import {useHttp} from "../../../hooks/http.hook";
+import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 import {fileSelectorHandler} from "../../../utils/imgur/helpers";
 import {getAddFieldsObject, resetFormsStateHelper} from "../../../helpers/helpers";
-import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
-import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
-import {useHttp} from "../../../hooks/http.hook";
+import ItemForm from "../../../components/ItemForm";
+
+
+// styled components
+const StyledContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% auto;
+  padding-bottom: 25px;
+  background-color: #e1f1f1;
+`;
 
 
 const AddItem = ({fetchItems}) => {
@@ -49,24 +60,21 @@ const AddItem = ({fetchItems}) => {
     }
 
     return (
-        <div className={'admin-panel'}>
-            <h2>Add Item</h2>
-            <FormFields form={form}
-                        formHandler={handleForm}
-                        fileSelectorHandler={handleSelectFile}
-            />
-            <DynamicFields dynamicKeysForm={dynamicKeysForm}
-                           dynamicValuesForm={dynamicValuesForm}
-                           dynamicKeysFormHandler={handleDynamicKeys}
-                           dynamicValuesFormHandler={handleDynamicValues}
-
-            />
-            <button className="admin-panel__save-button"
-                    onClick={handleSaveItem}
-            >
-                Save
-            </button>
-        </div>
+        <>
+            <StyledContainer container={'main'} maxWidth={'sm'}>
+                <h2>Add Item</h2>
+                <ItemForm
+                    form={form}
+                    formHandler={handleForm}
+                    fileSelectorHandler={handleSelectFile}
+                    dynamicKeysForm={dynamicKeysForm}
+                    dynamicValuesForm={dynamicValuesForm}
+                    dynamicKeysFormHandler={handleDynamicKeys}
+                    dynamicValuesFormHandler={handleDynamicValues}
+                    onSaveItem={handleSaveItem}
+                />
+            </StyledContainer>
+        </>
 
     );
 }

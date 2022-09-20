@@ -54,7 +54,7 @@ const UpdateItemModal = ({
     const dynamicValuesFormHandler = (e) => {
         setDynamicValuesForm({...dynamicValuesForm, [e.target.name]: e.target.value})
     };
-    const updateCompanyHandler = async () => {
+    const updateItemHandler = async () => {
         const addFields = getAddFieldsObject(dynamicKeysForm, dynamicValuesForm);
         try {
             const data = await request(`/${apiRoutes.ITEMS}/${apiSubRoutes.UPDATE}`, 'PUT', {
@@ -102,7 +102,7 @@ const UpdateItemModal = ({
                                initFieldsCount={initFieldsCount}
                 />
                 <div className={'modal__footer'}>
-                    <button onClick={updateCompanyHandler}>Save updating</button>
+                    <button onClick={updateItemHandler}>Save updating</button>
                 </div>
             </div>
         </div>

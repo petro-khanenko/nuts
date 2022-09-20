@@ -6,17 +6,9 @@ import {
     Button, TextareaAutosize
 } from "@material-ui/core";
 import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import NP from "./NP";
-
-const schema = yup.object().shape({
-    firstName: yup.string().matches(/^([^\d]*)$/, 'Це поле може містити лише літери!').required(`Поле обов'язкове!`),
-    lastName: yup.string().matches(/^([^\d]*)$/, 'Це поле може містити лише літери!').required(`Поле обов'язкове!`),
-    email: yup.string().email('Невірний формат!').required(`Поле обов'язкове!`),
-
-});
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -49,12 +41,11 @@ const DeliveryInfo = () => {
     const [cityValue, setCityValue] = useState(orderData.address?.npCity || '');
     const [warehouseValue, setWarehouseValue] = useState(orderData.address?.npWarehouse || '');
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit} = useForm({
         defaultValues: {
             comment: orderData.address?.comment
         },
         mode: 'onBlur',
-        // resolver: yupResolver(schema),
     });
 
     const handleChange = (e) => {

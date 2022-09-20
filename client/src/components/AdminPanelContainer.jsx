@@ -13,19 +13,11 @@ const AdminPanelContainer = ({children}) => {
     const {request} = useHttp();
     const {token, logout, ready} = useAuth();
 
-    const [isModalUpdate, setModalUpdate] = useState(false);
-    const [itemForModal, setItemForModal] = useState({});
-
     const fetchItems = useCallback(async () => {
         const data = await request(`/${apiRoutes.ITEMS}`);
         const sortItems = data.sort((a, b) => a.article > b.article ? 1 : a.article < b.article ? -1 : 0);
         onSetItems(sortItems);
     }, [request]);
-
-    const handleUpdateItem = (item) => {
-        setItemForModal(item)
-        setModalUpdate(true)
-    }
 
     if (!token && ready) {
         return <Redirect to={`/${mainRoutes.ADMIN}`}/>
@@ -33,12 +25,6 @@ const AdminPanelContainer = ({children}) => {
 
     return (
         <div>
-            {
-                isModalUpdate && <UpdateItemModal onCancel={() => setModalUpdate(false)}
-                                                  item={itemForModal}
-                                                  fetchItems={fetchItems}
-                />
-            }
             {
                 token && <div>
                     <header className="header header__between header__admin">
@@ -65,9 +51,8 @@ const AdminPanelContainer = ({children}) => {
                         {React.Children.map(children, (child) => {
                             if (React.isValidElement(child)) {
                                 return React.cloneElement(child, {
-                                    fetchItems,
                                     items,
-                                    onUpdateItem: handleUpdateItem
+                                    fetchItems
                                 });
                             }
                             return null;
