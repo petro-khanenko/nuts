@@ -64,9 +64,9 @@ export const Orders = () => {
 
     return (
         <div className={'orders'}>
-            <h2 className="basket_title">Orders</h2>
-            <div className='orders_header'>
-                <div className='orders_header__number'>№</div>
+            <h2 className="basket__title">Orders</h2>
+            <div className='orders-header'>
+                <div className='orders-header__number'>№</div>
                 <div>Замовник</div>
                 <div>Адреса доставки</div>
                 <div>Всього</div>

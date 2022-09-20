@@ -9,14 +9,14 @@ const StoreItem = ({item, idx, children}) => {
         setToStorage(localStorageKeys.PREV_PATH, pathname);
     }
     return (
-        <div className={'store_item'}>
+        <div className={'store-item'}>
             <div>{idx + 1}</div>
-            <div className="store_item__image">
+            <div className="store-item__image">
                 <NavLink to={`/about/${item.anchorr}`} onClick={handleSetPath}>
                     <img src={item.image} alt="image"/>
                 </NavLink>
             </div>
-            <div className={'store_item__name'}>
+            <div className={'store-item__name'}>
                 <NavLink to={`/about/${item.anchorr}`} onClick={handleSetPath}>
                     {item.name}
                 </NavLink>

@@ -24,9 +24,9 @@ const BasketButton = ({ onGoToBasket }) => {
     const {itemsCount} = useBasketData();
 
     return (
-        <div className={"button_basket__icon"}>
-            <div className={"button_basket__icon_fixed"}>
-                                <span className={"button_basket__inbasket"}>
+        <div className={"button-basket__icon"}>
+            <div className={"button-basket__icon_fixed"}>
+                                <span className={"button-basket__inbasket"}>
                                     {itemsCount ? itemsCount : ''}
                                 </span>
                 <NavLink to={`/${mainRoutes.BASKET}`} onClick={onGoToBasket}>

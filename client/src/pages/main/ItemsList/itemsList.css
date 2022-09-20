@@ -1,16 +1,16 @@
-.companies-list {
+.items-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 30px;
 }
-.companies-list-less-then-3 {
+.items-list-less-then-3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     grid-gap: 60px;
 }
 
 @media (max-width: 767px) {
-    .companies-list {
+    .items-list {
         grid-gap: 30px;
     }
     .items__sort {

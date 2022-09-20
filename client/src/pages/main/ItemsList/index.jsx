@@ -49,7 +49,7 @@ const ItemsList = () => {
     if (loading) return <h2>Loading...</h2>
 
     return (
-        <div className={filteredItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>
+        <div className={filteredItems.length < 3 ? 'items-list-less-then-3' : 'items-list'}>
             {filteredItems.map(item => <ItemCard key={item.id}
                                                  item={item}
             />)}

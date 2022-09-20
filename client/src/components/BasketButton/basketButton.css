@@ -1,14 +1,14 @@
-.button_basket__icon {
+.button-basket__icon {
     width: 75px;
     float: right;
     position: relative;
 }
-.button_basket__icon_fixed {
+.button-basket__icon_fixed {
     position: fixed;
     top: 13px;
     z-index: 25;
 }
-.button_basket__inbasket {
+.button-basket__inbasket {
     display: block;
     position: absolute;
     right: 0;
@@ -25,7 +25,7 @@
 }
 
 @media (max-width: 767px) {
-    .button_basket__icon {
+    .button-basket__icon {
         margin-right: 30px;
     }
 }

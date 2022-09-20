@@ -1,4 +1,4 @@
-.orders_header {
+.orders-header {
     display: grid;
     grid-template-areas: 'N client address total active delete';
     grid-template-columns: 1fr 3fr 4.5fr 1.5fr 1fr 1fr;
@@ -13,6 +13,6 @@
     font-weight: bold;
     letter-spacing: 2px;
 }
-.orders_header__number {
+.orders-header__number {
     justify-self: center;
 }

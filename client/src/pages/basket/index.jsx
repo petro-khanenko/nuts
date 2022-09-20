@@ -42,7 +42,7 @@ const Basket = () => {
                 )
             }
             <div className="basket">
-                <div className='basket_go-back-button'>
+                <div className='basket__go-back-button'>
                     <NavLink to={'/'}>
                         <Button startIcon={<ArrowBackIos/>}
                                 variant='contained'
@@ -53,26 +53,26 @@ const Basket = () => {
                         </Button>
                     </NavLink>
                 </div>
-                <h2 className="basket_title">КОРЗИНА</h2>
-                <div className='basket_header'>
+                <h2 className="basket__title">КОРЗИНА</h2>
+                <div className='basket__header'>
                     <div>Товар</div>
                     <div>Ціна</div>
                     <div>Кількість</div>
                     <div>Всього</div>
                 </div>
-                <div className="basket_content">
+                <div className="basket__content">
                     {!isPurchases ? <h2>Ваша корзина поки пуста</h2>
                         : items.map(item => <div>
                             <BasketItem item={item}/>
                         </div>)
                     }
-                    <div className='basket_total'>
+                    <div className='basket__total'>
                         <div/>
                         <div/>
                         <div>Всього:</div>
                         <div>{total} грн</div>
                     </div>
-                    <div className="basket_buttons">
+                    <div className="basket__buttons">
                         <Button
                             variant='contained'
                             color='primary'

@@ -52,8 +52,8 @@ export const BasketItem = ({item}) => {
     }
 
     return (
-        <div className={'basket_item'}>
-            <div className="basket_item__image">
+        <div className={'basket-item'}>
+            <div className="basket-item__image">
                 <NavLink
                     to={`/about/${item.anchorr}`}
                     onClick={handleSetPath}
@@ -63,20 +63,20 @@ export const BasketItem = ({item}) => {
             </div>
             <NavLink
                 to={`/about/${item.anchorr}`}
-                className={'basket_item__name'}
+                className={'basket-item__name'}
                 onClick={handleSetPath}
             >
                 <div>{item.name}</div>
             </NavLink>
             <div>{Number(item.price).toFixed(2)} грн / {item.points}</div>
-            <div className='basket_item__counter'>
+            <div className='basket-item__counter'>
                 <IconButton className={iconButton}
                             onClick={() => countHandler(-1)}
                             disabled={counter === 1}
                 >
                     <IndeterminateCheckBox className={iconDecrease}/>
                 </IconButton>
-                <div className='basket_item__counter-number'>{item.count}</div>
+                <div className='basket-item__counter-number'>{item.count}</div>
                 <IconButton className={iconButton} onClick={() => countHandler(1)}>
                     <AddBox className={iconIncrease}/>
                 </IconButton>

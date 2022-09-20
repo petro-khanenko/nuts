@@ -1,9 +1,9 @@
-.form_fields {
+.form-fields {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.form_fields__img-label {
+.form-fields__img-label {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -16,10 +16,10 @@
     cursor: pointer;
     background-color: #a2e125;
 }
-.form_fields label:hover {
+.form-fields label:hover {
     background-color: orangered;
 }
-.form_fields textarea {
+.form-fields textarea {
     height: 100px;
     margin-bottom: 5px;
 }

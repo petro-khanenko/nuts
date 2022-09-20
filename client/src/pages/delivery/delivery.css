@@ -1,12 +1,12 @@
 .delivery {
     margin-top: 100px;
 }
-.delivery_title{
+.delivery__title{
     font-size: 2.5rem;
     font-weight: bold;
     letter-spacing: 2px;
 }
-.delivery_content {
+.delivery__content {
     margin: 30px 60px;
     padding: 5px 20px;
     min-height: 50vh;
@@ -15,7 +15,7 @@
     border-radius: 8px;
     background-color: #cee3e3;
 }
-.delivery__section_title {
+.delivery__section-title {
     text-align: center;
     margin: 10px;
     font-size: 1.25rem;
@@ -26,14 +26,14 @@
     .delivery {
         margin-top: 75px;
     }
-    .delivery_title{
+    .delivery__title{
         font-size: 1.25rem;
     }
-    .delivery_content {
+    .delivery__content {
         margin: 15px;
         padding: 5px 10px;
     }
-    .delivery__section_title {
+    .delivery__section-title {
         font-size: 1rem;
     }
 }

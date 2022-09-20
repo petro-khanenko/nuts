@@ -35,7 +35,7 @@
 .header__phone a {
     display: flex;
 }
-.header__phone_number {
+.header__phone-number {
     position: relative;
     margin-top: 5px;
     margin-left: 5px;
@@ -44,7 +44,7 @@
     color: #e1f1f1;
     text-shadow: 1px 1px 2px darkorange;
 }
-.header__phone_number:hover {
+.header__phone-number:hover {
     color: darkorange;
 }
 
@@ -148,7 +148,7 @@
         align-self: self-start;
         margin-left: 5vw;
     }
-    .header__phone_number {
+    .header__phone-number {
         margin-top: 55px;
     }
     .header__phone_icon {

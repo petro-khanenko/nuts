@@ -2,10 +2,10 @@ import React, {useEffect} from "react";
 import {NavLink, useLocation, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {useBasketData} from "../../../context/BasketContext";
-import {localStorageKeys, mainRoutes, subRoutes} from "../../../constants/constants";
-import {useItemsData} from "../../../context/ItemsContext";
-import {getFromStorage, setToStorage} from "../../../helpers/helpers";
+import {useBasketData} from "../../context/BasketContext";
+import {localStorageKeys, mainRoutes, subRoutes} from "../../constants/constants";
+import {useItemsData} from "../../context/ItemsContext";
+import {getFromStorage, setToStorage} from "../../helpers/helpers";
 
 const AboutItem = () => {
     const { anchor } = useParams();
@@ -34,7 +34,7 @@ const AboutItem = () => {
 
     return (
         <div className='about_item'>
-            <div className='basket_go-back-button'>
+            <div className='basket__go-back-button'>
                 <NavLink to={getPrevLocation()}>
                     <Button startIcon={<ArrowBackIos/>}
                             variant='contained'
@@ -45,12 +45,12 @@ const AboutItem = () => {
                     </Button>
                 </NavLink>
             </div>
-            <h2 className='about_item_title'>Опис товару</h2>
-            <div className='about_item_content'>
-                <div className="about_item__image">
+            <h2 className='about-item__title'>Опис товару</h2>
+            <div className='about-item__content'>
+                <div className="about-item__image">
                     <img src={item.image} alt="Image not found"/>
                 </div>
-                <div className='about_item__description'>
+                <div className='about-item__description'>
                     <div><b>Найменування: </b> {item.name}</div>
                     <div><b>Ціна: </b> {Number(item.price).toFixed(2)} грн/{item.points}</div>
                     {
@@ -62,7 +62,7 @@ const AboutItem = () => {
                     <div><b>Детальніше про товар та його переваги: </b><br/> {item.description}</div>
                 </div>
             </div>
-            <div className="about_item__buttons">
+            <div className="about-item__buttons">
                 <NavLink to={`/${mainRoutes.BASKET}`}>
                     <Button variant='contained' color='secondary'
                             onClick={() => addItemToBasket(item)}>

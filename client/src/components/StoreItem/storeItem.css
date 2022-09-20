@@ -1,4 +1,4 @@
-.store_item {
+.store-item {
     display: grid;
     grid-template-areas: 'N image name price button';
     grid-template-columns: 0.5fr 1fr 5fr 3fr 2.5fr;
@@ -14,22 +14,22 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
-.store_item:hover {
+.store-item:hover {
     box-shadow: -11px 9px 18px rgb(96, 55, 5);
     border: solid 2px orangered;
 }
-.store_item__name {
+.store-item__name {
     justify-self: self-start;
     margin-left: 25px;
 }
-.store_item__image {
+.store-item__image {
     width: 100%;
     height: 100%;
     overflow: hidden;
     position: relative;
     padding: 0 0 10% 0;
 }
-.store_item__image img {
+.store-item__image img {
     width: 100%;
     height: 100%;
     position: absolute;

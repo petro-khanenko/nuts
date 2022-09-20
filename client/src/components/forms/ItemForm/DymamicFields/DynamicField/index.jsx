@@ -10,7 +10,7 @@ const DynamicTextField = styled(TextField)`
 export const DynamicField = ({idx, dynamicKey, dynamicKeysFormHandler, dynamicValue, dynamicValuesFormHandler }) => {
 
     return (
-        <div className="dynamic_field">
+        <div className="dynamic-field">
             <DynamicTextField variant='outlined'
                               margin='normal'
                               label='Характеристика товару'

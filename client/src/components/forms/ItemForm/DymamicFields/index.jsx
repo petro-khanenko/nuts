@@ -32,7 +32,7 @@ export const DynamicFields = ({
                 idx={idx}
                 key={el}
             />)}
-            <div className="dynamic_field">
+            <div className="dynamic-field">
                 <StyledButton
                               variant='contained'
                               color='primary'

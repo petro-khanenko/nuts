@@ -21,7 +21,7 @@ const DynamicTextField = styled(TextField)`
 export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
 
     return (
-        <div className='form_fields'>
+        <div className='form-fields'>
             <StyledTextField variant='outlined'
                              fullWidth
                              label='Посилання на зображення'
@@ -30,7 +30,7 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                              value={form.image}
                              onChange={formHandler}
             />
-            <label htmlFor='img_input' className='form_fields__img-label'>
+            <label htmlFor='img_input' className='form-fields__img-label'>
                 Оберіть зображення
             </label>
             <input id='img_input'
@@ -46,7 +46,7 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                              value={form.name}
                              onChange={formHandler}
             />
-            <div className="dynamic_field">
+            <div className="dynamic-field">
                 <DynamicTextField variant='outlined'
                                   label='Ціна'
                                   id='price'

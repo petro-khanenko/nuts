@@ -31,8 +31,8 @@ const ItemsList = ({items, fetchItems}) => {
                 )
             }
             <h2>Delete or Update Item</h2>
-            <div className='admin_store'>
-                <div className='admin_store__header'>
+            <div className='admin-store'>
+                <div className='admin-store__header'>
                     <div>№</div>
                     <div>товар</div>
                     <div>ціна</div>

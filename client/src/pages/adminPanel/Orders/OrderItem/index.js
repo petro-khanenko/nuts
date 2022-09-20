@@ -96,16 +96,16 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
     }
 
     return (
-        <div className={'order_item'}>
-            <div className='order_item__number'>{order.orderNum}</div>
-            <NavLink className='order_item__link' to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}>
-                <div className='order_item__client' onClick={() => getItemsAndGoToBasket(order._id)}>
+        <div className={'order-item'}>
+            <div className='order-item__number'>{order.orderNum}</div>
+            <NavLink className='order-item__link' to={`/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`}>
+                <div className='order-item__client' onClick={() => getItemsAndGoToBasket(order._id)}>
                     <div>{order.firstName} {order.lastName}</div>
                     <div>{order.email}</div>
                     <div>{order.phone}</div>
                 </div>
             </NavLink>
-            <div className='order_item__address'>{renderAddress(order.address.method)}</div>
+            <div className='order-item__address'>{renderAddress(order.address.method)}</div>
             <div>{Number(order.total).toFixed(2)} грн</div>
             <IconButton className={iconButton} onClick={completedOrderHandler}>
                 {isActive ? <CheckCircle className={iconIncrease}/> : <Rowing className={iconIncrease}/>}

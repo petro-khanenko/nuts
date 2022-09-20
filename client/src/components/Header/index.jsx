@@ -63,7 +63,7 @@ const Header = () => {
                                 <PermPhoneMsgIcon className={phoneIcon}/>
                             </IconButton>
                         </div>
-                        <div className="header__phone_number">+38 063 892 40 39</div>
+                        <div className="header__phone-number">+38 063 892 40 39</div>
                     </a>
                 </div>
                 <div className={"header__search"}>
