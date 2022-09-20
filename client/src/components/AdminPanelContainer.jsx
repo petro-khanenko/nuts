@@ -27,7 +27,7 @@ const AdminPanelContainer = ({children}) => {
         <div>
             {
                 token && <div>
-                    <header className="header header__between header__admin">
+                    <header className="header__bottom header__between header__admin">
                         <div className={"header__logo"}>ADMIN PANEL</div>
                         <div>
                             <NavLink to={'/'}>

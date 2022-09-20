@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
         iconCloseButton: {
             position: 'absolute',
             right: -10,
-            minWidth: 40
+            top: -2,
+            minWidth: 40,
         },
         closeIcon: {
             fontSize: 40,
@@ -53,7 +54,7 @@ const Header = () => {
     }, [location.hash]);
 
     return (
-        <>
+        <div className='header'>
             <div className={"header__top"}>
                 <div className={"header__phone"}>
                     <a href={'tel:+380638924039'}>
@@ -61,7 +62,6 @@ const Header = () => {
                             <IconButton className={phoneIconButton}>
                                 <PermPhoneMsgIcon className={phoneIcon}/>
                             </IconButton>
-
                         </div>
                         <div className="header__phone_number">+38 063 892 40 39</div>
                     </a>
@@ -82,7 +82,7 @@ const Header = () => {
                     }
                 </div>
             </div>
-            <header className="header header__center">
+            <header className="header__bottom">
                 <div className={"header__title"}>
                     Завітайте до нас за адресою:
                     <a href="https://maps.app.goo.gl/m7H8jk5311XCQxrT9" target="_blank"> вул. Героїв Дніпра, 51, Київ,
@@ -95,7 +95,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-        </>
+        </div>
     );
 }
 

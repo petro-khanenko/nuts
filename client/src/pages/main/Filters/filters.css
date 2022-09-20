@@ -1,17 +1,22 @@
 .items__sort {
     margin-bottom: 40px;
-    color: whitesmoke;
+    color: #e1f1f1;
     font-size: 1.25rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
+    height: 50px;
+    padding: 0 10px 5px 10px;
+    background-color: rgba(42,42,39, 0.45);
     text-shadow: 1px 1px 2px black;
+    border-radius: 8px;
 }
 .items__sort_active {
     color: #ff1500;
 }
-.items__sort span:hover {
+.items__sort div:hover {
     color: darkorange;
 }

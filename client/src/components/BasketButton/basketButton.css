@@ -5,7 +5,7 @@
 }
 .button_basket__icon_fixed {
     position: fixed;
-    top: 5px;
+    top: 13px;
     z-index: 25;
 }
 .button_basket__inbasket {

@@ -1,4 +1,9 @@
 .header {
+    background-color: rgba(42,42,39, 0.6);
+    padding-top: 10px;
+    border-radius: 8px;
+}
+.header__bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,7 +13,7 @@
     margin-top: 25px;
     z-index: 1;
     border-radius: 8px;
-    padding: 10px 60px;
+    padding: 20px 60px 15px 60px;
     box-shadow: -11px 9px 18px rgb(18, 45, 7);
 }
 .header__admin {
@@ -25,7 +30,7 @@
     align-content: center;
 }
 .header__phone {
-    margin-top: 3px;
+    margin-top: 8px;
 }
 .header__phone a {
     display: flex;
@@ -36,7 +41,7 @@
     margin-left: 5px;
     font-size: 1.75rem;
     font-weight: 500;
-    color: #286800;
+    color: #e1f1f1;
     text-shadow: 1px 1px 2px darkorange;
 }
 .header__phone_number:hover {
@@ -82,13 +87,17 @@
 .header__search input {
     width: 400px;
     height: 40px;
-    margin-top: 10px;
-    padding: 0 15px;
-    border-radius: 25px;
+    margin-top: 5px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.25rem;
+    background-color: #e1f1f1;
+    opacity: 0.9;
 }
 
 @media (max-width: 1200px) {
-    .header {
+    .header__bottom {
         width: calc(100vw - 120px);
     }
     .heder__title {
@@ -100,7 +109,7 @@
     }
 }
 @media (max-width: 992px) {
-    .header {
+    .header__bottom {
         width: calc(100vw - 120px);
     }
     .heder__title {
@@ -112,7 +121,7 @@
     }
 }
 @media (max-width: 767px) {
-    .header {
+    .header__bottom {
         width: 95vw;
         padding: 0;
         margin-top: -75px;
@@ -125,7 +134,7 @@
     .header__icon {
         width: 110px;
     }
-    .header {
+    .header__bottom {
         margin-top: 20px;
         height: 140px;
         margin-left: 10px;
