@@ -1,8 +1,8 @@
-import {BasketItem} from "./BasketItem";
+import React, {useEffect, useState} from "react";
+import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
-import {NavLink} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import {BasketItem} from "./BasketItem";
 import {setConfirmModal} from "../../utils/swal/helpers";
 import {useBasketData} from "../../context/BasketContext";
 import {Modal} from "../../components/modals/Modal";

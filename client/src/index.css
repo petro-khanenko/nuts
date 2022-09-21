@@ -45,3 +45,11 @@ a {
 h2 {
     text-align: center;
 }
+
+button {
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover {
+    background-color: orangered;
+}

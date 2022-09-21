@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PersonalInfo from "./PersonalInfo";
 import {useOrderData} from "../../../context/OrderContext";
 import {orderSteps} from "../../../constants/constants";

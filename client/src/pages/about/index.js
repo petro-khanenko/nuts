@@ -23,6 +23,8 @@ const AboutItem = () => {
                 return `/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`;
             case prevPath.includes(mainRoutes.ADMIN):
                 return `/${mainRoutes.ADMIN}/${subRoutes.PANEL}`;
+            case prevPath.includes(mainRoutes.BASKET):
+                return `/${mainRoutes.BASKET}`;
             default:
                 return `/#${anchor}`;
         }
@@ -40,6 +42,7 @@ const AboutItem = () => {
                             variant='contained'
                             size='large'
                             color='secondary'
+                            onClick={() => setToStorage(localStorageKeys.PREV_PATH, '')}
                     >
                         До списку товарів
                     </Button>

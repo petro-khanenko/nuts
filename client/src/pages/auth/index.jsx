@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
-import {Redirect} from "react-router-dom"
-import {useHttp} from "../../hooks/http.hook"
-import {useAuth} from "../../hooks/auth.hook"
+import React, {useState} from 'react';
+import {Redirect} from "react-router-dom";
+import styled from '@emotion/styled';
+import {Button, Container, TextField} from "@material-ui/core";
+import {useHttp} from "../../hooks/http.hook";
+import {useAuth} from "../../hooks/auth.hook";
 import {setInfoModal} from "../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../constants/constants";
-import styled from '@emotion/styled'
-import {Container, TextField} from "@mui/material";
-import {Button} from "@material-ui/core";
+
 
 // styled components
 const StyledContainer = styled(Container)`
