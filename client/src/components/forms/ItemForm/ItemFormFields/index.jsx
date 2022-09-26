@@ -1,5 +1,6 @@
 import React from 'react';
-import {TextareaAutosize, TextField} from "@material-ui/core";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+import TextField from "@mui/material/TextField";
 import styled from "@emotion/styled";
 
 // styled components
@@ -11,11 +12,15 @@ const StyledTextareaAutosize = styled(TextareaAutosize)`
   padding: 10px;
 `;
 const StyledTextField = styled(TextField)`
-  margin: 5px 0;
+  &.MuiFormControl-root {
+    margin: 5px 0;
+  }
 `;
-const DynamicTextField = styled(TextField)`
-  width: 50%;
-  margin: 5px 0;
+const HalfTextField = styled(TextField)`
+  &.MuiFormControl-root {
+    width: 50%;
+    margin: 5px 0;
+  }
 `;
 
 export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
@@ -47,14 +52,14 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                              onChange={formHandler}
             />
             <div className="dynamic-field">
-                <DynamicTextField variant='outlined'
+                <HalfTextField variant='outlined'
                                   label='Ціна'
                                   id='price'
                                   name='price'
                                   value={form.price}
                                   onChange={formHandler}
                 />
-                <DynamicTextField variant='outlined'
+                <HalfTextField variant='outlined'
                                   label='Одиниці виміру'
                                   id='points'
                                   name='points'

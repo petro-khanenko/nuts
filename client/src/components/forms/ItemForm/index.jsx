@@ -1,14 +1,16 @@
 import React from 'react';
+import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
 import {FormFields} from "./ItemFormFields";
 import {DynamicFields} from "./DymamicFields";
-import {styled} from "@mui/material";
-import {Button} from "@material-ui/core";
 
 // styled components
 const StyledButton = styled(Button)`
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 1rem;
+  &.MuiButtonBase-root {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1rem;
+  }
 `;
 
 const ItemForm = ({

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Container, styled} from "@mui/material";
+import Container from "@mui/material/Container";
+import styled from "@emotion/styled";
 import {useHttp} from "../../../hooks/http.hook";
 import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
 import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
@@ -10,12 +11,14 @@ import ItemForm from "../../../components/forms/ItemForm";
 
 // styled components
 const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2% auto;
-  padding-bottom: 25px;
-  background-color: #e1f1f1;
+  &.MuiContainer-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% auto;
+    padding-bottom: 25px;
+    background-color: #e1f1f1;
+  }
 `;
 
 

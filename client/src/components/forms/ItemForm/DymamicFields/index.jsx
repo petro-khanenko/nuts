@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
+import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
 import {DynamicField} from "./DynamicField";
-import {styled} from "@mui/material";
-import {Button} from "@material-ui/core";
 
 // styled components
 const StyledButton = styled(Button)`
-  padding: 10px;
-  font-size: 1rem;
-  width: 50%;
+  &.MuiButtonBase-root {
+    padding: 10px;
+    font-size: 1rem;
+    width: 50%;
+  }
 `;
 
 let counter = 0;
