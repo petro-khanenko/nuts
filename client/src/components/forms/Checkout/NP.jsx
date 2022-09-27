@@ -5,8 +5,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import styled from "@emotion/styled";
 import {setInfoModal} from "../../../utils/swal/helpers";
 
-const StyledTextField = styled(TextField)`
+const StyledAutocomplete = styled(Autocomplete)`
   margin-bottom: 15px;
+  & .MuiIconButton-root {
+    padding: 0;
+  }
 `;
 
 const NP = ({cityValue, warehouseValue, onSetCityValue, onSetWarehouseValue}) => {
@@ -70,7 +73,7 @@ const NP = ({cityValue, warehouseValue, onSetCityValue, onSetWarehouseValue}) =>
     return (
         <div>
             <h3>Оберіть відділеня чи поштомат</h3>
-            <Autocomplete
+            <StyledAutocomplete
                 value={cityValue}
                 onChange={(event, newValue) => {
                     onSetCityValue(newValue);
@@ -81,11 +84,11 @@ const NP = ({cityValue, warehouseValue, onSetCityValue, onSetWarehouseValue}) =>
                 }}
                 id="city"
                 options={cities}
-                renderInput={(params) => <StyledTextField {...params} label="Населений пункт"/>}
+                renderInput={(params) => <TextField {...params} label="Населений пункт"/>}
             />
             {
                 cityValue && (
-                    <Autocomplete
+                    <StyledAutocomplete
                         value={warehouseValue}
                         onChange={(event, newValue) => {
                             onSetWarehouseValue(newValue);
@@ -96,7 +99,7 @@ const NP = ({cityValue, warehouseValue, onSetCityValue, onSetWarehouseValue}) =>
                         }}
                         id="warehouse"
                         options={warehouses}
-                        renderInput={(params) => <StyledTextField {...params} label="Відділення чи поштомат"/>}
+                        renderInput={(params) => <TextField {...params} label="Відділення чи поштомат"/>}
                     />
                 )
             }

@@ -28,6 +28,11 @@ const StyledFormLabel = styled(FormLabel)`
     color: black;
   }
 `;
+const StyledFormControlLabel = styled(FormControlLabel)`
+    & .MuiButtonBase-root {
+      padding: 9px;
+    }
+`;
 const StyledTextareaAutosize = styled(TextareaAutosize)`
   box-sizing: border-box;
   width: 100%;
@@ -78,7 +83,7 @@ const DeliveryInfo = () => {
                 >
                     {
                         Object.values(deliveryOptions).map((el) => (
-                            <FormControlLabel
+                            <StyledFormControlLabel
                                 value={el.value}
                                 label={el.label}
                                 control={<Radio/>}
