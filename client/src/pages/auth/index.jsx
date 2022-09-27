@@ -10,12 +10,14 @@ import {apiRoutes, apiSubRoutes, mainRoutes, subRoutes} from "../../constants/co
 
 // styled components
 const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2% auto;
-  padding-bottom: 25px;
-  background-color: #e1f1f1;
+  &.MuiContainer-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% auto;
+    padding-bottom: 25px;
+    background-color: #e1f1f1;
+  }
 `;
 const ButtonsContainer = styled.div`
   display: flex;
@@ -24,9 +26,11 @@ const ButtonsContainer = styled.div`
   margin-top: 25px;
 `;
 const StyledButton = styled(Button)`
-  padding: 10px;
-  font-size: 1rem;
-  width: 48%;
+  &.MuiButton-root {
+    padding: 10px;
+    font-size: 1rem;
+    width: 48%;
+  }
 `;
 
 const Auth = () => {
