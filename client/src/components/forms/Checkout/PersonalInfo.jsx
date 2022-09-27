@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
-import {useOrderData} from "../../../context/OrderContext";
-import {orderSteps} from "../../../constants/constants";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import {
     Button,
     TextField
 } from "@material-ui/core";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import styled from "@emotion/styled";
+import {useOrderData} from "../../../context/OrderContext";
+import {orderSteps} from "../../../constants/constants";
 
 
 const schema = yup.object().shape({
@@ -19,9 +19,11 @@ const schema = yup.object().shape({
 });
 
 const StyledButton = styled(Button)`
-  margin-top: 40px;
-  padding: 10px;
-  font-size: 1rem;
+  &.MuiButton-root {
+    margin-top: 40px;
+    padding: 10px;
+    font-size: 1rem;
+  }
 `;
 
 

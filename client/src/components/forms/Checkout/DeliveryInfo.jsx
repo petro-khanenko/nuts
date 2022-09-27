@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import styled from '@emotion/styled'
-import {useOrderData} from "../../../context/OrderContext";
-import {deliveryOptions, orderSteps} from "../../../constants/constants";
+import {useForm} from "react-hook-form";
 import {
     Button, TextareaAutosize
 } from "@material-ui/core";
-import {useForm} from "react-hook-form";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import styled from '@emotion/styled';
+import {useOrderData} from "../../../context/OrderContext";
+import {deliveryOptions, orderSteps} from "../../../constants/constants";
 import NP from "./NP";
 
 const ButtonsContainer = styled.div`
@@ -16,9 +16,11 @@ const ButtonsContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  padding: 10px;
-  font-size: 1rem;
-  width: 48%;
+  &.MuiButton-root {
+    padding: 10px;
+    font-size: 1rem;
+    width: 48%;
+  }
 `;
 
 const StyledFormLabel = styled(FormLabel)`

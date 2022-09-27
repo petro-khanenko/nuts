@@ -1,15 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Button} from "@material-ui/core";
 import styled from '@emotion/styled'
 import {useOrderData} from "../../../context/OrderContext";
 import {deliveryOptions, orderSteps} from "../../../constants/constants";
-import {
-    Button, TextareaAutosize
-} from "@material-ui/core";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
-import NP from "./NP";
 
 const InfoContainer = styled.div`
   display: flex;
@@ -29,9 +22,11 @@ const ButtonsContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  padding: 10px;
-  font-size: 1rem;
-  width: 48%;
+  &.MuiButton-root {
+    padding: 10px;
+    font-size: 1rem;
+    width: 48%;
+  }
 `;
 
 const Confirmation = ({onSubmit, onCancel}) => {
