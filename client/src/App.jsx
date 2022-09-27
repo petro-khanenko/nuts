@@ -1,17 +1,17 @@
 import React from 'react';
+import {Route, Switch} from "react-router-dom";
 import {ThemeProvider} from "@mui/material";
+import theme from "./theme";
 import ContextProvider from "./context";
+import {mainRoutes, params, subRoutes} from "./constants/constants";
 import Content from "./pages/main/Content";
 import Auth from "./pages/auth";
-import {Route, Switch} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel";
 import AboutItem from "./pages/about";
 import Basket from "./pages/basket";
 import {AdminBasket} from "./pages/adminBasket";
 import Delivery from "./pages/delivery";
-import {mainRoutes, params, subRoutes} from "./constants/constants";
 import MainContainer from "./components/MainContainer";
-import theme from "./theme";
 
 
 function App() {

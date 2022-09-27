@@ -1,8 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {NavLink} from "react-router-dom";
 import {IconButton, makeStyles} from "@material-ui/core";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import {localStorageKeys, mainRoutes, subRoutes} from "../../constants/constants";
+import {mainRoutes} from "../../constants/constants";
 import {useBasketData} from "../../context/BasketContext";
 
 const useStyles = makeStyles((theme) => ({

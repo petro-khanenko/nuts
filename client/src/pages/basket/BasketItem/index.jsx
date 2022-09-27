@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {NavLink, useLocation} from "react-router-dom";
 import {IconButton, makeStyles} from "@material-ui/core";
 import AddBox from "@material-ui/icons/AddBox";
 import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
-import {NavLink, useLocation} from "react-router-dom";
 import {setConfirmModal} from "../../../utils/swal/helpers";
 import {useBasketData} from "../../../context/BasketContext";
 import {setToStorage} from "../../../helpers/helpers";

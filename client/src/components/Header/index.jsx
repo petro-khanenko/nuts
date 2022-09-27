@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
-import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
 import Cancel from "@material-ui/icons/Cancel";
+import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {useFiltersData} from "../../context/FiltersContext";
 
 const useStyles = makeStyles((theme) => ({

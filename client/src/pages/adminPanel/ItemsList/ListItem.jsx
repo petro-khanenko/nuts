@@ -1,9 +1,9 @@
 import React from 'react';
-import StoreItem from "../../../components/StoreItem";
 import {Button, makeStyles} from "@material-ui/core";
+import {useHttp} from "../../../hooks/http.hook";
+import StoreItem from "../../../components/StoreItem";
 import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 import {setConfirmModal, setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
-import {useHttp} from "../../../hooks/http.hook";
 
 const useStyles = makeStyles((theme) => ({
         updateButton: {

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
-import ItemCard from "../ItemCard";
-import {sortModes} from "../../../constants/constants";
+import React, {useEffect, useState} from 'react';
+import {useHttp} from "../../../hooks/http.hook";
 import {useFiltersData} from "../../../context/FiltersContext";
 import {useItemsData} from "../../../context/ItemsContext";
-import {useHttp} from "../../../hooks/http.hook";
+import {sortModes} from "../../../constants/constants";
+import ItemCard from "../ItemCard";
+
 
 const ItemsList = () => {
     const {items} = useItemsData();

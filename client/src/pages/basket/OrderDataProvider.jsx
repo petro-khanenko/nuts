@@ -1,8 +1,8 @@
 import React from 'react';
 import {useHttp} from "../../hooks/http.hook";
 import {useBasketData} from "../../context/BasketContext";
-import {apiRoutes, apiSubRoutes, INIT_ORDER_NUMBER} from "../../constants/constants";
 import {setInfoModal} from "../../utils/swal/helpers";
+import {apiRoutes, apiSubRoutes, INIT_ORDER_NUMBER} from "../../constants/constants";
 
 const OrderDataProvider = ({onCancel, children}) => {
     const {request} = useHttp();

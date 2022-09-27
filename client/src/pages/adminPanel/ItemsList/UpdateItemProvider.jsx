@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
-import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
+import React, {useState} from 'react';
 import {useHttp} from "../../../hooks/http.hook";
-import {getAddFieldsObject, getInitDynamicKeysForm, getInitDynamicValuesForm} from "../../../helpers/helpers";
 import {setInfoModal, setSuccessModal} from "../../../utils/swal/helpers";
 import {fileSelectorHandler} from "../../../utils/imgur/helpers";
+import {getAddFieldsObject, getInitDynamicKeysForm, getInitDynamicValuesForm} from "../../../helpers/helpers";
+import {apiRoutes, apiSubRoutes} from "../../../constants/constants";
 
 
 const UpdateItemProvider = ({

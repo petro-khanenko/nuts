@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
-import {NavLink, useLocation, useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {useBasketData} from "../../context/BasketContext";
-import {localStorageKeys, mainRoutes, subRoutes} from "../../constants/constants";
 import {useItemsData} from "../../context/ItemsContext";
+import {localStorageKeys, mainRoutes, subRoutes} from "../../constants/constants";
 import {getFromStorage, setToStorage} from "../../helpers/helpers";
 
 const AboutItem = () => {
