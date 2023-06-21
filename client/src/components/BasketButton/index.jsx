@@ -26,9 +26,13 @@ const BasketButton = ({ onGoToBasket }) => {
     return (
         <div className={"button-basket__icon"}>
             <div className={"button-basket__icon_fixed"}>
-                                <span className={"button-basket__inbasket"}>
-                                    {itemsCount ? itemsCount : ''}
-                                </span>
+                                    {
+                                        itemsCount ? (
+                                        <span className={"button-basket__inbasket"}>
+                                            { itemsCount }
+                                        </span>
+                                        ) : null
+                                    }
                 <NavLink to={`/${mainRoutes.BASKET}`} onClick={onGoToBasket}>
                     <IconButton className={headerIcon}>
                         <ShoppingCart className={basketIcon}/>
