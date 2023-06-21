@@ -17,7 +17,7 @@ const AboutItem = () => {
     }, [anchor]);
 
     const getPrevLocation = () => {
-        const prevPath = getFromStorage(localStorageKeys.PREV_PATH);
+        const prevPath = getFromStorage(localStorageKeys.PREV_PATH) || '';
         switch (true) {
             case prevPath.includes(subRoutes.ADMIN_BASKET):
                 return `/${mainRoutes.ADMIN}/${subRoutes.PANEL}/${subRoutes.ADMIN_BASKET}`;

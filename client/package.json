@@ -18,6 +18,7 @@
     "lodash": "^4.17.21",
     "material-ui": "^0.15.0",
     "novaposhta": "^1.1.1",
+    "nuts": "file:..",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.35.0",
@@ -32,8 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .tsx,.ts src/ --quiet",
-    "lint:fix": "eslint --ext .tsx,.ts src/ --quiet --fix",
+    "lint": "eslint --ext .tsx,.ts,.jsx,.js src/ --quiet",
+    "lint:fix": "eslint --ext .tsx,.ts,.jsx,.js src/ --quiet --fix",
     "prettier-format": "prettier --write",
     "prettier-format:all": "prettier --write 'src/**/*.{js,jsx,json,ts,tsx,css,md}'"
   },
