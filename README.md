@@ -1,6 +1,6 @@
 ## This project is a small internet shop selling nuts and dried fruits.
 
-### [Wisit our website](https://nutshop.space)
+### [Visit our website](https://nutshop.space)
 
 ## The project was made using the following stack of technologies:
 
