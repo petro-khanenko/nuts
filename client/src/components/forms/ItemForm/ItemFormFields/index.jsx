@@ -88,6 +88,8 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                 name='description'
                 minRows={4}
                 placeholder="Опис товару"
+                value={form.description}
+                onChange={formHandler}
             />
         </div>
     );
